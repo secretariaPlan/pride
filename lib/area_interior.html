@@ -1,0 +1,174 @@
+#CACHE{7200}
+<BOUCLE_area(RUBRIQUES) {id_rubrique=#ENV{id_rubrique}}>
+<?php $titulo = "#TITRE";  //definir el titulo antes del head 
+include_once("phplib/Fechas.inc.php");
+?>
+<INCLURE{fond=head}>
+
+<link href="styles_dh.css" rel="stylesheet" type="text/css" />
+
+<script>
+function envia(obj)
+{
+	if (obj.value != "")
+		window.location="spip.php?page=area_interior&id_rubrique="+obj.value+"&id_parent=#ENV{id_parent}";
+	
+	
+}
+</script>
+
+
+<body>
+<INCLURE{fond=top}>
+
+
+
+<table width="100%" border="0" cellspacing="2" cellpadding="0">
+  <tr>
+    <td width="177" align="left" valign="top">
+	
+		<!----------::::::::::::menu Izquierda::::::::::::::::::-->
+		<INCLURE{fond=izquierda}>
+	</td>
+
+ 	<td width="90%" align="left" valign="top">
+    	<!--::::::::::::::CENTRO:::::::::::::::-->    
+		<table width="100%" align="center" border="0" cellspacing="10" cellpadding="0">
+        	<tr>
+        		<td colspan="2" align="left" valign="top" style="font-size:10px">
+        		<!-- aqui la ruta -->
+        		<!--  la ruta de navegacion -->
+     			<a href="#URL_SITE_SPIP/"><:accueil_site:></a>
+     			<? 
+     				$arr[] = array("","");
+					$arr[] = array("spip.php?page=area&id_rubrique=","");
+					$arr[] = array("","");
+					$cont=0;
+					//var_dump($arr);
+     
+			     ?>
+     			<BOUCLE_ariane(HIERARCHIE){id_rubrique}> 
+     				<?  
+					if ($arr[$cont][0] != "")
+					{
+						$arr[$cont][1]= '[(#TITRE|couper{80})]';
+		   				$arr[$cont][0] = $arr[$cont][0].'#ID_RUBRIQUE';
+					} 
+     	   			$cont++;
+     				?>
+     			</BOUCLE_ariane>
+     			<?
+     				//var_dump($arr);
+     				foreach($arr as $reg)
+					{
+							if ($reg[0] != "")
+								echo '&gt; <a href="'.$reg[0].'">'.$reg[1].'</a>';
+					}
+     				//var_dump($arr);
+     			?>
+     			[ &gt; (#TITRE|couper{80})]</div>
+    			<!--  fin ruta de navegacion -->
+        		<!--  -->
+        		</td>
+        		<td align="right" valign="top">
+				
+        		</td>
+        	</tr>
+        	<tr>
+        		<td  colspan="2" align="left" valign="top">
+            	<h5><!--  Aqui el titulo de la pagina -->
+            	#TITRE
+            	<div class="derecha" style=" margin-top:-20px"><br />
+					
+                <form name="form" id="form">
+                  <select class="box" name="jumpMenu" id="jumpMenu" onChange="envia(this)">
+                    <option selected >Selecciona un tema</option>
+                    <BOUCLE_categorias(RUBRIQUES){id_parent=#ENV{id_parent}}>
+                    	<option value="#ID_RUBRIQUE"   >#TITRE</option>
+                    </BOUCLE_categorias>
+                    	                    	
+
+                  </select>
+                </form> </div>
+            	</h5>        
+          		</td>
+       	  		<td align="right" valign="middle">
+       	  		
+          		</td>
+    		</tr>
+     <!--  aqui el cuerpo -->    
+		<tr><td>#TEXTE</td></tr>
+					
+               
+  	<BOUCLE_informe(ARTICLES){id_rubrique}{par date}{inverse}>
+        <tr>
+    <th align="left" valign="top" scope="col" class="p10"><h5 style="font-size:18px !important">#TITRE</h5>
+      <? if ('#LOGO_ARTICLE_NORMAL' != '') { ?>
+      <p>
+      <img class="marco izq m5 " src="IMG/[(#LOGO_ARTICLE_NORMAL|fichier)]" width="168">
+      </p>
+      <? } ?>
+      <p class="p5">#TEXTE</p>
+          
+          <? if ('#SOUSTITRE' != '') { ?> <p class="marco2 p10">#SOUSTITRE</p><? } ?></th>
+    <th align="left" valign="top" scope="col">
+    <table width="200" border="0">
+       <tr>
+        <td class="p5" height="50">
+          
+          <h4>Archivos Adjuntos</h4></td>
+      </tr>
+      <BOUCLE_docs(DOCUMENTS){id_article}{mode=document}{par date}{inverse}>
+      <tr>
+           <td class="archivo 12px borde sinMargen" valign="baseline">
+			 <a href="#URL_DOCUMENT" target="_blank"><img src="esq2/vignettes/<? echo strtolower('#TYPE_DOCUMENT'); ?>.png" width="35" align="baseline" class="izq p5"></a>
+              	<p style="margin-left:36px"> <b class="azulClaro"><a href="#URL_DOCUMENT" target="_blank">#TITRE</a></b><br/>
+                #TYPE_DOCUMENT | [(#TAILLE|taille_en_octets)]              	</p>
+            </td>
+      </tr>
+      </BOUCLE_docs>
+     
+    
+     
+     
+    </table>
+    </th>
+        </tr>
+
+        <tr>
+        	<td colspan="2" class=" borde" align="left" valign="top">
+			<br/>
+         </td>
+       	  </tr>
+        </BOUCLE_informe>
+                       <tr>
+       <td align="right"><a href="http://www.adobe.com/uk/products/acrobat/readstep2.html" target="_blank"><img style="margin-right:-190px" src="imagenes/get_adobe_reader.gif" width="102" /></a><a style="margin-right:-100px" href="http://www.winzip.com/es/prod_down.htm" target="_blank"><img src="imagenes/winZip.png" height="30"/></a></td>
+      </tr>
+       <tr>
+     <td  colspan="2" align="left" class=" borde" valign="top" scope="col" id="masInfo2">
+     				<BOUCLE_papa(RUBRIQUES){id_rubrique=#ENV{id_parent}}>
+                	<BOUCLE_informacion(RUBRIQUES){id_parent=#ID_PARENT}{titre_mot=informacion}>
+                	<BOUCLE_artsinfo(ARTICLES){id_rubrique}>
+                	<li><a href="spip.php?page=article_area&id_article=#ID_ARTICLE&id_rubrique=#_papa:ID_PARENT"><img src="imagenes/icoPaper.gif" width="13" height="15"></a><a href="spip.php?page=article_area&id_article=#ID_ARTICLE&id_rubrique=#_papa:ID_PARENT">#TITRE</a></li>
+                    </BOUCLE_artsinfo>
+                    </BOUCLE_informacion>
+                    </BOUCLE_papa>
+      
+       </td>
+   </tr>
+  
+
+</table>
+
+      
+</th>
+    </table>
+    <br />
+    <br/>
+  </tr>
+ 
+      
+</table>
+   	<!--  fin del cuerpo -->
+<INCLURE{fond=footer}>
+</BOUCLE_area>

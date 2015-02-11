@@ -1,0 +1,89 @@
+.dd { 
+	position: relative;
+	display: block;
+	margin: 0; padding: 0;
+	max-width: 600px;
+	list-style: none;
+	line-height: 20px;
+}
+.dd-list {
+	display: block;
+	position: relative;
+	margin: 0; padding: 0; list-style: none;
+	
+	.dd-list {
+		padding-left: 30px;
+	}
+	.dd-collapsed & {
+		display: none;
+	}
+}
+
+.dd-item,
+.dd-empty,
+.dd-placeholder {
+	display: block;
+	position: relative;
+	margin: 0;
+	padding: 0;
+	min-height: 20px;
+	line-height: 20px;
+ }
+
+.dd-handle  , .dd2-content {
+	display: block;
+	min-height: 38px;
+	margin: 5px 0;
+	padding: 8px 12px;
+	
+	background: #F8FAFF;
+	border: 1px solid #DAE2EA;
+	color: #7C9EB2;
+	text-decoration: none;
+	font-weight: bold;    
+
+    .box-sizing(border-box);
+	
+	
+	&:hover { 
+		color: #438EB9;
+		background: #F4F6F7; 
+		border-color:#DCE2E8;
+	}
+	
+	&[class*="btn-"] {
+		color:#FFF;
+		border:none;
+		padding: 9px 12px;
+
+		&:hover {
+			opacity:0.85;
+			color:#FFF;
+		}
+	}
+}
+.dd2-handle  + .dd2-content,
+.dd2-handle  + .dd2-content[class*="btn-"]
+{
+	padding-left:44px;
+}
+.dd-handle[class*="btn-"]:hover , .dd2-content[class*="btn-"]
+.dd2-handle[class*="btn-"]:hover  + .dd2-content[class*="btn-"] {
+	//opacity:0.85;
+	color:#FFF;
+}
+
+.dd-item > button:hover {
+	~ .dd-handle  , ~ .dd2-content {
+		color: #438EB9;
+		background: #F4F6F7; 
+		border-color:#DCE2E8;
+	}
+	~ .dd-handle[class*="btn-"]  , ~ .dd2-content[class*="btn-"] {
+		opacity:0.85;
+		color:#FFF;
+	}
+}
+.dd2-handle:hover {
+	~ .dd2-content {
+		color: #43

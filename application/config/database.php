@@ -45,41 +45,26 @@
 | the active record class
 */
 
-$active_group = 'pride';
+$active_group = 'default';
 $active_record = TRUE;
 
-$db['pride']['hostname'] = 'localhost';
-$db['pride']['username'] = 'root';
-$db['pride']['password'] = '';
-$db['pride']['database'] = 'pride';
-$db['pride']['dbdriver'] = 'mysql';
-$db['pride']['dbprefix'] = '';
-$db['pride']['pconnect'] = TRUE;
-$db['pride']['db_debug'] = TRUE;
-$db['pride']['cache_on'] = FALSE;
-$db['pride']['cachedir'] = '';
-$db['pride']['char_set'] = 'utf8';
-$db['pride']['dbcollat'] = 'utf8_general_ci';
-$db['pride']['swap_pre'] = '';
-$db['pride']['autoinit'] = TRUE;
-$db['pride']['stricton'] = FALSE;
-/*
-$db['sicpa']['hostname'] = 'localhost';
-$db['sicpa']['username'] = 'root';
-$db['sicpa']['password'] = '';
-$db['sicpa']['database'] = 'sicpa';
-$db['sicpa']['dbdriver'] = 'mysql';
-$db['sicpa']['dbprefix'] = '';
-$db['sicpa']['pconnect'] = TRUE;
-$db['sicpa']['db_debug'] = TRUE;
-$db['sicpa']['cache_on'] = FALSE;
-$db['sicpa']['cachedir'] = '';
-$db['sicpa']['char_set'] = 'utf8';
-$db['sicpa']['dbcollat'] = 'utf8_general_ci';
-$db['sicpa']['swap_pre'] = '';
-$db['sicpa']['autoinit'] = TRUE;
-$db['sicpa']['stricton'] = FALSE;
-*/
+$db['default']['hostname'] = 'localhost';
+$db['default']['username'] = 'root';
+$db['default']['password'] = '';
+$db['default']['database'] = 'pride';
+$db['default']['dbdriver'] = 'mysql';
+$db['default']['dbprefix'] = '';
+$db['default']['pconnect'] = TRUE;
+$db['default']['db_debug'] = TRUE;
+$db['default']['cache_on'] = FALSE;
+$db['default']['cachedir'] = '';
+$db['default']['char_set'] = 'utf8';
+$db['default']['dbcollat'] = 'utf8_general_ci';
+$db['default']['swap_pre'] = '';
+$db['default']['autoinit'] = TRUE;
+$db['default']['stricton'] = FALSE;
+
+
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */
