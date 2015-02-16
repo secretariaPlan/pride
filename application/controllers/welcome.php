@@ -19,16 +19,14 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$usuarios = usuario::create(array(
-			'usuario' => 'testuser',
-			'password' => 'testpass'	
-		));
+		$usuarios = Usuario::all();
 		
-		echo $user->usuario;
+		foreach ($usuarios as $usuario) {
+			echo $usuario->nombre."<br/>";
+		}
 		
-		User::login($username, $password);
-		if(!$user) die('not logged in');
-		else die('logged in');
+		echo "<pre>";
+		print_r($usuario);
 	}
 }
 

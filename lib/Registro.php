@@ -1,5 +1,0 @@
-<?php
-//para registrar accesos
-
-
-?>

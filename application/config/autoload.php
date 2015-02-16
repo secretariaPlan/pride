@@ -52,7 +52,8 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('database','session');
+$autoload['libraries'] = array();
+$autoload['sparks'] = array("php-activerecord/0.0.2");
 
 
 /*
@@ -64,7 +65,7 @@ $autoload['libraries'] = array('database','session');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url', 'html');
+$autoload['helper'] = array();
 
 
 /*
@@ -110,6 +111,7 @@ $autoload['language'] = array();
 */
 
 $autoload['model'] = array();
+
 
 /* End of file autoload.php */
 /* Location: ./application/config/autoload.php */

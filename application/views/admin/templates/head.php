@@ -1,1 +1,0 @@
-<title>PRIDE Sistema de Primas al Desempeño del Personal Académico de Tiempo Completo</title><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"><?php echo link_tag('templates/admin/style.css');?></head>
