@@ -1,0 +1,125 @@
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+
+-- -----------------------------------------------------
+-- Table  `administrador`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS  `administrador` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `rfc` VARCHAR(14) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  `nombre` VARCHAR(45) NOT NULL,
+  `apaterno` VARCHAR(45) NOT NULL,
+  `amaterno` VARCHAR(45) NOT NULL,
+  `correo` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`, `rfc`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table  `usuario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS  `usuario` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `rfc` VARCHAR(45) NOT NULL,
+  `nombre` VARCHAR(45) NOT NULL,
+  `apaterno` VARCHAR(45) NOT NULL,
+  `amaterno` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  `correo` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`, `rfc`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table  `periodo`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS  `periodo` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `periodo` VARCHAR(20) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table  `comision`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS  `comision` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `comision` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table  `evaluador`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS  `evaluador` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `id_usuario`
+    FOREIGN KEY (`id`)
+    REFERENCES  `usuario` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `id_periodo`
+    FOREIGN KEY (`id`)
+    REFERENCES  `periodo` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `id_comision`
+    FOREIGN KEY (`id`)
+    REFERENCES  `comision` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table  `evaluado`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS  `evaluado` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `id_usuario`
+    FOREIGN KEY (`id`)
+    REFERENCES  `usuario` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `id_periodo`
+    FOREIGN KEY (`id`)
+    REFERENCES  `periodo` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `id_comision`
+    FOREIGN KEY (`id`)
+    REFERENCES  `comision` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table  `evaluador_evaluado`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS  `evaluador_evaluado` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `id_evaluador`
+    FOREIGN KEY (`id`)
+    REFERENCES  `evaluador` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `id_evaluado`
+    FOREIGN KEY (`id`)
+    REFERENCES  `evaluado` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

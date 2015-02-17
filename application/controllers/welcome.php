@@ -19,14 +19,7 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$usuarios = Usuario::all();
 		
-		foreach ($usuarios as $usuario) {
-			echo $usuario->nombre."<br/>";
-		}
-		
-		echo "<pre>";
-		print_r($usuario);
 	}
 }
 

@@ -1,0 +1,28 @@
+#imagen{
+    padding-top: 15px;
+    padding-left: 130px;
+}
+
+#nombre{
+    padding-top: 40px;
+}
+
+#titulo{
+    font-size:24px; color:#ffffff;
+    font-weight:bold; 
+    text-transform:uppercase; 
+    /*text-shadow: 2px 2px 2px #0000ff;*/
+}
+
+#footer {
+	position: relative; margin-top: -50px; /* altura en px del footer con valor negativo */ 
+    height: 50px; /* Altura del Footer en px*/ 
+    clear: both; background: #286af0; 
+    text-align: center; 
+    color: #FFFFFF; 
+}
+
+.ajusta{
+    height: 85vh;
+    overflow: scroll;
+}
