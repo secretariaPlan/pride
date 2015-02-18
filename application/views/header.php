@@ -1,3 +1,6 @@
+<?php 
+header("Content-Type:text/html; charset=iso-8859-1");
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,10 +10,10 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/pride.css" media="all">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/style.css" media="all">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>PRIDE</title>
+        <title>Sistema de Primas al Desempeño del Personal Académico de Tiempo Completo</title>
         <div class="callout">
                 <div class="grid">
-                    <h4>PRIDE</h4>
+                    <h4>Sistema de Primas al Desempeño del Personal Académico de Tiempo Completo</h4>
                 </div>
             </div>
     </head>
