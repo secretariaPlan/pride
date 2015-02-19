@@ -1,6 +1,3 @@
-<?php 
-header("Content-Type:text/html; charset=iso-8859-1");
-?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,10 +7,10 @@ header("Content-Type:text/html; charset=iso-8859-1");
         <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/pride.css" media="all">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/style.css" media="all">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>Sistema de Primas al Desempeño del Personal Académico de Tiempo Completo</title>
+        <title>Sistema de Primas al Desempe&ntilde;o del Personal Acad&eacute;mico de Tiempo Completo</title>
         <div class="callout">
                 <div class="grid">
-                    <h4>Sistema de Primas al Desempeño del Personal Académico de Tiempo Completo</h4>
+                    <h4>Sistema de Primas al Desempe&ntilde;o del Personal Acad&eacute;mico de Tiempo Completo</h4>
                 </div>
             </div>
     </head>
