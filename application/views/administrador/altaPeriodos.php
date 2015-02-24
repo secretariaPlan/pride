@@ -11,20 +11,14 @@
                     <fieldset>
                     <br>
 					<label for="ano">A&ntilde;o</label>
-					<select id="ano">
-					<option value="0">-- Seleccione el A&ntilde;o --</option>
-					<option value="1">2015</option>
-					<option value="2">2016</option>
-					<option value="3">2017</option>
-					</select>
+					<input id="ano" type="text" placeholder="Ingrese el A&ntilde;o">
 					<br>
 					<br>
 					<label for="numero">N&uacute;mero</label>
 					<select id="numero">
 					<option value="0">-- Seleccione el N&uacute;mero --</option>
-					<option value="1">01</option>
-					<option value="2">02</option>
-					<option value="3">03</option>
+					<option value="1">1</option>
+					<option value="2">2</option>
 					</select>
 					<br>
 					<br>
