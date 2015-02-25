@@ -9,24 +9,12 @@ class Periodo extends CI_Controller {
 	
 	
 	public function index(){
-		$data['periodo'] = $this->periodoModelo->nuevoPeriodo();
+		 $this->periodoModelo->nuevoPeriodo("2016","1");
+		// $data['periodo'] ->agregar("2016","1");
+		
 		
 	}
 	
-	public function agregar(){
-
-		$data = array(
-			'ano' => 2016,
-			'tipo' => 1,
-			
-		);
-		
-		$periodo = $data['ano']."-".$data['tipo'];
-		
-		$this->periodoModelo->nuevoPeriodo($periodo);
-		echo("El dato se agrego correctamente");
-		
-	}
 	
 }
 
