@@ -1,15 +1,18 @@
 <?php
+use ActiveRecord\Model;
 class Periodo extends CI_Controller {
 
 	public function  __construct()
 	{
 		parent::__construct();
-			$this->load->model('pride/periodoModelo');
+			$this->load->model('pride/periodo');
+				
 	}
 	
 	
 	public function index(){
-		 $this->periodoModelo->nuevoPeriodo("2016","1");
+	
+		$this->periodo->nuevoPeriodo("2016","1");
 		// $data['periodo'] ->agregar("2016","1");
 		
 		
