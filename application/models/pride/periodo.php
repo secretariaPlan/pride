@@ -1,21 +1,19 @@
 <?php
-
-class Periodo extends ActiveRecord\Model{
-	
+class Periodo extends ActiveRecord\Model {
 	static $table_name = "periodo";
-
 	
 	
-function nuevoPeriodo($cPeriodo,$cNumSem) {
+		public function nuevoPeriodo($cYear,$cPeriodo) {
 		
-		$periodo = new Periodo();
-		$valor = $cPeriodo."-".$cNumSem;
-		$periodo->periodo = $valor;
-		$periodo->save();
-	
-		//return $periodo;
+			$periodo = new Periodo();
+			
+			$periodo->year = $cYear;
+			$periodo->periodo = $cPeriodo;
+			//$valor = $cPeriodo."-".$cYear;
+			$periodo->save();
+		
+			//return $periodo;
 		}
-	
 }
 
 ?>
