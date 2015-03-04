@@ -10,12 +10,17 @@ class Administrador extends CI_Controller {
 		$this->load->view("footer");
 	}
 	
-	function altaPeriodos() {
+	function altaPeriodos() { //esta vista solo contiene el boton de AltaPeriodo
 		$this->load->helper('url');
 		$this->load->view("header");
 		$this->load->view("administrador/navegacion");
 		$this->load->view("administrador/altaPeriodos");
 		$this->load->view("footer");
+	}
+	
+	
+	function contenidoPeriodo() { //esta vista contiene el contenido de altaPeriodo
+		$this->load->view("administrador/contenidoPeriodo");
 	}
 	
 	function altaProfesores() {
