@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/kickstart.css" media="all">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/pride.css" media="all">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/style.css" media="all">
+        
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>Sistema de Primas al Desempe&ntilde;o del Personal Acad&eacute;mico de Tiempo Completo</title>
         <div class="callout">
