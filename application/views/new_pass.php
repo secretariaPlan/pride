@@ -10,41 +10,43 @@
             	
             	<div class="notice error" id="mensaje1" style="display: none;">
             		<i class="fa fa-remove fa-large"></i> 
-            		Correo Electronico no valido 
+            		Contrase&ntilde;a no valida 
 					<a href="#close" class="fa fa-remove"></a>
 				</div>
             	
             	
             	<div class="notice error" id="mensaje2" style="display: none;">
             		<i class="fa fa-remove fa-large"></i> 
-            		Repita el Correo Electronico 
+            		Repita la Contrase&ntilde;a 
 					<a href="#close" class="fa fa-remove"></a>
 				</div>
             	
-            	<form action="<?php echo base_url().'new_pass'?>">
-                <fieldset>
-                    <label>Correo Electr&oacute;nico</label>
+            	
+            	<div class="notice success" id="mensajeok" style="display: none;">
+            		<i class="fa fa-check fa-large"></i>
+            		Su contrase&ntilde;a se guardo correctamente
+					<a href="#close" class="fa fa-remove"></a>
+				</div>
+            	
+                <fieldset id="nueva">
+                    <label>Contrase&ntilde;a nueva</label>
                     <br>
-                    <input id="email" type="text" placeholder="Correo Electr&oacute;nico"/>
+                    <input id="pass" type="password"/>
                     <br>
                     <br>
-                    <label>Repita su Correo Electr&oacute;nico</label>
+                    <label>Confirme  la nueva contrase&ntilde;a</label>
                     <br>
-                    <input id="reemail" type="text" placeholder="Repita su Correo Electr&oacute;nico"/>
+                    <input id="repass" type="password"/>
                     <br>
                     <br>
-                    <button class="blue" id="boton">Enviar Contrase&ntilde;a</button>
+                    <button class="blue" id="boton">Cambiar Contrase&ntilde;a</button>
                     <br>
-                    <div class="col_12 right">
-                        <a href="<?php echo base_url()?>">Regresar</a>
-                    </div>
-                    
+                                       
       
                 </fieldset>
-                </form>
             </div>
         </div>
         <div class="col_4"></div>
     </div>
 </body>
-<script type="text/javascript" src="<?= base_url() ?>js/recovery_pass.js"></script>
+<script type="text/javascript" src="<?= base_url() ?>js/new_pass.js"></script>
