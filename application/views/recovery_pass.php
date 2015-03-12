@@ -21,7 +21,7 @@
 					<a href="#close" class="fa fa-remove"></a>
 				</div>
             	
-            	<form action="<?php echo base_url().'new_pass'?>">
+            	<form action="<?php echo site_url('new_pass')?>">
                 <fieldset>
                     <label>Correo Electr&oacute;nico</label>
                     <br>
@@ -36,7 +36,7 @@
                     <button class="blue" id="boton">Enviar Contrase&ntilde;a</button>
                     <br>
                     <div class="col_12 right">
-                        <a href="<?php echo base_url()?>">Regresar</a>
+                        <a href="<?php echo site_url()?>">Regresar</a>
                     </div>
                     
       
