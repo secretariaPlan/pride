@@ -1,5 +1,5 @@
 <body>
-    <div class="grid">
+    <div class="grid flex">
         <div class="col_4"></div>
         <div class="col_4">
 
