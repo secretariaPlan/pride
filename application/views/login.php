@@ -17,7 +17,7 @@
                     <button class="blue">Ingresar</button>
                     <br>
                     <div class="col_12 right">
-                        <a href="<?php echo base_url().'recovery_pass'?>">¿Olvido su contrase&ntilde;a?</a>
+                        <a href="<?php echo site_url('recovery_pass')?>">¿Olvido su contrase&ntilde;a?</a>
                     </div>
                 </fieldset>
             </div>
