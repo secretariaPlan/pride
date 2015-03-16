@@ -30,6 +30,15 @@ class Administrador extends CI_Controller {
 		$this->load->view("administrador/altaProfesores");
 		$this->load->view("footer");
 	}
+	
+	function nuevoProfesor(){
+		$this->load->helper('url');
+		$this->load->view("header");
+		$this->load->view("administrador/navegacion");
+		$this->load->view("administrador/nuevoProfesor");
+		$this->load->view("footer");
+		
+	}
 
 }
 
