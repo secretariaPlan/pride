@@ -28,6 +28,13 @@ class Administrador extends CI_Controller {
 		$this->load->view("footer");
 	}
 	
+	function nuevoProfesor() {
+		$this->load->view("header");
+		$this->load->view("administrador/navegacion");
+		$this->load->view("administrador/nuevoProfesor");
+		$this->load->view("footer");
+	}
+	
 	public function cargarCsv() {
 		$config['upload_path'] = './subidas/';
 		$config['allowed_types'] = 'csv';
