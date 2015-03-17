@@ -3,7 +3,6 @@
 class Administrador extends CI_Controller {
 	
 	function index() {
-		$this->load->helper('url');
 		$this->load->view("header");
 		$this->load->view("administrador/navegacion");
 		$this->load->view("administrador/asignacion");
@@ -11,7 +10,6 @@ class Administrador extends CI_Controller {
 	}
 	
 	function altaPeriodos() { //esta vista solo contiene el boton de AltaPeriodo
-		$this->load->helper('url');
 		$this->load->view("header");
 		$this->load->view("administrador/navegacion");
 		$this->load->view("administrador/altaPeriodos");
@@ -24,8 +22,6 @@ class Administrador extends CI_Controller {
 	}
 	
 	function altaProfesores() {
-		$this->load->helper('form');
-		$this->load->helper('url');
 		$this->load->view("header");
 		$this->load->view("administrador/navegacion");
 		$this->load->view("administrador/altaProfesores");
@@ -33,14 +29,12 @@ class Administrador extends CI_Controller {
 	}
 	
 	public function cargarCsv() {
-		$this->load->helper('form');
 		$config['upload_path'] = './subidas/';
 		$config['allowed_types'] = 'csv';
 		$this->load->library('upload', $config);
 		
 		if(!$this->upload->do_upload()){
 			$error=array('error' => $this->upload->display_errors());
-			$this->load->helper('url');
 			$this->load->view("header");
 			$this->load->view("administrador/navegacion");
 			$this->load->view('administrador/altaProfesores', $error);
@@ -49,12 +43,9 @@ class Administrador extends CI_Controller {
 			
 			$this->load->library('csvreader');
 			$datos=$this->upload->data();
-			//print_r($datos);
 			$ruta = $datos["full_path"];
 			$datosCsv["datos"] = $this->csvreader->parse_file($ruta);
-			//print_r($datosCsv);			
 			
-			$this->load->helper('url');
 			$this->load->view("header");
 			$this->load->view("administrador/navegacion");
 			$this->load->view("administrador/altaProfesores",$datosCsv);
