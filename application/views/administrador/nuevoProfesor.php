@@ -9,6 +9,8 @@
 	 		<div class="center">
 	            	
 	
+	
+	
 	            	
 	            	<div class="notice error" id="error" style="display: none;">
 	            		<i class="fa fa-remove fa-large"></i> 
@@ -17,16 +19,12 @@
 					</div>
 	            	
 	            	
-	            	<div class="notice error" id="mensaje2" style="display: none;">
-	            		<i class="fa fa-remove fa-large"></i> 
-	            		Repita la Contrase&ntilde;a 
-						<a href="#close" class="fa fa-remove"></a>
-					</div>
 	            	
 	            	
-	            	<div class="notice success" id="mensajeok" style="display: none;">
+	            	
+	            	<div class="notice success" id="mensaje" style="display: none;">
 	            		<i class="fa fa-check fa-large"></i>
-	            		Su contrase&ntilde;a se guardo correctamente
+	            		
 						<a href="#close" class="fa fa-remove"></a>
 					</div>
 	            	
@@ -67,8 +65,7 @@
 						<br>
 						<br>
 	                
-	                
-	                  
+                  
 	                    <button class="blue" id="boton">Guardar Profesor</button>
 	                    <br>
 	                                       

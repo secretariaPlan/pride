@@ -1,90 +1,166 @@
-var expr = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
-var expr1 = /^[a-zA-Z]*$/;
+//Varible para tipo de correo
+var expr = /^[a-zA-Z0-9]*$/;
+var expr1 = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
  
 $(document).ready(function () {
-    $("#boton").click(function (){ 
-    	
+    $("#boton").click(function (){ //función para el boton de enviar
+
     	var rfc = $("#rfc").val();
-        var nombre = $("#nombre").val();
-        var apaterno = $("#apaterno").val();
-        var amaterno = $("#amaterno").val();
-        var correo = $("#correo").val();
-        var passw = $("#pass").val();
+    	var nombre = $("#nombre").val();
+    	var apaterno = $("#apaterno").val();
+    	var amaterno = $("#amaterno").val();
+    	var correo = $("#amaterno").val();
+        var pass = $("#pass").val();
         var repass = $("#repass").val();
  
+        //Secuencia de if's para verificar contenido de los inputs
  
+        
+        
         //Verifica que no este vacío y que sean letras
-        if(nombre == "" || !expr1.test(nombre)){
-            $("#mensaje1").fadeIn("slow"); //Muestra mensaje de error
-            return false;                  // con false sale de la secuencia
+        
+        
+		if(rfc == "" || !expr.test(rfc)){
+		        	
+		        	// .fadeIn("slow") mostrar con efecto
+		        	//$("#mensaje2").fadeOut(); ocultar con efecto
+		        	
+		            $("#error").show();
+		            $("#error").html("Ingrese el rfc");
+		        	$("#rfc").css({"background":"#F22" }); //El input se pone rojo
+		
+		            return false;// con false sale de la secuencia
+		        }
+		
+		
+		if(nombre == "" || !expr.test(nombre)){
+        	
+        	// .fadeIn("slow") mostrar con efecto
+        	//$("#mensaje2").fadeOut(); ocultar con efecto
+        	
+            $("#error").show();
+            $("#error").html("Ingrese el nombre");
+        	$("#nombre").css({"background":"#F22" }); //El input se pone rojo
+
+            return false;// con false sale de la secuencia
         }
+		
+		
+		
+		
+		if(apaterno == "" || !expr.test(apaterno)){
+		        	
+		        	// .fadeIn("slow") mostrar con efecto
+		        	//$("#mensaje2").fadeOut(); ocultar con efecto
+		        	
+		            $("#error").show();
+		            $("#error").html("Ingrese el Apellido Paterno");
+		        	$("#apaterno").css({"background":"#F22" }); //El input se pone rojo
+		
+		            return false;// con false sale de la secuencia
+		        }
+		
+		
+		
+		if(amaterno == "" || !expr.test(amaterno)){
+        	
+        	// .fadeIn("slow") mostrar con efecto
+        	//$("#mensaje2").fadeOut(); ocultar con efecto
+        	
+            $("#error").show();
+            $("#error").html("Ingrese el Apellido Materno");
+        	$("#amaterno").css({"background":"#F22" }); //El input se pone rojo
+
+            return false;// con false sale de la secuencia
+        }
+		        
+        
+		
+		if(correo == "" || !expr.test(correo)){
+		        	
+		        	// .fadeIn("slow") mostrar con efecto
+		        	//$("#mensaje2").fadeOut(); ocultar con efecto
+		        	
+		            $("#error").show();
+		            $("#error").html("Ingrese un Correo Valido");
+		        	$("#correo").css({"background":"#F22" }); //El input se pone rojo
+		
+		            return false;// con false sale de la secuencia
+		        }
+        
+        
+        
+        
+        if(pass == "" || !expr.test(repass)){
+        	
+        	// .fadeIn("slow") mostrar con efecto
+        	//$("#mensaje2").fadeOut(); ocultar con efecto
+        	
+            $("#error").show();
+            $("#error").html("Ingrese las Contraseñas");
+        	$("#repass").css({"background":"#F22" }); //El input se pone rojo
+
+            return false;// con false sale de la secuencia
+        }
+  
+  
         else{
-            $("#mensaje1").fadeOut();   //Si el anterior if cumple, se oculta el error
- 
-            if(rfc == "" || !expr1.test(rfc)){
-                $("#mensaje2").fadeIn("slow");
+            $("#error").hide();
+            
+            if(pass != repass){
+            	 $("#error").show();
+                 $("#error").html("Las contraseñas no coinciden");
+            	$("#repass").css({"background":"#F22" }); //El input se pone rojo
                 return false;
             }
             
-            if(apaterno == "" || !expr1.test(apaterno)){
-                $("#mensaje2").fadeIn("slow");
-                return false;
-            }
-            if(amaterno == "" || !expr1.test(amaterno)){
-                $("#mensaje2").fadeIn("slow");
-                return false;
-            }
-            else{
-                $("#mensaje2").fadeOut();
- 
-                if(correo == "" || !expr.test(correo)){
-                    $("#mensaje3").fadeIn("slow");
-                    return false;
-                }
-                else{
-                    $("#mensaje3").fadeOut();
- 
-                    if(passw != repass){
-                        $("#mensaje4").fadeIn("slow");
-                        return false;
-                    }
-                }
-            }
         }
- 
+        $("#mensajeok").show();
+        $("#nueva").hide();
+
+      window.setTimeout("location=('http://localhost/pride/');",5000);
     });//fin click
  
+    /*
+     *Con estas funciones de keyup, el mensaje de error se muestra y
+     * se ocultará automáticamente, si el usuario escribe datos admitidos.
+     * Sin necesidad de oprimir de nuevo el boton de Enviar Contraseña.
+     *
+     * La función keyup lee lo último que se ha escrito y comparamos
+     * con nuestras condiciones, si cumple se quita el error.
+     *
 
-    $("#rfc, #nombre, #apaterno, #amaterno").keyup(function(){
-        if( $(this).val() != "" && expr1.test($(this).val())){
-            $("#mensaje1, #mensaje2").fadeOut();
-            return false;
-        }
-    });
- 
-    $("#correo").keyup(function(){
-        if( $(this).val() != "" && expr.test($(this).val())){
-            $("#mensaje3").fadeOut();
-            return false;
-        }
-    });
- 
+     * */
+
+
     var valido=false;
+    
+    
+  
+    
+    
+    
     $("#repass").keyup(function(e) {
         var pass = $("#pass").val();
         var re_pass=$("#repass").val();
  
         if(pass != re_pass)
         {
-            $("#repass").css({"background":"#F22" }); //El input se pone rojo
             valido=true;
         }
-        else if(pass == re_pass)
+        else if(pass == re_pass )
         {
+        	$("#error").hide();
+        	$("#rfc").css({"background":"#8F8"}); //El input se ponen verde
+        	$("#nombre").css({"background":"#8F8"}); //El input se ponen verde
+        	$("#apaterno").css({"background":"#8F8"}); //El input se ponen verde
+        	$("#amaterno").css({"background":"#8F8"}); //El input se ponen verde
+        	$("#correo").css({"background":"#8F8"}); //El input se ponen verde
             $("#repass").css({"background":"#8F8"}); //El input se ponen verde
-            $("#mensaje4").fadeOut();
+            $("#mensaje").show();
+            $("#mensaje").html("Datos Correctos");
             valido=true;
         }
     });//fin keyup repass
- 
+   
 });//fin ready
