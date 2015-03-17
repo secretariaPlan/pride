@@ -41,7 +41,6 @@ class Administrador extends CI_Controller {
 			$this->load->view("footer");
 		}else {
 			
-			$this->load->library('csvreader');
 			$datos=$this->upload->data();
 			$ruta = $datos["full_path"];
 			$datosCsv["datos"] = $this->csvreader->parse_file($ruta);
