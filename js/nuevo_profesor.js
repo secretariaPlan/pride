@@ -4,13 +4,15 @@ var expr1 = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
  
 $(document).ready(function () {
     $("#boton").click(function (){ //función para el boton de enviar
-
+    	
+    	
+    	var datosProfesor = $(".datosProfesor").val();
     	var rfc = $("#rfc").val();
     	var nombre = $("#nombre").val();
     	var apaterno = $("#apaterno").val();
     	var amaterno = $("#amaterno").val();
-    	var correo = $("#amaterno").val();
-        var pass = $("#pass").val();
+    	var correo = $("#correo").val();
+        var password = $("#password").val();
         var repass = $("#repass").val();
  
         //Secuencia de if's para verificar contenido de los inputs
@@ -20,85 +22,47 @@ $(document).ready(function () {
         //Verifica que no este vacío y que sean letras
         
         
-		if(rfc == "" || !expr.test(rfc)){
-		        	
-		        	// .fadeIn("slow") mostrar con efecto
-		        	//$("#mensaje2").fadeOut(); ocultar con efecto
-		        	
-		            $("#error").show();
-		            $("#error").html("Ingrese el rfc");
-		        	$("#rfc").css({"background":"#F22" }); //El input se pone rojo
+
+    	$("input").each(function(index, element){
+    		var required=$(element).attr("required");
+    		if(required && $(element).val().length==0 && $(element).val()!=" "){
+    			$(element).addClass("error");
+    			 $("#error").show();
+    			 $("#error").html("Llene los Campos Requeridos");
+    		}else{
+    			 
+    					$(element).removeClass("error");
+    			
+    		}
+    		
+    	});
 		
-		            return false;// con false sale de la secuencia
-		        }
+    	
 		
-		
-		if(nombre == "" || !expr.test(nombre)){
+		if(correo == "" || !expr1.test(correo)){
         	
         	// .fadeIn("slow") mostrar con efecto
         	//$("#mensaje2").fadeOut(); ocultar con efecto
         	
-            $("#error").show();
-            $("#error").html("Ingrese el nombre");
-        	$("#nombre").css({"background":"#F22" }); //El input se pone rojo
+        //$("#error").show();
+          // $("#error").html("El correo que usted ingreso no es valido");
+			$("#correo").addClass("error");
 
             return false;// con false sale de la secuencia
         }
-		
-		
-		
-		
-		if(apaterno == "" || !expr.test(apaterno)){
-		        	
-		        	// .fadeIn("slow") mostrar con efecto
-		        	//$("#mensaje2").fadeOut(); ocultar con efecto
-		        	
-		            $("#error").show();
-		            $("#error").html("Ingrese el Apellido Paterno");
-		        	$("#apaterno").css({"background":"#F22" }); //El input se pone rojo
-		
-		            return false;// con false sale de la secuencia
-		        }
-		
-		
-		
-		if(amaterno == "" || !expr.test(amaterno)){
-        	
-        	// .fadeIn("slow") mostrar con efecto
-        	//$("#mensaje2").fadeOut(); ocultar con efecto
-        	
-            $("#error").show();
-            $("#error").html("Ingrese el Apellido Materno");
-        	$("#amaterno").css({"background":"#F22" }); //El input se pone rojo
-
-            return false;// con false sale de la secuencia
-        }
-		        
-        
-		
-		if(correo == "" || !expr.test(correo)){
-		        	
-		        	// .fadeIn("slow") mostrar con efecto
-		        	//$("#mensaje2").fadeOut(); ocultar con efecto
-		        	
-		            $("#error").show();
-		            $("#error").html("Ingrese un Correo Valido");
-		        	$("#correo").css({"background":"#F22" }); //El input se pone rojo
-		
-		            return false;// con false sale de la secuencia
-		        }
         
         
         
-        
-        if(pass == "" || !expr.test(repass)){
+        if(password == "" || !expr.test(repass)){
         	
         	// .fadeIn("slow") mostrar con efecto
         	//$("#mensaje2").fadeOut(); ocultar con efecto
         	
             $("#error").show();
             $("#error").html("Ingrese las Contraseñas");
-        	$("#repass").css({"background":"#F22" }); //El input se pone rojo
+
+            $("#repass").addClass("error");
+
 
             return false;// con false sale de la secuencia
         }
@@ -107,18 +71,23 @@ $(document).ready(function () {
         else{
             $("#error").hide();
             
-            if(pass != repass){
+            if(password != repass){
             	 $("#error").show();
                  $("#error").html("Las contraseñas no coinciden");
-            	$("#repass").css({"background":"#F22" }); //El input se pone rojo
+                 $("#password").addClass("error");
+                 $("#repass").addClass("error");
+         
                 return false;
             }
             
         }
-        $("#mensajeok").show();
-        $("#nueva").hide();
+        $(".datosProfesor").removeClass("error");
+        $("#mensaje").show();
+        $("#mensaje").html("Los datos Se Guardaron Correctamente");
 
       window.setTimeout("location=('http://localhost/pride/');",5000);
+      
+ 
     });//fin click
  
     /*
@@ -135,30 +104,56 @@ $(document).ready(function () {
 
     var valido=false;
     
+
+
+	
+		
+	$("input").keyup(function(e) {
+        if($(this).val().length>0 && $(this).val()!=" "){
+			$(this).removeClass("error");
+		}else{
+			$(this).addClass("error");
+		}
+    });
+
     
-  
-    
-    
-    
-    $("#repass").keyup(function(e) {
-        var pass = $("#pass").val();
-        var re_pass=$("#repass").val();
+	
  
-        if(pass != re_pass)
+    
+    $("#correo").keyup(function(e) {
+
+        var correo = $("#correo").val();
+
+        if(correo != correo)
         {
             valido=true;
         }
-        else if(pass == re_pass )
+        else if(correo == correo )
         {
         	$("#error").hide();
-        	$("#rfc").css({"background":"#8F8"}); //El input se ponen verde
-        	$("#nombre").css({"background":"#8F8"}); //El input se ponen verde
-        	$("#apaterno").css({"background":"#8F8"}); //El input se ponen verde
-        	$("#amaterno").css({"background":"#8F8"}); //El input se ponen verde
-        	$("#correo").css({"background":"#8F8"}); //El input se ponen verde
-            $("#repass").css({"background":"#8F8"}); //El input se ponen verde
-            $("#mensaje").show();
-            $("#mensaje").html("Datos Correctos");
+            valido=true;
+        }
+    });//fin keyup repass
+    
+    
+    $("#repass").keyup(function(e) {
+
+        var password = $("#password").val();
+        var re_pass=$("#repass").val();
+        
+        
+    
+        
+ 
+        if(password != re_pass)
+        {
+            valido=true;
+        }
+        else if(password == re_pass )
+        {
+        	$("#error").hide();
+
+
             valido=true;
         }
     });//fin keyup repass
