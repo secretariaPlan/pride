@@ -38,12 +38,14 @@
 	            	
 	                <fieldset id="nuevoProfesor">
 	                
-		                <?= form_open("nuevoProfesor/recibirdatos")?>
+		                <?= form_open("administrador/recibirDatos")?>
 		            	<?
 		            		$boton = array(
 		            			'class' => 'blue',
 		            			'id' => 'boton',
-		            				'content' => 'Guardar Profesor'
+								'name' => 'submit',
+		            			'type' => 'submit',
+		            			'content' => 'Guardar Profesor'
 		            			
 		            		);
 		            	
@@ -138,7 +140,6 @@
 							<br>
 							<br>
 		                
-	                  
 		                    <?= form_button($boton) ?>
 		                    <br>
 		 

@@ -18,6 +18,16 @@ class Usuario extends ActiveRecord\Model{
 		$usuario->save();
 		
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
 
 ?>
