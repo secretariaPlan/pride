@@ -41,7 +41,6 @@ class Administrador extends CI_Controller {
 		$this->load->view("administrador/nuevoProfesor");
 		$this->load->view("footer");
 		$this->load->model('pride/usuario');
-	
 		
 		
 				
@@ -50,29 +49,19 @@ class Administrador extends CI_Controller {
 	
 	
 	
-	function recibirDatos(){
-
-		$data = array(
-				'rfc' => $this->input->post('rfc'),
-				'nombre' => $this->input->post('nombre'),
-				'apaterno' => $this->input->post('apaterno'),
-				'amaterno' => $this->input->post('amaterno'),
-				'password' => md5($this->input->post("password")),
-				'correo' => $this->input->post('correo'),
-		);
-		$this->usuario->nuevoUsuario($data);
+	public function registrar_profesor()
+	{
 		
+				$this->usuario->agregar();
+				echo 'Profesor Agregado';
 		
+	
 	}
 	
 	
 	
-	public  function insertarDatos(){
-			
-		
-		$this->usuario->nuevoUsuario("aaaa","gabo","aa","aaa","222","gabreldelabarrera@gmail.com");
-
-	}
+	
+	
 	
 	
 	

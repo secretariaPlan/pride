@@ -17,6 +17,24 @@ $(document).ready(function () {
  
         //Secuencia de if's para verificar contenido de los inputs
  
+        function mayuscula(campo){
+            $(campo).keyup(function() {
+                           $(this).val($(this).val().toUpperCase());
+            });
+}
+function minuscula(campo){
+            $(campo).keyup(function() {
+                           $(this).val($(this).val().toLowerCase());
+            });
+}
+//aplicando las funciones
+$(document).ready(function(){
+//asignamos el valor id del campo que queremos que se mayúscula
+mayuscula("#rfc"); 
+//asignamos el valor id del campo que queremos pasar a minúscula
+minuscula("input#email");
+});
+        
         
         
         //Verifica que no este vacío y que sean letras
@@ -84,6 +102,7 @@ $(document).ready(function () {
         $(".datosProfesor").removeClass("error");
         $("#mensaje").show();
         $("#mensaje").html("Los datos Se Guardaron Correctamente");
+        $(".datosProfesor").val();
 
       window.setTimeout("location=('http://localhost/pride/');",5000);
       

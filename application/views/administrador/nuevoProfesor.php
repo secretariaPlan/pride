@@ -37,13 +37,12 @@
 	            	
 	            	
 	                <fieldset id="nuevoProfesor">
-	                
-		                <?= form_open("administrador/recibirDatos")?>
+	                	 <?php echo form_open('administrador/registrar_profesor'); ?>
 		            	<?
 		            		$boton = array(
 		            			'class' => 'blue',
 		            			'id' => 'boton',
-								'name' => 'submit',
+								'name' => 'submit_reg',
 		            			'type' => 'submit',
 		            			'content' => 'Guardar Profesor'
 		            			
@@ -51,56 +50,73 @@
 		            	
 		            		$rfc = array(
 		            			'id' => 'rfc',
-		   						'class' => 'datosProfesor',
+		            				'name' => 'rfc',
 								'required'       => 'required',
-		            			'placeholder' => 'Ingresa el RFC'	
+		            			'placeholder' => 'Ingresa el RFC',
+		            		
+		            			'onkeyup' => 'javascript:this.value=this.value.toUpperCase()',
+		            			'value' => set_value('rfc'),
 		            				 
 		            		);
 		            		
 		            		$nombre = array(
 		            				'id' => 'nombre',
+		            				'name' => 'nombre',
 		            				'class' => 'datosProfesor',
 		            				'required'       => 'required',
-		            				'placeholder' => 'Ingresa el Nombre'
+		            				'placeholder' => 'Ingresa el Nombre',
+		            				'value' => set_value('nombre'),
 		            		);
 		            		
 		            		$apaterno = array(
 		            				'id' => 'apaterno',
-		            				'class' => 'datosProfesor',
-		            				'required'       => 'required',
-		            				'placeholder' => 'Ingresa el Apellido Paterno'
+		            				'name' => 'apaterno',
+		   						'class' => 'datosProfesor',
+								'required'       => 'required',
+		            			'placeholder' => 'Ingresa el Apellido Paterno',
+		            			'value' => set_value('apaterno'),
 		            		);
 		            		
 		            		$amaterno = array(
 		            				'id' => 'amaterno',
-		            				'class' => 'datosProfesor',
-		            				'required'       => 'required',
-		            				'placeholder' => 'Ingresa el Apellido Materno'
+		            				'name' => 'amaterno',
+		   						'class' => 'datosProfesor',
+								'required'       => 'required',
+		            			'placeholder' => 'Ingresa el Apellido Materno',
+		            			'value' => set_value('amaterno'),
 		            		);
 		            		
 		            		$correo = array(
 		            				'id' => 'correo',
-		            				'class' => 'datosProfesor',
-		            				'required'       => 'required',
-		            				'placeholder' => 'Ingresa el Correo Electronico'
+		            				'name' => 'correo',
+		   						'class' => 'datosProfesor',
+								'required'       => 'required',
+		            			'placeholder' => 'Ingresa Correo Electronico',
+		            			'value' => set_value('correo'),
 		            		);
 		            		
 		            		$password = array(
 		            				'id' => 'password',
-		            				'class' => 'datosProfesor',
-		            				'type' => 'password',
-		            				'required'       => 'required',
-		            				'placeholder' => 'Ingresa la contrase&ntilde;a'
+		            				'name' => 'password',
+		   						'class' => 'datosProfesor',
+								'required'       => 'required',
+		            				'type' 		 => 'password',
+		            			'placeholder' => 'Ingresa la contrase&ntilde;a',
+		            			'value' => set_value('password'),
+		            				
 		            				
 		            		);
 		            		
 		            		
 		            		$repass = array(
 		            				'id' => 'repass',
-		            				'class' => 'datosProfesor',
-		            				'type' => 'password',
-		            				'required'       => 'required',
-		            				'placeholder' => 'Repita la contrase&ntilde;a'
+		            				'name' => 'repass',
+		   						'class' => 'datosProfesor',
+								'required'       => 'required',
+		            				'type' 		 => 'password',
+		            			'placeholder' => 'Ingresa la contrase&ntilde;a',
+		            			'value' => set_value('repass'),
+		            				
 		            		);
 		            	
 		            	?>

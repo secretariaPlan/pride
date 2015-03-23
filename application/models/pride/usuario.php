@@ -21,6 +21,51 @@ class Usuario extends ActiveRecord\Model{
 	
 	
 	
+
+	
+	
+	
+	public function add_user()
+	{
+		
+		
+
+		$new = new Usuario(array(
+				'rfc'=>$this->input->post('rfc',TRUE),
+				'nombre'=>$this->input->post('nombre',TRUE),
+				'apaterno'=>$this->input->post('apaterno',TRUE),
+				'amaterno'=>$this->input->post('amaterno',TRUE),
+				//'password'=>$this->input->post('password',TRUE),
+				'password' => md5($this->input->post("password")),
+				'correo'=>$this->input->post('correo',TRUE),
+		
+		));
+		$new->save();
+
+	}
+	
+	
+	public function agregar()
+	{
+	
+	
+		
+		
+		$post=new Usuario;	
+		$post->rfc=$_POST['rfc'];
+		$post->nombre=$_POST['nombre'];
+		$post->apaterno=$_POST['apaterno'];
+		$post->amaterno=$_POST['amaterno'];
+		$post->correo=$_POST['correo'];
+		$post->password=md5($_POST['password']);
+		$post->save();
+	
+	}
+	
+	
+	
+	
+	
 	
 	
 	
