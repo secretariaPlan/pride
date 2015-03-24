@@ -47,10 +47,7 @@ class Usuario extends ActiveRecord\Model{
 	
 	public function agregar()
 	{
-	
-	
-		
-		
+
 		$post=new Usuario;	
 		$post->rfc=$_POST['rfc'];
 		$post->nombre=$_POST['nombre'];
@@ -59,6 +56,17 @@ class Usuario extends ActiveRecord\Model{
 		$post->correo=$_POST['correo'];
 		$post->password=md5($_POST['password']);
 		$post->save();
+		
+		if($post->save())
+		{		
+				echo "<div id='mensaje'>Profesor Agregado Exitosamente</div>";// los datos son válidos y están insertados/actualizados exitosamente
+				
+			
+		}
+		else
+		{
+			// los datos no son válidos. Llamar a  getErrors() para obtener los mensajes de error
+		}
 	
 	}
 	

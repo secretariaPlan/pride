@@ -3,6 +3,8 @@ var expr = /^[a-zA-Z0-9]*$/;
 var expr1 = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
  
 $(document).ready(function () {
+	$(".datosProfesor").val("");
+	
     $("#boton").click(function (){ //función para el boton de enviar
     	
     	
@@ -39,7 +41,7 @@ minuscula("input#email");
         
         //Verifica que no este vacío y que sean letras
         
-        
+
 
     	$("input").each(function(index, element){
     		var required=$(element).attr("required");
@@ -101,8 +103,8 @@ minuscula("input#email");
         }
         $(".datosProfesor").removeClass("error");
         $("#mensaje").show();
-        $("#mensaje").html("Los datos Se Guardaron Correctamente");
-        $(".datosProfesor").val();
+        //$("#mensaje").html("Los datos Se Guardaron Correctamente");
+       
 
       window.setTimeout("location=('http://localhost/pride/');",5000);
       

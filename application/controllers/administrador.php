@@ -40,8 +40,7 @@ class Administrador extends CI_Controller {
 		$this->load->view("administrador/navegacion");
 		$this->load->view("administrador/nuevoProfesor");
 		$this->load->view("footer");
-		$this->load->model('pride/usuario');
-		
+
 		
 				
 		
@@ -53,10 +52,11 @@ class Administrador extends CI_Controller {
 	{
 		
 				$this->usuario->agregar();
-				echo 'Profesor Agregado';
 		
 	
 	}
+	
+	
 	
 	
 	
