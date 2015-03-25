@@ -103,10 +103,10 @@ minuscula("input#email");
         }
         $(".datosProfesor").removeClass("error");
         $("#mensaje").show();
-        //$("#mensaje").html("Los datos Se Guardaron Correctamente");
+      $("#mensaje").html("Los datos Se Guardaron Correctamente");
        
 
-      window.setTimeout("location=('http://localhost/pride/');",5000);
+     window.setTimeout("location=('http://localhost/pride/administrador/nuevoProfesor');",5000);
       
  
     });//fin click

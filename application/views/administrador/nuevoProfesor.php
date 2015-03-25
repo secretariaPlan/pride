@@ -23,7 +23,6 @@
 	            	
 	            	
 	            	<div class="notice success" id="mensaje" style="display: none;">
-	            	<?php echo $datos?>
 	            		<i class="fa fa-check fa-large"></i>
 						<a href="#close" class="fa fa-remove"></a>
 					</div>

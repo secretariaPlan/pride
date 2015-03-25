@@ -21,7 +21,7 @@
 					<a href="#close" class="fa fa-remove"></a>
 				</div>
             	
-            	<form action="<?php echo site_url('new_pass')?>">
+            	<form action="<?php echo site_url('recovery_pass/recuperar')?>">
                 <fieldset>
                     <label>Correo Electr&oacute;nico</label>
                     <br>
