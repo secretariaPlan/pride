@@ -1,7 +1,6 @@
 <?php
 if(isset($error)){
-	echo "Algo";
-    echo "<strong style='color:red;'>".$error."</strong>";
+	echo "<div class='center'><strong style='color:red;'>".$error."</strong></div>";
 }
 
 if(isset($datos)){
