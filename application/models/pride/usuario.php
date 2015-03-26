@@ -34,17 +34,7 @@ class Usuario extends ActiveRecord\Model{
 
 		$post->save();
 		
-		if($post->save())
-		{	
-			// los datos son válidos y están insertados/actualizados exitosamente
-			redirect('administrador/nuevoProfesor', 'location', 301);
-				echo "<div id='mensaje'>Profesor Agregado Exitosamente</div>";
-		}
-		else
-		{
-			// los datos no son válidos. Llamar a  getErrors() para obtener los mensajes de error
-		}
-	
+		
 	}
 	
 	public function very_correo(){
