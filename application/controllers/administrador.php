@@ -40,31 +40,11 @@ class Administrador extends CI_Controller {
 		$this->load->view("administrador/navegacion");
 		$this->load->view("administrador/nuevoProfesor");
 		$this->load->view("footer");
+	}
 
-		
-				
-		
+	public function registrar_profesor(){
+		$this->usuario->agregar();
 	}
-	
-	
-	
-	public function registrar_profesor()
-	{
-		
-				$this->usuario->agregar();
-		
-	
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	public function cargarCsv() {
 		$config['upload_path'] = './subidas/';
