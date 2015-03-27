@@ -91,6 +91,28 @@ class Administrador extends CI_Controller {
 			$this->load->view("footer");
 		}		
 	}
+	
+	public function guardarDatos() {
+		
+		$i=0;
+		
+		$rfc = $this->input->post("rfc");
+		$nombre = $this->input->post("nombre");
+		$apaterno  = $this->input->post("apaterno");
+		$amaterno  = $this->input->post("amaterno");
+		$pass = $this->input->post("pass");
+		$correo = $this->input->post("correo");
+		
+		foreach ($rfc as $rfc) {
+			$this->usuario->nuevoUsuario($rfc,$nombre[$i],$apaterno[$i],$amaterno[$i],md5($pass[$i]),$correo[$i]);
+			$i++;
+		}
+		$exito = array("exito" => "Los registros se han guardado correctamente");
+		$this->load->view("header");
+		$this->load->view("administrador/navegacion");
+		$this->load->view('administrador/altaProfesores', $exito);
+		$this->load->view("footer");
+	}
 
 }
 

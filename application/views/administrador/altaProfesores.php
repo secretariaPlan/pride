@@ -2,9 +2,8 @@
 if(isset($error)){
 	echo "<div class='center'><strong style='color:red;'>".$error."</strong></div>";
 }
-
-if(isset($datos)){
-	//print_r($datos);
+if(isset($exito)){
+	echo "<div class='center'><strong style='color:blue;'>".$exito."</strong></div>";
 }
 $contador = 0;
 ?>
@@ -15,14 +14,14 @@ $contador = 0;
         
         <div class="col_4"></div>
         <div class="col_4 center">
-        	<?php echo form_open_multipart("administrador/cargarCsv") ?>
-           <!-- <form action="<?php //echo site_url("administrador/cargarCsv") ?>" method="post" enctype="multipart/form-data">-->
-			    <input type="file" name="userfile" value="archivo" />
-                <br>
-                <br>
-                <button class="blue">Cargar archivo</button>
-			 <!--</form>-->
-			 <?php echo form_close()?>
+        	<?php if(!isset($datos)){ 
+        		echo form_open_multipart("administrador/cargarCsv") ?>
+	           	    <input type="file" name="userfile" value="archivo" />
+	                <br>
+	                <br>
+	                <button class="blue">Cargar archivo</button>
+			<?php echo form_close();
+        	}?>
         </div>
         <div class="col_4"></div>
        
@@ -32,6 +31,9 @@ $contador = 0;
         ?>
             <div class="col_2"></div>
 	        <div class="col_8">
+	        	<div class="col_12 center">
+	        		<button class="blue center">Guardar registros</button>
+	        	</div>
 	            <table  cellspacing="0" cellpadding="0" class="striped">
 	                <thead>
 	                    <tr>
@@ -41,8 +43,7 @@ $contador = 0;
 	                        <th>Apellido materno</th>
 	                        <th>Contrase&ntilde;a</th>
 	                        <th>Correo electronico</th>
-	                        <th>Opciones</th>
-	                    </tr>
+	                        </tr>
 	                </thead>
 	            
 	                <tbody id="datos">
@@ -54,7 +55,6 @@ $contador = 0;
 	            			<td><input type="text" id="amaterno-<?php echo $contador?>" name="amaterno[<?php echo $contador ?>]" value="<?php echo $dato["amaterno"] ?>" ></td>
 	            			<td><input type="password" id="pass-<?php echo $contador?>" name="pass[<?php echo $contador ?>]" value="<?php echo $dato["pass"] ?>" ></td>
 	            			<td><input type="text" id="correo-<?php echo $contador?>" name="correo[<?php echo $contador ?>]" value="<?php echo $dato["email"] ?>" ></td>
-	            			<td></td>
 	            		</tr>
 	            	<?php $contador++; }?>
 	                </tbody>
