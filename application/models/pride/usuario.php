@@ -3,8 +3,8 @@
 class Usuario extends ActiveRecord\Model{
 	
 	static $table_name = "usuario";
-
-	function nuevoUsuario($rfc,$nombre,$apaterno,$amaterno,$pass,$email) {
+	
+	public function nuevoUsuario($rfc,$nombre,$apaterno,$amaterno,$pass,$email) {
 		
 		$usuario = new Usuario();
 		
@@ -18,9 +18,7 @@ class Usuario extends ActiveRecord\Model{
 		$usuario->save();
 		
 	}
-	
-	
-	
+		
 	public function agregar()
 	{
 
@@ -33,8 +31,6 @@ class Usuario extends ActiveRecord\Model{
 		$post->password=md5($_POST['password']);
 
 		$post->save();
-		
-		
 	}
 	
 	public function very_correo(){
