@@ -33,6 +33,8 @@ class Administrador extends CI_Controller {
 		$this->load->view("administrador/navegacion");
 		$this->load->view("administrador/altaProfesores");
 		$this->load->view("footer");
+		
+		
 	}
 	
 	function nuevoProfesor() {
@@ -40,10 +42,30 @@ class Administrador extends CI_Controller {
 		$this->load->view("administrador/navegacion");
 		$this->load->view("administrador/nuevoProfesor");
 		$this->load->view("footer");
+	
+			
 	}
 
 	public function registrar_profesor(){
-		$this->usuario->agregar();
+		
+		
+		if(!$this->usuario->agregar())
+		{
+		
+			$mensaje=array('mensaje' => "Profesor Agregado Exitosamente");
+			$this->load->view("header");
+			$this->load->view("administrador/navegacion");
+			$this->load->view("administrador/nuevoProfesor",$mensaje);
+			$this->load->view("footer");
+		}
+
+		else{
+				
+		
+		}
+		
+		
+		
 	}
 	
 	public function cargarCsv() {

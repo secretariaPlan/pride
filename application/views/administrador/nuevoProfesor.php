@@ -1,3 +1,5 @@
+<script type="text/javascript" src="<?= base_url() ?>js/valida.js"></script>
+
 <body>
 	<div class="grid">
 		
@@ -20,12 +22,14 @@
 	            	
 	            	
 	            	
+	            	<?php
+if(isset($mensaje)){
+	echo"<div class='notice success' id='mensaje' >".$mensaje."<i class='fa fa-check fa-large'></i><a href='#close' class='fa fa-remove'></a></div>";
+
+}
+?>
 	            	
 	            	
-	            	<div class="notice success" id="mensaje" style="display: none;">
-	            		<i class="fa fa-check fa-large"></i>
-						<a href="#close" class="fa fa-remove"></a>
-					</div>
 	            	
 	            	
 	            	
@@ -37,7 +41,7 @@
 	            	
 	                <fieldset id="nuevoProfesor">
 	                	 <?php echo form_open('administrador/registrar_profesor'); ?>
-		            	<?
+		            	<?php
 		            		$boton = array(
 		            			'class' => 'blue',
 		            			'id' => 'boton',
@@ -60,7 +64,7 @@
 		            		);
 		            		
 		            		$nombre = array(
-		            				'id' => 'nombre',
+		            				'id' => 'nomprofe',
 		            				'name' => 'nombre',
 		            				'class' => 'datosProfesor',
 		            				'required'       => 'required',
@@ -126,7 +130,7 @@
 							<?= form_input($rfc)?>
 							<br>
 							<br>
-							<div class="col_4"><?= form_label('Nombre: ', 'nombre')?></div>
+							<div class="col_4"><?= form_label('Nombre: ', 'nomprofe')?></div>
 			            	<?= form_input($nombre)?>
 							<br>
 							<br>

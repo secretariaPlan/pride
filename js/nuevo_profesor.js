@@ -2,15 +2,20 @@
 var expr = /^[a-zA-Z0-9]*$/;
 var expr1 = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
  
+
+
+
 $(document).ready(function () {
 	$(".datosProfesor").val("");
+	
+
 	
     $("#boton").click(function (){ //función para el boton de enviar
     	
     	
     	var datosProfesor = $(".datosProfesor").val();
     	var rfc = $("#rfc").val();
-    	var nombre = $("#nombre").val();
+    	var nomprofe = $("#nomprofe").val();
     	var apaterno = $("#apaterno").val();
     	var amaterno = $("#amaterno").val();
     	var correo = $("#correo").val();
@@ -46,6 +51,7 @@ minuscula("input#email");
     	$("input").each(function(index, element){
     		var required=$(element).attr("required");
     		if(required && $(element).val().length==0 && $(element).val()!=" "){
+    			$("#mensaje").hide();
     			$(element).addClass("error");
     			 $("#error").show();
     			 $("#error").html("Llene los Campos Requeridos");
