@@ -1,26 +1,37 @@
 //Varible para tipo de correo
 var expr = /^[a-zA-Z0-9]*$/;
 var expr1 = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
- 
 
+$().ready(function(){
+	  
+	  /* manual attachment */
+	$('#rfc').filter_input({regex:'[a-zA-Z0-9]'});
+	$("#rfc").attr('maxlength','13');
+	
+  	
+	 
+	  
+	});
 
 
 $(document).ready(function () {
 	$(".datosProfesor").val("");
 	
-
+		
 	
     $("#boton").click(function (){ //función para el boton de enviar
-    	
+
+    	  	
     	
     	var datosProfesor = $(".datosProfesor").val();
-    	var rfc = $("#rfc").val();
+    	var rfc = $("#rfc").val().toUpperCase();
     	var nomprofe = $("#nomprofe").val();
     	var apaterno = $("#apaterno").val();
     	var amaterno = $("#amaterno").val();
     	var correo = $("#correo").val();
         var password = $("#password").val();
         var repass = $("#repass").val();
+        
  
         //Secuencia de if's para verificar contenido de los inputs
  
@@ -63,6 +74,32 @@ minuscula("input#email");
     		
     	});
 		
+    	
+    	$("input#rfc").each(function(index, element){
+    		var required=$(element).attr("required");
+    		
+    		 if(required && $("#rfc").val().length < 13) {  
+     	        $("#rfcval").show();
+     	        $(element).addClass("error");
+     	       
+    			 $("#rfcval").html("<strong style='color:red;'>*Ingrese un RFC valido</strong>");
+     	        return false;  
+     	    }else{
+    			 
+    					$(element).removeClass("rfcval");
+    			
+    		}
+    		
+    	});
+    	
+    	
+    	
+		
+     
+    	
+    	
+
+    	
     	
 		
 		if(correo == "" || !expr1.test(correo)){
@@ -112,7 +149,7 @@ minuscula("input#email");
       $("#mensaje").html("Los datos Se Guardaron Correctamente");
        
 
-     window.setTimeout("location=('http://localhost/pride/administrador/nuevoProfesor');",5000);
+     //window.setTimeout("location=('http://localhost/pride/administrador/nuevoProfesor');",5000);
       
  
     });//fin click
@@ -143,7 +180,50 @@ minuscula("input#email");
 		}
     });
 
-    
+	
+	
+	$("#rfc").keyup(function(e) {
+
+		 if($(this).val().length>12){
+			 $("#rfcval").hide();
+			 $("#rfc").removeClass("error");
+	            valido=true;
+			}else{
+				
+			}
+	    });
+
+	
+	$("#rfc").keyup(function(e) {
+
+		 if($(this).val().length<13){
+			 $("#rfcval").show();
+			 $("#rfcval").html("<strong style='color:red;'>*Ingrese un RFC valido</strong>");
+			 $("#rfc").addClass("error");
+			}else{
+				
+			}
+	    });
+   
+	
+
+	  $("#rfc").keyup(function(e) {
+
+		  
+		  var rfc = $("#rfc").val().length==13;
+
+	        if(rfc != rfc)
+	        {
+	            valido=true;
+	        }
+	        else if(rfc == rfc )
+	        {
+	        	$("#error").hide();
+	            valido=true;
+	        }
+	    });//fin keyup repass
+	
+	
 	
  
     

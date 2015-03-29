@@ -38,36 +38,35 @@ class Administrador extends CI_Controller {
 	}
 	
 	function nuevoProfesor() {
-		$this->load->view("header");
-		$this->load->view("administrador/navegacion");
-		$this->load->view("administrador/nuevoProfesor");
-		$this->load->view("footer");
-	
+		if($this->input->post()){
+			//$this->usuario->agregar();
+			$rfc=$this->input->post("rfc");
+			$nombre=$this->input->post("nombre");
+			$apaterno=$this->input->post("apaterno");
+			$amaterno=$this->input->post("amaterno");
+			$pass=$this->input->post("password");
+			$email=$this->input->post("correo");
+			$this->usuario->nuevoUsuario($rfc,$nombre,$apaterno,$amaterno,md5($pass),$email);
 			
-	}
-
-	public function registrar_profesor(){
-		
-		
-		if(!$this->usuario->agregar())
-		{
-		
 			$mensaje=array('mensaje' => "Profesor Agregado Exitosamente");
 			$this->load->view("header");
 			$this->load->view("administrador/navegacion");
 			$this->load->view("administrador/nuevoProfesor",$mensaje);
 			$this->load->view("footer");
-		}
-
-		else{
+			
+		}else{
+			$this->load->view("header");
+			$this->load->view("administrador/navegacion");
+			$this->load->view("administrador/nuevoProfesor");
+			$this->load->view("footer");
 				
-		
 		}
 		
-		
-		
-	}
 	
+			
+	}
+
+
 	public function cargarCsv() {
 		$config['upload_path'] = './subidas/';
 		$config['allowed_types'] = 'csv';

@@ -1,4 +1,4 @@
-	function validar(e){
+function validar(e){
 		tecla=(document.all) ? e.keyCode : e.which;
 		if((tecla<48 || tecla>57) && (tecla<1 || tecla>31) && tecla!=127)
 			return false;

@@ -43,6 +43,12 @@ class Usuario extends ActiveRecord\Model{
 	
 	}	
 	
+	public function recoverPass($email,$reemail) {
+		$user = Usuario::first(array("conditions" => array("correo = ? AND correo = ?",$email,$reemail) ));
+		if(isset($user))return true;
+		else return false;
+	}
+	
 	
 	
 	

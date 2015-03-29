@@ -1,12 +1,38 @@
+<script type="text/javascript" src="<?= base_url() ?>js/valida.js"></script>
+<?php
+
+	if(isset($error)){
+		echo "<div class='center'><strong style='color:red;'>".$error."</strong></div>";
+	}
+	$email = array(
+		"id" => "email",
+		"name" => "email",
+		"required" => "required",
+		"placeholder" => "Correo Electr&oacute;nico",
+					
+	);
+	
+	$reemail = array(
+			"id" => "reemail",
+			"name" =>  "reemail",
+			"type" => "text",
+			"required" => "required",
+			"placeholder" => "Repita su Correo Electr&oacute;nico"
+	);
+	
+	$boton_enviar= array(
+			"id" => "boton",
+			"class" => "blue",
+			"name" => "boton",
+			"type" => "submit",
+			"content" => "Enviar Contrase&ntilde;a"
+	);
+?>
 <body>
-    <div class="grid">
+    <div class="grid flex">
         <div class="col_4"></div>
         <div class="col_4">
-        	
-        
             <div class="center">
-            	
-
             	
             	<div class="notice error" id="mensaje1" style="display: none;">
             		<i class="fa fa-remove fa-large"></i> 
@@ -21,27 +47,27 @@
 					<a href="#close" class="fa fa-remove"></a>
 				</div>
             	
-            	<form action="<?php echo site_url('recovery_pass/recuperar')?>">
+            
                 <fieldset>
-                    <label>Correo Electr&oacute;nico</label>
-                    <br>
-                    <input id="email" type="text" placeholder="Correo Electr&oacute;nico"/>
-                    <br>
-                    <br>
-                    <label>Repita su Correo Electr&oacute;nico</label>
-                    <br>
-                    <input id="reemail" type="text" placeholder="Repita su Correo Electr&oacute;nico"/>
-                    <br>
-                    <br>
-                    <button class="blue" id="boton">Enviar Contrase&ntilde;a</button>
+                	<legend>Recuperar Contrase&ntilde;a</legend>
+                	<?php echo form_open("recovery_pass/recuperar"); ?>
+                		<?php echo form_label("Correo","email")?>
+	                    <br>
+	                    <?php echo form_input($email)?>
+	                    <br>
+	                    <br>
+	                    <?php echo form_label("Repita su Correo","reemail");?>
+	                    <br>
+	                    <?php echo form_input($reemail); ?>
+	                    <br>
+	                    <br>
+	                    <?php echo form_button($boton_enviar)?>
+                    <?php echo form_close()?>
                     <br>
                     <div class="col_12 right">
                         <a href="<?php echo site_url()?>">Regresar</a>
                     </div>
-                    
-      
                 </fieldset>
-                </form>
             </div>
         </div>
         <div class="col_4"></div>

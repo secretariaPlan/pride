@@ -1,5 +1,5 @@
 <script type="text/javascript" src="<?= base_url() ?>js/valida.js"></script>
-
+<script type="text/javascript" src="<?= base_url() ?>js/jquery.filter_input.js"></script>
 <body>
 	<div class="grid">
 		
@@ -40,7 +40,7 @@ if(isset($mensaje)){
 	            	
 	            	
 	                <fieldset id="nuevoProfesor">
-	                	 <?php echo form_open('administrador/registrar_profesor'); ?>
+	                	 <?php echo form_open('administrador/nuevoProfesor'); ?>
 		            	<?php
 		            		$boton = array(
 		            			'class' => 'blue',
@@ -56,8 +56,8 @@ if(isset($mensaje)){
 		            				'name' => 'rfc',
 		            				'class' => 'datosProfesor',
 								'required'       => 'required',
+		            			'pattern' =>"\S{13}",
 		            			'placeholder' => 'Ingresa el RFC',
-		            		
 		            			'onkeyup' => 'javascript:this.value=this.value.toUpperCase()',
 		            			'value' => set_value('rfc'),
 		            				 
@@ -129,6 +129,7 @@ if(isset($mensaje)){
 		            	<div class="col_4"><?= form_label('RFC: ', 'rfc')?></div>
 							<?= form_input($rfc)?>
 							<br>
+							<div id="rfcval" style="display: none;"></div>
 							<br>
 							<div class="col_4"><?= form_label('Nombre: ', 'nomprofe')?></div>
 			            	<?= form_input($nombre)?>

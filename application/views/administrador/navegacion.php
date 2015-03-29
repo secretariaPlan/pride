@@ -14,5 +14,6 @@
 				<li><a href="<?php echo site_url('administrador/altaPeriodos')?>">Alta Periodos</a></li>
 			</ul>
 		</li>
+		<li><a href=""><i class="fa fa-cog"></i> Salir </a></li>
 	</ul>
 </div>	
