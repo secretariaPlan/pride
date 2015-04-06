@@ -33,6 +33,18 @@ class Usuario extends ActiveRecord\Model{
 		$post->save();
 	}
 	
+	public function listaUsuarios() {
+		$usuarios = Usuario::all();
+		return $usuarios;
+	}
+	
+	public function listaUsuarioNombre($cadena) {
+		$condicion = array("conditions" => array("rfc LIKE '%$cadena%' OR nombre LIKE '%$cadena%' OR apaterno LIKE '%$cadena%' OR amaterno LIKE '%$cadena%'"));
+		$usuarios = Usuario::all($condicion);
+		return $usuarios;
+	}
+	
+	
 	public function very_correo(){
 		$usuario = Usuario::first(1);
 	
