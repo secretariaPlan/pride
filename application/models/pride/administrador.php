@@ -10,6 +10,7 @@ class Administrador extends ActiveRecord\Model {
 		else return false;
 	}
 	
+	
 }
 
 ?>

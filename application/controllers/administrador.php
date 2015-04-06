@@ -6,7 +6,7 @@ class Administrador extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('pride/usuario');
-	
+		
 	}
 	
 	function index() {
@@ -61,7 +61,11 @@ class Administrador extends CI_Controller {
 			$this->load->view("footer");
 				
 		}
+<<<<<<< HEAD
 		
+=======
+	}
+>>>>>>> origin/master
 	
 			
 	}
@@ -111,6 +115,32 @@ class Administrador extends CI_Controller {
 		$this->load->view("administrador/navegacion");
 		$this->load->view('administrador/altaProfesores', $exito);
 		$this->load->view("footer");
+	}
+	
+	public function listaUsuarios() {
+		$usuarios = $this->usuario->listaUsuarios();
+		$arreglo = array();
+		foreach ($usuarios as $usuario) {
+			$arreglo[] = array("id" => "$usuario->id",
+								"rfc" => "$usuario->rfc",
+								"nombre" => "$usuario->nombre",
+								"apaterno" => "$usuario->apaterno",
+								"amaterno" => "$usuario->amaterno"
+			);
+		}
+		echo json_encode($arreglo);
+	}
+	
+	public function listaUsuarioNombre($cadena) {
+		$usuarios = $this->usuario->listaUsuarioNombre($cadena);
+		$arreglo = array();
+		foreach ($usuarios as $usuario) {
+			$arreglo[] = array("id" => "$usuario->id",
+								"rfc" => "$usuario->rfc",
+								"nombre" => "$usuario->nombre"." "."$usuario->apaterno"." "."$usuario->amaterno",
+			);
+		}
+		echo json_encode($arreglo);
 	}
 
 }
