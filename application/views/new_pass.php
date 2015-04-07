@@ -1,13 +1,9 @@
 <body>
-    <div class="grid">
+    <div class="grid flex">
         <div class="col_4"></div>
         <div class="col_4">
-        	
-        
             <div class="center">
-            	
-
-            	
+            	            	
             	<div class="notice error" id="mensaje1" style="display: none;">
             		<i class="fa fa-remove fa-large"></i> 
             		Contrase&ntilde;a no valida 

@@ -1,18 +1,11 @@
 <script type="text/javascript" src="<?php echo base_url()?>js/valida.js"></script>
 <script type="text/javascript" src="<?php echo base_url()?>js/jquery.filter_input.js"></script>
 <body>
-	<div class="grid">
-		
-		<div class="col_3"></div>
-        
-        <div class="col_5">
-        
-        	
-	 		<div class="center">
-	            	
-	
-	
-	
+	<div class="grid flex">
+        <div class="col_4"></div>
+        <div class="col_4">
+            <div class="center">
+
 	            	
 	            	<div class="notice error" id="error" style="display: none;">
 	            		<i class="fa fa-remove fa-large"></i> 
@@ -28,16 +21,7 @@ if(isset($mensaje)){
 
 }
 ?>
-	            	
-	            	
-	            	
-	            	
-	            	
-	            
-	            	
-	            	
-	            	
-	            	
+
 	            	
 	                <fieldset id="nuevoProfesor">
 	                	 <?php echo form_open('administrador/nuevoProfesor'); ?>
@@ -165,19 +149,11 @@ if(isset($mensaje)){
 		                    <br>
 		 
 		            	<?php echo form_close()?>
-
-	                                       
-	      
 	                </fieldset>
-	            </div>
-	        </div>        	
-        
-        
-        
-        
-        <div class="col_3"></div>
-        </div>
-	
-	</div>
+	                
+	   			</div>
+       		</div>
+        <div class="col_4"></div>
+    </div>
 </body>
 <script type="text/javascript" src="<?php echo base_url()?>js/nuevo_profesor.js"></script>
