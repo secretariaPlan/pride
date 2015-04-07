@@ -49,4 +49,4 @@
         <div class="col_4"></div>
     </div>
 </body>
-<script type="text/javascript" src="<?= base_url() ?>js/new_pass.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>js/new_pass.js"></script>

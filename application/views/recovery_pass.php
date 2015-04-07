@@ -1,4 +1,4 @@
-<script type="text/javascript" src="<?= base_url() ?>js/valida.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>js/valida.js"></script>
 <?php
 
 	if(isset($error)){
@@ -73,4 +73,4 @@
         <div class="col_4"></div>
     </div>
 </body>
-<script type="text/javascript" src="<?= base_url() ?>js/recovery_pass.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>js/recovery_pass.js"></script>

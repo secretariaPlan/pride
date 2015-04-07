@@ -48,24 +48,11 @@
 			En este momento no puede dar de alta un nuevo periodo
 		</div>
 		<!-- Fin de la fecha donde no puede dar de alta -->
-        		
-        		
-       	
-       
-       
-       
-       
-       
-       
-       
+
        </div> 		
     
     
     </div>
 
-
-
-        
-
 </body>
-<script type="text/javascript" src="<?= base_url() ?>js/periodo.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>js/periodo.js"></script>

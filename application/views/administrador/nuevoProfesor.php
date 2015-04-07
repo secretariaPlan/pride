@@ -1,5 +1,5 @@
-<script type="text/javascript" src="<?= base_url() ?>js/valida.js"></script>
-<script type="text/javascript" src="<?= base_url() ?>js/jquery.filter_input.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>js/valida.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>js/jquery.filter_input.js"></script>
 <body>
 	<div class="grid">
 		
@@ -126,45 +126,45 @@ if(isset($mensaje)){
 		            	?>
 		            	
 		            	
-		            	<div class="col_4"><?= form_label('RFC: ', 'rfc')?></div>
-							<?= form_input($rfc)?>
+		            	<div class="col_4"><?php echo form_label('RFC: ', 'rfc')?></div>
+							<?php echo form_input($rfc)?>
 							<br>
 							<div id="rfcval" style="display: none;"></div>
 							<br>
-							<div class="col_4"><?= form_label('Nombre: ', 'nomprofe')?></div>
-			            	<?= form_input($nombre)?>
+							<div class="col_4"><?php echo form_label('Nombre: ', 'nomprofe')?></div>
+			            	<?php echo form_input($nombre)?>
 							<br>
 							<br>
 							
-							<div class="col_4"><?= form_label('Apellido Paterno: ', 'apaterno')?></div>
-			            	<?= form_input($apaterno)?>
+							<div class="col_4"><?php echo form_label('Apellido Paterno: ', 'apaterno')?></div>
+			            	<?php echo form_input($apaterno)?>
 							<br>
 							<br>
 							
-							<div class="col_4"><?= form_label('Apellido Materno: ', 'amaterno')?></div>
-			            	<?= form_input($amaterno)?>
+							<div class="col_4"><?php echo form_label('Apellido Materno: ', 'amaterno')?></div>
+			            	<?php echo form_input($amaterno)?>
 							<br>
 							<br>
 							
-							<div class="col_4"><?= form_label('Correo: ', 'correo')?></div>
-							<?= form_input($correo)?>
+							<div class="col_4"><?php echo form_label('Correo: ', 'correo')?></div>
+							<?php echo form_input($correo)?>
 							<br>
 							<br>
 							
-							<div class="col_4"><?= form_label('Contrase&ntilde;a: ', 'password')?></div>
-							<?= form_input($password)?>
+							<div class="col_4"><?php echo form_label('Contrase&ntilde;a: ', 'password')?></div>
+							<?php echo form_input($password)?>
 							<br>
 							<br>
 							
-							<div class="col_4"><?= form_label('Repetir contrase&ntilde;a: ', 'repass')?></div>
-							<?= form_input($repass)?>
+							<div class="col_4"><?php echo form_label('Repetir contrase&ntilde;a: ', 'repass')?></div>
+							<?php echo form_input($repass)?>
 							<br>
 							<br>
 		                
-		                    <?= form_button($boton) ?>
+		                    <?php echo form_button($boton) ?>
 		                    <br>
 		 
-		            	<?= form_close()?>
+		            	<?php echo form_close()?>
 
 	                                       
 	      
@@ -180,4 +180,4 @@ if(isset($mensaje)){
 	
 	</div>
 </body>
-<script type="text/javascript" src="<?= base_url() ?>js/nuevo_profesor.js"></script>
+<script type="text/javascript" src="<?php echo base_url()?>js/nuevo_profesor.js"></script>
