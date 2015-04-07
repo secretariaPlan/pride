@@ -61,13 +61,7 @@ class Administrador extends CI_Controller {
 			$this->load->view("footer");
 				
 		}
-<<<<<<< HEAD
 		
-=======
-	}
->>>>>>> origin/master
-	
-			
 	}
 
 
@@ -118,30 +112,18 @@ class Administrador extends CI_Controller {
 	}
 	
 	public function listaUsuarios() {
-		$usuarios = $this->usuario->listaUsuarios();
-		$arreglo = array();
-		foreach ($usuarios as $usuario) {
-			$arreglo[] = array("id" => "$usuario->id",
-								"rfc" => "$usuario->rfc",
-								"nombre" => "$usuario->nombre",
-								"apaterno" => "$usuario->apaterno",
-								"amaterno" => "$usuario->amaterno"
-			);
-		}
-		echo json_encode($arreglo);
+			$usuarios = $this->usuario->listaUsuarios();
+			
 	}
 	
-	public function listaUsuarioNombre($cadena) {
-		$usuarios = $this->usuario->listaUsuarioNombre($cadena);
-		$arreglo = array();
-		foreach ($usuarios as $usuario) {
-			$arreglo[] = array("id" => "$usuario->id",
-								"rfc" => "$usuario->rfc",
-								"nombre" => "$usuario->nombre"." "."$usuario->apaterno"." "."$usuario->amaterno",
-			);
+	public function listaUsuarioNombre() {
+		if(isset($_GET['term'])){
+			$cadena = $_GET['term'];
+			$this->usuario->listaUsuarioNombre($cadena);
 		}
-		echo json_encode($arreglo);
+		
 	}
+	
 
 }
 

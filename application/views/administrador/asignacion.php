@@ -3,7 +3,6 @@ $evaluador = array(
 		"id" => "evaluador",
 		"name" => "evaluador",
 		"size" => "50",
-		"required" => "required",
 		"type" => "text",
 		"placeholder" => "Ingrese el nombre del evaluador"
 );
@@ -11,7 +10,6 @@ $evaluador = array(
 $evaluado = array(
 		"id" => "evaluado",
 		"name" => "evaluado",
-		"required" => "required",
 		"size" => "50",
 		"type" => "text",
 		"placeholder" => "Ingrese el nombre del evaluado"
@@ -34,7 +32,7 @@ $boton = array(
             <div class="col_8 center">
                 <fieldset>
                     <legend>Asignacion</legend>
-                    <?php echo form_open("administrador/asignaProfesores") ?>
+                    <?php echo form_open() ?>
                     <?php echo form_label("Evaluador","evaluador")?>
                     <br>
                     <?php echo form_input($evaluador)?>

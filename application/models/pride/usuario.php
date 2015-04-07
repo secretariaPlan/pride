@@ -35,13 +35,34 @@ class Usuario extends ActiveRecord\Model{
 	
 	public function listaUsuarios() {
 		$usuarios = Usuario::all();
-		return $usuarios;
+		$arreglo = array();
+		foreach ($usuarios as $usuario) {
+			$arreglo[] = array("id" => "$usuario->id",
+								"rfc" => "$usuario->rfc",
+								"nombre" => "$usuario->nombre",
+								"apaterno" => "$usuario->apaterno",
+								"amaterno" => "$usuario->amaterno"
+			);
+		}
+		echo json_encode($arreglo);
 	}
 	
 	public function listaUsuarioNombre($cadena) {
 		$condicion = array("conditions" => array("rfc LIKE '%$cadena%' OR nombre LIKE '%$cadena%' OR apaterno LIKE '%$cadena%' OR amaterno LIKE '%$cadena%'"));
 		$usuarios = Usuario::all($condicion);
-		return $usuarios;
+		//$arreglo = array();
+		foreach ($usuarios as $usuario) {
+			$arreglo['id'] = htmlentities(stripslashes("$usuario->id"));
+			$arreglo['rfc'] = htmlentities(stripslashes("$usuario->rfc"));
+			$arreglo['nombre'] = htmlentities(stripslashes("$usuario->nombre"." "."$usuario->apaterno"." "."$usuario->amaterno"));
+			$datos[]=$arreglo;
+			/*$arreglo[] = array("id" => "$usuario->id",
+								"rfc" => "$usuario->rfc",
+								"nombre" => "$usuario->nombre"." "."$usuario->apaterno"." "."$usuario->amaterno",
+			);*/
+		}
+		
+		echo json_encode($datos);
 	}
 	
 	
