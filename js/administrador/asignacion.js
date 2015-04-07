@@ -1,4 +1,34 @@
 $(document).ready(function () {
+    $("#evaluador").autocomplete({
+        source:"administrador/listaUsuarioNombre",
+        //source:data;
+        minLength: 3,
+        select: function(event,ui){
+            $("#evaluador").val(ui.item.nombre);
+            return false;
+        }
+     }).data( "autocomplete" )._renderItem = function( ul, item ) {
+		return $( "<li></li>" )
+			.data( "item.autocomplete", item )
+			.append( "<a><strong>" + item.rfc + "</strong> / " + item.nombre + "</a>" )
+			.appendTo( ul );
+		};
+    
+    $("#evaluado").autocomplete({
+        source:"administrador/listaUsuarioNombre",
+        //source:data;
+        minLength: 3,
+        select: function(event,ui){
+            $("#evaluado").val(ui.item.nombre);
+            return false;
+        }
+     }).data( "autocomplete" )._renderItem = function( ul, item ) {
+		return $( "<li></li>" )
+			.data( "item.autocomplete", item )
+			.append( "<a><strong>" + item.rfc + "</strong> / " + item.nombre + "</a>" )
+			.appendTo( ul );
+		};	
+
     /*$.ajax({
         type : "POST",
         url: "http://pride.dev/index.php/administrador/listaUsuarios",
@@ -9,7 +39,7 @@ $(document).ready(function () {
         }
         
     });
-    */
+    
     $("#evaluador").keyup(function(){
         var datos = [];
         var cadena  = $("#evaluador").val();
@@ -28,7 +58,7 @@ $(document).ready(function () {
 
         });
      });
-    /*
+    
     $("#evaluador").autocomplete({
         minLength:3,
         source : function(req,add){
