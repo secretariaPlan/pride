@@ -1,12 +1,18 @@
+        
+        <div class="col_4"></div>
+        <div class="col_4 center">
+        
 <?php
 if(isset($error)){
-	echo "<div class='center'><strong style='color:red;'>".$error."</strong></div>";
+	echo "<div class='notice error'><i class='icon-remove-sign icon-large'></i>" . $error . "<a href='#close' class='icon-remove'></a></div>";
 }
 if(isset($exito)){
-	echo "<div class='center'><strong style='color:blue;'>".$exito."</strong></div>";
+	echo "<div class='notice success'>" . $exito . "<i class='fa fa-check fa-large'></i><a href='#close' class='fa fa-remove'></a></div>";
 }
 $contador = 0;
 ?>
+</div>
+
 
 
 <body>
