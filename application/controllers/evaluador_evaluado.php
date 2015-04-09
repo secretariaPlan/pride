@@ -7,17 +7,37 @@ class Evaluador_Evaluado extends CI_Controller {
 
 		$this->load->model('pride/evaluadorEvaluado');
 	}
-	
-	
+
 	public function index(){
 
-	
-	$this->evaluadorEvaluado->relaciona_profesor("1","1");
-	echo("El dato se relaciono correctamente");
-	
 		
 	}
 	
+	public function relacionar(){
+	
+		if($this->input->post()){
+			$idEvaluador=$this->input->post("evaluador");
+			$idEvaluado=$this->input->post("evaluado");
+			$this->evaluadorEvaluado->relaciona_profesor($idEvaluador,$idEvaluado);
+			$mensaje=array('mensaje' => "Profesor Asignado Exitosamente");
+	
+		}else{
+			$this->evaluadorEvaluado->relaciona_profesor($idEvaluador,$idEvaluado);
+	
+		}
+	
+	
+	}
+	
+	public function quitar_profesor(){
+	
+		$this->evaluadorEvaluado->desasignar($idEvaluador,$idEvaluado);
+	
+	
+	}
+	
+	
+
 	
 
 	
