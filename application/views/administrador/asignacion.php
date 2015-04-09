@@ -7,6 +7,13 @@ $evaluador = array(
 		"placeholder" => "Ingrese el nombre del evaluador"
 );
 
+$hidden = array(
+		"idEvaluador" => "",
+		"nombreEvaluador" => "",
+		"idEvaluado" => "",
+		"nombreEvaluado" =>""
+);
+
 $evaluado = array(
 		"id" => "evaluado",
 		"name" => "evaluado",
@@ -18,10 +25,10 @@ $evaluado = array(
 $boton = array(
 		"class" => "blue",
 		"type" => "submit",
-		"id" => "boton",
+		"id" => "asignar",
 		"name" => "boton",
 		"content" => "Guardar asignacion",
-		"value" => "Guardar"
+		"value" => "Asignar"
 );
 ?>
 <script src="<?php echo base_url();?>js/administrador/asignacion.js" ></script>
@@ -32,7 +39,7 @@ $boton = array(
             <div class="col_8 center">
                 <fieldset>
                     <legend>Asignacion</legend>
-                    <?php echo form_open() ?>
+                    <?php echo form_open("","",$hidden) ?>
                     <?php echo form_label("Evaluador","evaluador")?>
                     <br>
                     <?php echo form_input($evaluador)?>
@@ -43,8 +50,8 @@ $boton = array(
                     <?php echo form_input($evaluado)?>
                     <br>
                     <br>
+                     <?php echo form_close() ?>
                      <?php echo form_input($boton)?>
-                    <?php echo form_close() ?>
                     <br>
                 </fieldset>
             </div>
@@ -60,14 +67,8 @@ $boton = array(
                             <th>Profesor</th>
                             <th>Opciones</th>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td></td>
-                                <td><a><i></i></i></a></td>
-                            </tr>
-                            <tr>
-                                <td><a><i></i></i></a></td>
-                            </tr>
+                        <tbody id = "asignados">
+                            
                         </tbody>
                     </table>    
                 </fieldset>
