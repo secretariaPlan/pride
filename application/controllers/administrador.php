@@ -6,16 +6,51 @@ class Administrador extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('pride/usuario');
+		$this->ingresa();
 		
 	}
 	
-	function index() {
+	
+	public function loginAdmin($rfc,$pass) {
+		static $table_name = "administrador";
+	
+		//$admin = Administrador::first(array("conditions" => array("rfc = ? AND password = ?",$rfc,$pass) ));
+		if(isset($admin))return true;
+		else return false;
+	}
+	
+	
+	
+	public function ingresa() {
+		$rfc = $this->input->post("rfc");
+		$pass = md5($this->input->post("pass"));
+	
+		if($this->loginAdmin($rfc,$pass)){
+			$this->load->view("header");
+			$this->load->view("administrador/navegacion");
+			$this->load->view("administrador/asignacion");
+			$this->load->view("footer");
+		}else{
+			$error = array("error" => "Datos incorrectos");
+			$this->load->view("header");
+			$this->load->view("login",$error);
+			$this->load->view("footer");
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+public function index() {
 		$this->load->view("header");
-		$this->load->view("administrador/navegacion");
-		$this->load->view("administrador/asignacion");
+		$this->load->view("login");
 		$this->load->view("footer");
 	}
 	
+
 	function altaPeriodos() { //esta vista solo contiene el boton de AltaPeriodo
 		$this->load->view("header");
 		$this->load->view("administrador/navegacion");
