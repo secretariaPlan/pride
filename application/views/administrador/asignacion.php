@@ -60,18 +60,24 @@ $boton = array(
             
             <div class="col_2"></div>
             <div class="col_8 center">
-                <fieldset>
-                    <legend>Profesores</legend>
-                    <table class="sortable" cellspacing="0" cellpadding="0">
-                        <thead>
-                            <th>Profesor</th>
-                            <th>Opciones</th>
-                        </thead>
-                        <tbody id = "asignados">
-                            
-                        </tbody>
-                    </table>    
-                </fieldset>
+                <div class="col_12">
+                    <fieldset>
+                        <legend>Profesores</legend>
+                        <div class="col_3"></div>
+                        <div class="col_6">
+                            <table class="sortable" cellspacing="0" cellpadding="0">
+                                <thead>
+                                    <th>Profesor</th>
+                                    <th>Opciones</th>
+                                </thead>
+                                <tbody id = "asignados">
+
+                                </tbody>
+                            </table>    
+                        </div>
+                        <div class="col_3"></div>
+                    </fieldset>    
+                </div>
             </div>
             <div class="col_2"></div>
         </div>
