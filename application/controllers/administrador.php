@@ -16,11 +16,42 @@ class Administrador extends CI_Controller {
 		$this->load->view("footer");
 	}
 	
-	function altaPeriodos() { //esta vista solo contiene el boton de AltaPeriodo
+	function altaPeriodos() {
 		$this->load->view("header");
 		$this->load->view("administrador/navegacion");
 		$this->load->view("administrador/altaPeriodos");
 		$this->load->view("footer");
+	}
+	
+	function nuevoPeriodo() {
+		$this->load->model("pride/periodo");
+		
+		$year = $this->input->post("year");
+		$numero = $this->input->post("numero");
+		
+		$periodo = Periodo::first(array("conditions" => array("year = ? AND numero = ?",$year,$numero)));
+		
+		if(!$periodo->id){
+			$inicioPer = $this->input->post("inicioPeriodo");
+			$finPer = $this->input->post("finPeriodo");
+			$inicioEval = $this->input->post("inicioEvaluacion");
+			$finEval = $this->input->post("finEvaluacion");
+			$inicioEntrega = $this->input->post("inicioEntrega");
+			$finEntrega = $this->input->post("finEntrega");
+			
+			$this->periodo->nuevoPeriodo($year,$numero,$inicioPer,$finPer,$inicioEval,$finEval,$inicioEntrega,$finEntrega);
+			
+			$mensaje["exito"] = "Periodo agregado correctamente";
+			
+		}else $mensaje["error"] = "El periodo $year-$numero ya ha sido dado de alta anteriormente";
+		
+		
+		$this->load->view("header");
+		$this->load->view("administrador/navegacion");
+		$this->load->view("administrador/altaPeriodos",$mensaje);
+		$this->load->view("footer");
+		
+		
 	}
 	
 	
@@ -119,9 +150,20 @@ class Administrador extends CI_Controller {
 	public function listaUsuarioNombre() {
 		if(isset($_GET['term'])){
 			$cadena = $_GET['term'];
-			$this->usuario->listaUsuarioNombre($cadena);
+			$this->usuario->jsonListaUsuarioNombre($cadena);
 		}
 		
+	}
+	
+	public function evaluadosSinAsignar() {
+		$this->load->model('pride/evaluador');
+		$this->load->model('pride/periodo');
+		
+		if(isset($_GET['term'])){
+			$cadena = $_GET['term'];
+			$profesores = $this->usuario->funcionListaUsuarioNombre($cadena);
+			
+		}
 	}
 	
 
