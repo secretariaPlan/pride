@@ -12,8 +12,14 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>Sistema de Primas al Desempe&ntilde;o del Personal Acad&eacute;mico de Tiempo Completo</title>
         <div class="callout">
-                <div class="grid">
-                    <h4>Sistema de Primas al Desempe&ntilde;o del Personal Acad&eacute;mico de Tiempo Completo</h4>
+                <div id="grids" class="clearfix">
+                     <div class="col_2 column"><a href="http://unam.mx/" target="_blank"><img src="<?php echo base_url()?>images/blanco_unam.png" width="100px"></a>
+                     </div>
+                     
+                     <div class="col_8 column"><h4>Sistema de Primas al Desempe&ntilde;o <br> del Personal Acad&eacute;mico de Tiempo Completo</h4></div>
+                     
+                     <div class="col_2 column"><a href="http://quimica.unam.mx/" target="_blank"><img src="<?php echo base_url()?>images/logo_blanco.png" width="100px"></a>
+                     </div>       
                 </div>
             </div>
     </head>
