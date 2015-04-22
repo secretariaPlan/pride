@@ -17,15 +17,41 @@ $contador = 0;
 
 <body>
     <div class="grid flex">
-        
+    
+    <div class="col_3"></div>
+    
+    <div id="pasos">
+	    <div class="col_6 center visible ">
+	    <!-- Warning -->
+	        	<div class="notice warning"><i class="fa fa-warning fa-large"></i> 
+	        	Solo puedes cargar Archivos con formato CSV<br>
+		EJEMPLO: "profesores.csv" 
+		<a href="#close" class="fa fa-remove"></a></div>
+				
+					<h5>Pasos para cargar a los profesores correctamente</h5>
+					<ol align="left">
+						<li>Genera tu tabla de datos en Excel como se muestra en la imagen<br>
+						Nota: Recuerda usar los campos rfc, nombre, amaterno, pass, mail<br>
+						<img src="<?php echo base_url('images/tabla1.png')?>">
+						</li>
+						<li>Guardalo en formato CSV (delimitado por comas)(*.csv)<br>
+						<img src="<?php echo base_url('images/tabla2.png')?>">
+						</li>
+						<li>Presiona el boton "Seleccionar archivo" y el boton "Cargar Archivo"</li>
+					</ol>
+		</div>
+    </div>    
         <div class="col_4"></div>
         <div class="col_4 center">
+        	
+			<h5>Cargar Archivo CSV</h5>
+        
         	<?php if(!isset($datos)){ 
         		echo form_open_multipart("administrador/cargarCsv") ?>
 	           	    <input type="file" name="userfile" value="archivo" />
 	                <br>
 	                <br>
-	                <button class="blue">Cargar archivo</button>
+	                <button class="blue" id="boton">Cargar archivo</button>
 			<?php echo form_close();
         	}?>
         </div>
@@ -60,7 +86,7 @@ $contador = 0;
 	            			<td><input type="text" id="apaterno-<?php echo $contador?>"name="apaterno[<?php echo $contador ?>]" value="<?php echo $dato["apaterno"] ?>" ></td>
 	            			<td><input type="text" id="amaterno-<?php echo $contador?>" name="amaterno[<?php echo $contador ?>]" value="<?php echo $dato["amaterno"] ?>" ></td>
 	            			<td><input type="password" id="pass-<?php echo $contador?>" name="pass[<?php echo $contador ?>]" value="<?php echo $dato["pass"] ?>" ></td>
-	            			<td><input type="text" id="correo-<?php echo $contador?>" name="correo[<?php echo $contador ?>]" value="<?php echo $dato["email"] ?>" ></td>
+	            			<td><input type="text" id="correo-<?php echo $contador?>" name="correo[<?php echo $contador ?>]" value="<?php echo $dato["mail"] ?>" ></td>
 	            		</tr>
 	            	<?php $contador++; }?>
 	                </tbody>
@@ -72,3 +98,5 @@ $contador = 0;
         }?>
     </div>
 </body>
+<script type="text/javascript"
+	src="<?php echo base_url()?>js/cargar_csv.js"></script>
