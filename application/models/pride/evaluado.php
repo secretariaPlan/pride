@@ -15,7 +15,27 @@ class Evaluado extends ActiveRecord\Model{
 		$evaluado->save();
 	}
 	
-
+	
+	public function profeEvaluado(){
+		//$join = 'inner join evaluador e on (usuario.id=e.id_usuario)';
+		$evaluados = Evaluado::find_by_sql('SELECT * FROM usuario u inner join evaluado e on u.id=e.id_usuario where e.id_periodo=(select max(id) from periodo);');
+		//$evaluadores = Usuario::all(array('joins' => $join));
+	
+	
+		$arreglo = array();
+		foreach ($evaluados as $evaluado) {
+			$arreglo[] = array("id_usuario" => "$evaluado->id_usuario",
+					"rfc" => "$evaluado->rfc",
+					"nombre" => "$evaluado->nombre",
+					"apaterno" => "$evaluado->apaterno",
+					"amaterno" => "$evaluado->amaterno",
+					"id_periodo" => "$evaluado->id_periodo"
+			);
+		}
+		echo json_encode($arreglo);
+	
+	
+	}
 
 }
 

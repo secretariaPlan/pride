@@ -23,6 +23,19 @@ class Administrador extends CI_Controller {
 		$this->load->view("footer");
 	}
 	
+	public function profeEvaluador(){
+		$this->load->model('pride/evaluador');
+		$evaluados= $this->evaluador->profeEvaluador();
+		
+	}
+	
+	
+	public function profeEvaluado(){
+		$this->load->model('pride/evaluado');
+		$evaluados= $this->evaluado->profeEvaluado();
+	
+	}
+	
 	function nuevoPeriodo() {
 		$this->load->model("pride/periodo");
 		
