@@ -36,6 +36,21 @@ class Evaluado extends ActiveRecord\Model{
 	
 	
 	}
+	public function evaluadoSinEvaluador(){
+		$evaluados = Evaluado::find_by_sql("select u.id, u.rfc, concat(u.nombre,' ',u.apaterno,' ',u.amaterno) as evaluado from usuario u where u.id in(select e.id_usuario from evaluado e left join evaluador b on e.id_usuario=b.id_usuario where b.id_usuario is null);");
+	
+	
+		$arreglo = array();
+		foreach ($evaluados as $evaluado) {
+			$arreglo[] = array("id" => "$evaluado->id",
+					"rfc" => "$evaluado->rfc",
+					"evaluado" => "$evaluado->evaluado",
+			);
+		}
+		echo json_encode($arreglo);
+	
+	
+	}
 
 }
 

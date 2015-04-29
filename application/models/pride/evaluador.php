@@ -38,6 +38,26 @@ class Evaluador extends ActiveRecord\Model{
 	}
 	
 	
+	public function evaluadoresAsignados(){
+		//$join = 'inner join evaluador e on (usuario.id=e.id_usuario)';
+		$evaluadores = Evaluador::find_by_sql("select concat(a.id) as id_evaluador, a.id_usuario, u.rfc, concat(u.nombre,' ',u.apaterno,' ',u.amaterno) as evaluador from evaluador a, usuario u where u.id=a.id_usuario and a.id in(select e.id_evaluador from evaluador_evaluado e inner join evaluador a on e.id_evaluador=a.id)");
+		//$evaluadores = Usuario::all(array('joins' => $join));
+	
+	
+		$arreglo = array();
+		foreach ($evaluadores as $evaluador) {
+			$arreglo[] = array("id_evaluador" => "$evaluador->id_evaluador",
+					"id_usuario" => "$evaluador->id_usuario",
+					"rfc" => "$evaluador->rfc",
+					"evaluador" => "$evaluador->evaluador",
+			);
+		}
+		echo json_encode($arreglo);
+	
+	
+	}
+	
+	
 }
 
 ?>
