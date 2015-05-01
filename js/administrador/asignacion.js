@@ -1,7 +1,7 @@
 $(document).ready(function () {
     //Obtiene el evaluador
     $("#evaluador").autocomplete({
-        source:"administrador/listaUsuarioNombre",
+        source:"administrador/busquedaEvaluadorPorNombre",
         //source:data;
         minLength: 3,
         select: function(event,ui){
@@ -18,7 +18,7 @@ $(document).ready(function () {
 		};
     //Obtiene el evaluado
     $("#evaluado").autocomplete({
-        source:"administrador/listaUsuarioNombre",
+        source:"administrador/busquedaEvaluadoPorNombre",
         //source:data;
         minLength: 3,
         select: function(event,ui){
