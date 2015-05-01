@@ -175,12 +175,22 @@ class Administrador extends CI_Controller {
 			
 	}
 	
-	public function listaUsuarioNombre() {
+	public function busquedaEvaluadorPorNombre() {
+		$this->load->model('pride/evaluador');
 		if(isset($_GET['term'])){
 			$cadena = $_GET['term'];
-			$this->usuario->jsonListaUsuarioNombre($cadena);
+			$this->evaluador->profesoresEvaluadores($cadena);
 		}
 		
+	}
+	
+	public function busquedaEvaluadoPorNombre() {
+		$this->load->model('pride/evaluado');
+		if(isset($_GET['term'])){
+			$cadena = $_GET['term'];
+			$this->evaluado->profesoresEvaluados($cadena);
+		}
+	
 	}
 	
 	public function evaluadosSinAsignar() {

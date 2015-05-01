@@ -32,15 +32,7 @@ class Evaluador_Evaluado extends CI_Controller {
 	public function quitar_profesor(){
 	
 		$this->evaluadorEvaluado->desasignar($idEvaluador,$idEvaluado);
-	
-	
 	}
-	
-	
-
-	
-
-	
 	
 }
 

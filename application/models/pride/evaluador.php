@@ -16,9 +16,9 @@ class Evaluador extends ActiveRecord\Model{
 	}
 	
 	
-	public function profeEvaluador(){
+	public function profesoresEvaluadores($cadena){
 		//$join = 'inner join evaluador e on (usuario.id=e.id_usuario)';
-		$evaluadores = Evaluador::find_by_sql('SELECT * FROM usuario u inner join evaluador e on u.id=e.id_usuario where e.id_periodo=(select max(id) from periodo);');
+		$evaluadores = Evaluador::find_by_sql("SELECT * FROM usuario u inner join evaluador e on u.id=e.id_usuario where e.id_periodo=(select max(id) from periodo) AND (CONCAT_WS('', u.nombre, u.apaterno, u.amaterno ) LIKE  '%$cadena%' OR u.rfc LIKE '%$cadena%')");
 		//$evaluadores = Usuario::all(array('joins' => $join));
 	
 	
