@@ -1,3 +1,19 @@
+function asignaEvaluadorEvaluado(idEvaluador,idEvaluado){
+    var parametros = {
+        idEvaluador:idEvaluador,
+        idEvaluado:idEvaluado
+    }
+    $.ajax({
+        data: parametros,
+        url: "evaluador_evaluado/asignaEvaluadoAEvaluador",
+        type: "POST",
+        beforeSend: function(){},
+        success: function(response){
+            console.log(response);
+        }
+    });
+}
+
 $(document).ready(function () {
     //Obtiene el evaluador
     $("#evaluador").autocomplete({
@@ -5,12 +21,14 @@ $(document).ready(function () {
         //source:data;
         minLength: 3,
         select: function(event,ui){
+        	console.log(ui.item.id);
             $("#evaluador").val(ui.item.nombre);
             $('input[name="idEvaluador"]').val(ui.item.id);
             $('input[name="nombreEvaluador"]').val(ui.item.nombre);
             return false;
         }
      }).data( "autocomplete" )._renderItem = function( ul, item ) {
+    	console.log(item);
 		return $( "<li></li>" )
 			.data( "item.autocomplete", item )
 			.append( "<a><strong>" + item.rfc + "</strong> / " + item.nombre + "</a>" )
@@ -37,8 +55,9 @@ $(document).ready(function () {
     $("#asignar").click(function(){
         var idEvaluador = $('input[name="idEvaluador"]').val();
         //var nombreEvaluador = $('input[name="nombreEvaluador"]').val();
-        var idEvaluado = $('input[name="idEvaluador"]').val();
+        var idEvaluado = $('input[name="idEvaluado"]').val();
         var nombreEvaluado = $('input[name="nombreEvaluado"]').val();
+        asignaEvaluadorEvaluado(idEvaluador,idEvaluado);
         
         var tabla = '<tr>' + 
                         '<td>' + nombreEvaluado + '</td>' + 
@@ -46,6 +65,7 @@ $(document).ready(function () {
                     '</tr>';
         
         $("#asignados").append(tabla);
+         $("#evaluado").val("");
         
     });
 

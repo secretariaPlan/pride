@@ -24,11 +24,9 @@ class Evaluador extends ActiveRecord\Model{
 	
 		$arreglo = array();
 		foreach ($evaluadores as $evaluador) {
-			$arreglo[] = array("id_usuario" => "$evaluador->id_usuario",
+			$arreglo[] = array("id" => "$evaluador->id_usuario",
 					"rfc" => "$evaluador->rfc",
-					"nombre" => "$evaluador->nombre",
-					"apaterno" => "$evaluador->apaterno",
-					"amaterno" => "$evaluador->amaterno",
+					"nombre" => "$evaluador->nombre $evaluador->apaterno $evaluador->amaterno",
 					"id_periodo" => "$evaluador->id_periodo"
 			);
 		}

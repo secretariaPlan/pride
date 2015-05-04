@@ -1,6 +1,6 @@
 <?php
 class Evaluador_Evaluado extends CI_Controller {
-
+	
 	public function  __construct()
 	{
 		parent::__construct();
@@ -13,19 +13,14 @@ class Evaluador_Evaluado extends CI_Controller {
 		
 	}
 	
-	public function relacionar(){
+	public function asignaEvaluadoAEvaluador(){
 	
 		if($this->input->post()){
-			$idEvaluador=$this->input->post("evaluador");
-			$idEvaluado=$this->input->post("evaluado");
+			$idEvaluador=$this->input->post("idEvaluador");
+			$idEvaluado=$this->input->post("idEvaluado");
 			$this->evaluadorEvaluado->relaciona_profesor($idEvaluador,$idEvaluado);
-			$mensaje=array('mensaje' => "Profesor Asignado Exitosamente");
-	
-		}else{
-			$this->evaluadorEvaluado->relaciona_profesor($idEvaluador,$idEvaluado);
-	
-		}
-	
+			
+		}else echo "Error";
 	
 	}
 	
