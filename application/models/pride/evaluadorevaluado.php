@@ -29,10 +29,3 @@ class EvaluadorEvaluado extends ActiveRecord\Model{
 	}
 	
 }
-
-
-
-
-
-
-?>
