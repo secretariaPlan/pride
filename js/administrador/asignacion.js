@@ -9,9 +9,26 @@ function asignaEvaluadorEvaluado(idEvaluador,idEvaluado){
         type: "POST",
         beforeSend: function(){},
         success: function(response){
-            console.log(response);
+            var respuesta = $.parseJSON(response);
+            $("#alerta").show();
+            $("#alerta").addClass("notice error");
+            $('html, body').animate({scrollTop: '0px'},"fast");
+            $("#alerta>p").html(respuesta.mensaje);
+            
+            setTimeout(function(){
+                     $("#alerta").hide();
+                },2000);
         }
     });
+}
+
+function evaluadosAsignadosAEvaluador(idevaluador){
+     var tabla = '<tr>' + 
+                        '<td>' + nombreEvaluado + '</td>' + 
+                        '<td><button class="red small desasignar tooltip" title = "Desasignar profesor"><i class="fa fa-remove"></i></button></td>'
+                    '</tr>';
+        
+        $("#asignados").append(tabla);
 }
 
 $(document).ready(function () {
@@ -21,15 +38,13 @@ $(document).ready(function () {
         //source:data;
         minLength: 3,
         select: function(event,ui){
-        	console.log(ui.item.id);
-            $("#evaluador").val(ui.item.nombre);
-            $('input[name="idEvaluador"]').val(ui.item.id);
+        	$("#evaluador").val(ui.item.nombre);
+            $('input[name="idEvaluador"]').val(ui.item.idEvaluador);
             $('input[name="nombreEvaluador"]').val(ui.item.nombre);
             return false;
         }
      }).data( "autocomplete" )._renderItem = function( ul, item ) {
-    	console.log(item);
-		return $( "<li></li>" )
+    	return $( "<li></li>" )
 			.data( "item.autocomplete", item )
 			.append( "<a><strong>" + item.rfc + "</strong> / " + item.nombre + "</a>" )
 			.appendTo( ul );
@@ -41,7 +56,7 @@ $(document).ready(function () {
         minLength: 3,
         select: function(event,ui){
             $("#evaluado").val(ui.item.nombre);
-            $('input[name="idEvaluado"]').val(ui.item.id);
+            $('input[name="idEvaluado"]').val(ui.item.idEvaluado);
             $('input[name="nombreEvaluado"]').val(ui.item.nombre);
             return false;
         }
@@ -59,13 +74,7 @@ $(document).ready(function () {
         var nombreEvaluado = $('input[name="nombreEvaluado"]').val();
         asignaEvaluadorEvaluado(idEvaluador,idEvaluado);
         
-        var tabla = '<tr>' + 
-                        '<td>' + nombreEvaluado + '</td>' + 
-                        '<td><button class="red small desasignar tooltip" title = "Desasignar profesor"><i class="fa fa-remove"></i></button></td>'
-                    '</tr>';
-        
-        $("#asignados").append(tabla);
-         $("#evaluado").val("");
+        $("#evaluado").val("");
         
     });
 

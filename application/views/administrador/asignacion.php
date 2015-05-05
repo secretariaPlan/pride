@@ -35,24 +35,40 @@ $boton = array(
 <body>
     <div class="grid flex">
     	<div class="col_12">
+            
+            
             <div class="col_2"></div>
             <div class="col_8 center">
                 <fieldset>
                     <legend>Asignacion</legend>
-                    <?php echo form_open("","",$hidden) ?>
-                    <?php echo form_label("Evaluador","evaluador")?>
-                    <br>
-                    <?php echo form_input($evaluador)?>
-                    <br>
-                    <br>
-                    <?php echo form_label("Evaluado","evaluado")?>
-                    <br>
-                    <?php echo form_input($evaluado)?>
-                    <br>
-                    <br>
-                     <?php echo form_close() ?>
-                     <?php echo form_input($boton)?>
-                    <br>
+                    <div class="col_12">
+                        <div class="clearfix"></div>
+                        <div class="col_4"></div>
+                        <div class="col_4">
+                            <div id="alerta" class="col_12"><p id="alertaMensaje" class="center"></p></div>
+                        </div>
+                        <div class="col_4"></div>
+                        <div class="clearfix"></div>
+                        <div class="col_2"></div>
+                        <div class="col_8">
+                            
+                            <?php echo form_open("","",$hidden) ?>
+                            <?php echo form_label("Evaluador","evaluador")?>
+                            <br>
+                            <?php echo form_input($evaluador)?>
+                            <br>
+                            <br>
+                            <?php echo form_label("Evaluado","evaluado")?>
+                            <br>
+                            <?php echo form_input($evaluado)?>
+                            <br>
+                            <br>
+                             <?php echo form_close() ?>
+                             <?php echo form_input($boton)?>
+                            <br>
+                        </div>
+                        <div class="col_2"></div>
+                    </div>
                 </fieldset>
             </div>
             <div class="col_2"></div>

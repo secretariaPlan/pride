@@ -18,16 +18,25 @@ class Evaluado extends ActiveRecord\Model{
 	
 	public function profesoresEvaluados($cadena){
 		//$join = 'inner join evaluador e on (usuario.id=e.id_usuario)';
-		$evaluados = Evaluado::find_by_sql("SELECT * FROM usuario u inner join evaluado e on u.id=e.id_usuario where e.id_periodo=(select max(id) from periodo) AND (CONCAT_WS('', u.nombre, u.apaterno, u.amaterno ) LIKE  '%$cadena%' OR u.rfc LIKE '%$cadena%')");
+		$evaluados = Evaluado::find_by_sql("SELECT u.id as id_usuario, u.rfc, CONCAT_WS(' ', u.nombre, u.apaterno, u.amaterno ) as nombre, e.id as id_evaluado
+												FROM usuario u
+												INNER JOIN evaluado e ON u.id = e.id_usuario
+												WHERE e.id_periodo = ( 
+												SELECT MAX( id ) 
+												FROM periodo ) 
+												AND (
+												nombre LIKE  '%$cadena%'
+												OR u.rfc LIKE  '%$cadena%'
+												)");
 		//$evaluadores = Usuario::all(array('joins' => $join));
 	
 	
 		$arreglo = array();
 		foreach ($evaluados as $evaluado) {
-			$arreglo[] = array("id" => "$evaluado->id_usuario",
-					"rfc" => "$evaluado->rfc",
-					"nombre" => "$evaluado->nombre $evaluado->apaterno $evaluado->amaterno",
-					"id_periodo" => "$evaluado->id_periodo"
+			$arreglo[] = array("idUsuario" => $evaluado->id_usuario,
+					"rfc" => $evaluado->rfc,
+					"nombre" => $evaluado->nombre,
+					"idEvaluado" => $evaluado->id_evaluado,
 			);
 		}
 		echo json_encode($arreglo);
