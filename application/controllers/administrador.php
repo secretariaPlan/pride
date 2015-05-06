@@ -57,6 +57,13 @@ class Administrador extends CI_Controller {
 		$evaluados= $this->evaluador->evaluadoresAsignados();
 	
 	}
+	
+	
+	public function UsuarioNoEvaluador(){
+		$this->load->model('pride/usuario');
+		$evaluados= $this->usuario->UsuarioNoEvaluador();
+	
+	}
 
 	
 	function nuevoPeriodo() {

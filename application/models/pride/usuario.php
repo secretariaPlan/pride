@@ -83,6 +83,27 @@ class Usuario extends ActiveRecord\Model{
 	}
 	
 	
+public function UsuarioNoEvaluador(){
+		//$join = 'inner join evaluador e on (usuario.id=e.id_usuario)';
+		$usuarios = Usuario::find_by_sql("select u.id id_usuario, rfc, nombre, apaterno, amaterno from usuario u left join evaluador e on u.id=e.id_usuario where e.id_usuario is null");
+		//$evaluadores = Usuario::all(array('joins' => $join));
+	
+	
+		$arreglo = array();
+		foreach ($usuarios as $usuario) {
+			$arreglo[] = array("id_usuario" => "$usuario->id_usuario",
+					"rfc" => "$usuario->rfc",
+					"nombre" => "$usuario->nombre",
+					"apaterno" => "$usuario->apaterno",
+					"amaterno" => "$usuario->amaterno",
+			);
+		}
+		echo json_encode($arreglo);
+	
+	
+	}
+	
+	
 }
 
 ?>
