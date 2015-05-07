@@ -65,6 +65,21 @@ class Evaluador extends ActiveRecord\Model{
 	
 	
 	
+	
+	public function DesasignarEvaluador(){
+		//$join = 'inner join evaluador e on (usuario.id=e.id_usuario)';
+		$evaluadores = Evaluador::find_by_sql("DELETE FROM evaluador WHERE id = '1'");
+		//$evaluadores = Usuario::all(array('joins' => $join));
+	
+
+	
+	
+	}
+	
+	
+	
+	
+	
 }
 
 ?>
