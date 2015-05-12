@@ -34,7 +34,7 @@ function evaluadosAsignadosAEvaluador(idevaluador){
 $(document).ready(function () {
     //Obtiene el evaluador
     $("#evaluador").autocomplete({
-        source:"administrador/busquedaEvaluadorPorNombre",
+        source:"busquedaEvaluadorPorNombre",
         //source:data;
         minLength: 3,
         select: function(event,ui){
@@ -51,7 +51,7 @@ $(document).ready(function () {
 		};
     //Obtiene el evaluado
     $("#evaluado").autocomplete({
-        source:"administrador/busquedaEvaluadoPorNombre",
+        source:"busquedaEvaluadoPorNombre",
         //source:data;
         minLength: 3,
         select: function(event,ui){
