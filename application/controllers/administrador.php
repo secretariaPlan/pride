@@ -204,6 +204,17 @@ class Administrador extends CI_Controller {
 		}
 	}
 	
+	public function evaluadosAsignados($idEvaluador) {
+		$this->load->model('pride/evaluado');
+		$this->load->model('pride/evaluadorevaluado');
+		
+		$condicion = array("conditions" => array("id_evaluador = ?",$idEvaluador));
+		$evaluadoEvaluador = EvaluadorEvaluado::all($condicion);
+		print_r($evaluadoEvaluador);
+		
+		
+	}
+	
 
 }
 
