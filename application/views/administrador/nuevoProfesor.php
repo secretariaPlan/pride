@@ -107,32 +107,32 @@
 															?>
 		            	
 		            	
-		            	<div class="col_4"><?php echo form_label('RFC: ', 'rfc')?></div>
+		            	<div class="col_5"><?php echo form_label('RFC: ', 'rfc')?></div>
 							<?php echo form_input($rfc)?>
 							<br>
 					<div id="rfcval" style="display: none;"></div>
 					<br>
-					<div class="col_4"><?php echo form_label('Nombre: ', 'nomprofe')?></div>
+					<div class="col_5"><?php echo form_label('Nombre: ', 'nomprofe')?></div>
 			            	<?php echo form_input($nombre)?>
 							<br> <br>
 
-					<div class="col_4"><?php echo form_label('Apellido Paterno: ', 'apaterno')?></div>
+					<div class="col_5"><?php echo form_label('Apellido Paterno: ', 'apaterno')?></div>
 			            	<?php echo form_input($apaterno)?>
 							<br> <br>
 
-					<div class="col_4"><?php echo form_label('Apellido Materno: ', 'amaterno')?></div>
+					<div class="col_5"><?php echo form_label('Apellido Materno: ', 'amaterno')?></div>
 			            	<?php echo form_input($amaterno)?>
 							<br> <br>
 
-					<div class="col_4"><?php echo form_label('Correo: ', 'correo')?></div>
+					<div class="col_5"><?php echo form_label('Correo: ', 'correo')?></div>
 							<?php echo form_input($correo)?>
 							<br> <br>
 
-					<div class="col_4"><?php echo form_label('Contrase&ntilde;a: ', 'password')?></div>
+					<div class="col_5"><?php echo form_label('Contrase&ntilde;a: ', 'password')?></div>
 							<?php echo form_input($password)?>
 							<br> <br>
 
-					<div class="col_4"><?php echo form_label('Repetir contrase&ntilde;a: ', 'repass')?></div>
+					<div class="col_5"><?php echo form_label('Repetir contrase&ntilde;a: ', 'repass')?></div>
 							<?php echo form_input($repass)?>
 							<br> <br>
 		                

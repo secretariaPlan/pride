@@ -12,9 +12,18 @@ class Administrador extends CI_Controller {
 	function index() {
 		$this->load->view("header");
 		$this->load->view("administrador/navegacion");
+		$this->load->view("administrador/bienvenido");
+		$this->load->view("footer");
+	}
+	
+	
+	function asignacion() {
+		$this->load->view("header");
+		$this->load->view("administrador/navegacion");
 		$this->load->view("administrador/asignacion");
 		$this->load->view("footer");
 	}
+	
 	
 	function altaPeriodos() {
 		$this->load->view("header");
@@ -23,16 +32,16 @@ class Administrador extends CI_Controller {
 		$this->load->view("footer");
 	}
 	
-	public function profeEvaluador(){
+	public function profesoresEvaluadores(){
 		$this->load->model('pride/evaluador');
-		$evaluados= $this->evaluador->profeEvaluador();
+		$evaluados= $this->evaluador->profesoresEvaluadores($cadena);
 		
 	}
 	
 	
-	public function profeEvaluado(){
+	public function profesoresEvaluados(){
 		$this->load->model('pride/evaluado');
-		$evaluados= $this->evaluado->profeEvaluado();
+		$evaluados= $this->evaluado->profesoresEvaluados($cadena);
 	
 	}
 	
@@ -46,6 +55,20 @@ class Administrador extends CI_Controller {
 	public function evaluadoresAsignados(){
 		$this->load->model('pride/evaluador');
 		$evaluados= $this->evaluador->evaluadoresAsignados();
+	
+	}
+	
+	
+	public function UsuarioNoEvaluador(){
+		$this->load->model('pride/usuario');
+		$evaluados= $this->usuario->UsuarioNoEvaluador();
+	
+	}
+	
+	
+	public function UsuariosEvaluadoresDelPeriodo(){
+		$this->load->model('pride/usuario');
+		$evaluados= $this->usuario->UsuariosEvaluadoresDelPeriodo();
 	
 	}
 

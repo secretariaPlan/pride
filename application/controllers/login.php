@@ -20,7 +20,7 @@ class Login extends CI_Controller {
 		if($this->administrador->loginAdmin($rfc,$pass)){
 			$this->load->view("header");
 			$this->load->view("administrador/navegacion");
-			$this->load->view("administrador/asignacion");
+			$this->load->view("administrador/bienvenido");
 			$this->load->view("footer");
 		}else{
 			$error = array("error" => "Datos incorrectos");

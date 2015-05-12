@@ -83,6 +83,55 @@ class Usuario extends ActiveRecord\Model{
 	}
 	
 	
+public function UsuarioNoEvaluador(){
+		//$join = 'inner join evaluador e on (usuario.id=e.id_usuario)';
+		$usuarios = Usuario::find_by_sql("select u.id id_usuario, rfc, nombre, apaterno, amaterno from usuario u left join evaluador e on u.id=e.id_usuario where e.id_usuario is null");
+		//$evaluadores = Usuario::all(array('joins' => $join));
+	
+	
+		$arreglo = array();
+		foreach ($usuarios as $usuario) {
+			$arreglo[] = array("id_usuario" => "$usuario->id_usuario",
+					"rfc" => "$usuario->rfc",
+					"nombre" => "$usuario->nombre",
+					"apaterno" => "$usuario->apaterno",
+					"amaterno" => "$usuario->amaterno",
+			);
+		}
+		echo json_encode($arreglo);
+	
+	
+	}
+	
+	
+	
+	
+	public function UsuariosEvaluadoresDelPeriodo(){
+		//$join = 'inner join evaluador e on (usuario.id=e.id_usuario)';
+		$usuarios = Usuario::find_by_sql("SELECT e.id_usuario, e.id_periodo, e.id_comision, u.rfc, CONCAT( u.nombre,  ' ', u.apaterno,  ' ', u.amaterno ) AS Usuario
+FROM usuario u
+INNER JOIN evaluador e ON u.id = e.id_usuario
+WHERE e.id_periodo = ( 
+SELECT MAX( id ) 
+FROM periodo )");
+		//$evaluadores = Usuario::all(array('joins' => $join));
+	
+	
+		$arreglo = array();
+		foreach ($usuarios as $usuario) {
+			$arreglo[] = array("id_usuario" => "$usuario->id_usuario",
+					"id_periodo" => "$usuario->id_periodo",
+					"id_comision" => "$usuario->id_comision",
+					"rfc" => "$usuario->rfc",
+					"Usuario" => "$usuario->Usuario_Evaluador",
+			);
+		}
+		echo json_encode($arreglo);
+	
+	
+	}
+	
+	
 }
 
 ?>
