@@ -32,6 +32,31 @@ function evaluadosAsignadosAEvaluador(idevaluador){
 }
 
 $(document).ready(function () {
+    
+    $("#evaluador").on("change keyup copy paste cut", function(){
+        
+        if($("#evaluador").val().length < 5 && $('input[name="idEvaluador"]').val() ){
+            $("#evaluador").val("");
+            $("#evaluado").val("");
+            $('input[name="idEvaluador"]').val("");
+            $('input[name="idEvaluado"]').val("");
+            $('input[name="nombreEvaluador"]').val("");
+            $('input[name="nombreEvaluado"]').val("");
+        }
+        
+    });
+    
+    $("#evaluado").on("change keyup copy paste cut", function(){
+        
+        if($("#evaluado").val().length < 5 && $('input[name="idEvaluado"]').val() ){
+            
+            $("#evaluado").val("");
+            $('input[name="idEvaluado"]').val("");
+            $('input[name="nombreEvaluado"]').val("");
+        }
+        
+    });
+    
     //Obtiene el evaluador
     $("#evaluador").autocomplete({
         source:"busquedaEvaluadorPorNombre",
