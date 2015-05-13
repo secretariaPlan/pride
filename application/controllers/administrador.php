@@ -119,6 +119,15 @@ class Administrador extends CI_Controller {
 		
 	}
 	
+	function nombrarEvaluador() {
+		$this->load->view("header");
+		$this->load->view("administrador/navegacion");
+		$this->load->view("administrador/nombrarEvaluador");
+		$this->load->view("footer");
+	
+	
+	}
+	
 	function nuevoProfesor() {
 		if($this->input->post()){
 			//$this->usuario->agregar();

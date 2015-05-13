@@ -8,8 +8,15 @@
 				<li><a href="<?php echo site_url('administrador/nuevoProfesor')?>">Nuevo Profesor</a></li>
 			</ul>
 		</li>
-		
-		<li><a href="#">Periodos</a>
+        
+        <li><a href="#">Evaluadores</a>
+			<ul>
+				<li><a href="<?php echo site_url('administrador/nombrarEvaluador')?>">Nombrar Evaluadores</a></li>
+			</ul>
+            
+		</li>
+        
+        <li><a href="#">Periodos</a>
 			<ul>
 				<li><a href="<?php echo site_url('administrador/altaPeriodos')?>">Alta Periodos</a></li>
 			</ul>
