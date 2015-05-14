@@ -10,16 +10,6 @@ $evaluador = array(
 $hidden = array(
 		"idEvaluador" => "",
 		"nombreEvaluador" => "",
-		"idEvaluado" => "",
-		"nombreEvaluado" =>""
-);
-
-$evaluado = array(
-		"id" => "evaluado",
-		"name" => "evaluado",
-		"size" => "50",
-		"type" => "text",
-		"placeholder" => "Ingrese el nombre del evaluado"
 );
 
 $boton = array(
@@ -31,7 +21,7 @@ $boton = array(
 		"value" => "Asignar"
 );
 ?>
-
+<script src="<?php echo base_url();?>js/administrador/nombrarEvaluador.js" ></script>
 <body>
     <div class="grid flex">
     	<div class="col_12">
@@ -51,13 +41,21 @@ $boton = array(
                         <div class="clearfix"></div>
                         <div class="col_2"></div>
                         <div class="col_8">
-                            
-                            <?php echo form_open("","",$hidden) ?>
+                             <?php echo form_open("","",$hidden) ?>
                             <?php echo form_label("Evaluador","evaluador")?>
                             <br>
                             <?php echo form_input($evaluador)?>
                             <br>
                             <br>
+                            <label>Periodo</label>
+                            <select id="periodo"></select>
+                            <br>
+                            <br>
+                            <label>Comisi&oacute;n</label>
+                            <select id="comision"></select>
+                            <br>
+                            <br>
+                            
                              <?php echo form_close() ?>
                              <?php echo form_input($boton)?>
                             <br>

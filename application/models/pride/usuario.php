@@ -48,7 +48,7 @@ class Usuario extends ActiveRecord\Model{
 	}
 	
 	public function listaUsuarioNombre($cadena) {
-		$condicion = array("conditions" => array("rfc LIKE '%$cadena%' OR nombre LIKE '%$cadena%' OR apaterno LIKE '%$cadena%' OR amaterno LIKE '%$cadena%'"));
+		$condicion = array("conditions" => array("rfc LIKE '%$cadena%' OR CONCAT( nombre, apaterno, amaterno) LIKE '%$cadena%' "));
 		$usuarios = Usuario::all($condicion);
 		//$arreglo = array();
 		foreach ($usuarios as $usuario) {

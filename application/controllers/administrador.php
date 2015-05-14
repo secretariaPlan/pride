@@ -16,8 +16,7 @@ class Administrador extends CI_Controller {
 		$this->load->view("footer");
 	}
 	
-	
-	function asignacion() {
+	 function asignacion() {
 		$this->load->view("header");
 		$this->load->view("administrador/navegacion");
 		$this->load->view("administrador/asignacion");
@@ -262,6 +261,15 @@ class Administrador extends CI_Controller {
 		echo json_encode($respuesta);
 		
 		
+	}
+	
+	function buscarUsuarioPorNombre() {
+		
+		if(isset($_GET['term'])){
+			$cadena = $_GET['term'];
+			$this->usuario->listaUsuarioNombre($cadena);
+				
+		}
 	}
 	
 
