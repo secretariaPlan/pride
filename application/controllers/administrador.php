@@ -236,13 +236,30 @@ class Administrador extends CI_Controller {
 		}
 	}
 	
-	public function evaluadosAsignados($idEvaluador) {
+	public function evaluadosAsignados() {
+		$this->load->model('pride/usuario');
 		$this->load->model('pride/evaluado');
 		$this->load->model('pride/evaluadorevaluado');
+		$respuesta = [];
+		$idEvaluador = $this->input->post("idEvaluador");
 		
 		$condicion = array("conditions" => array("id_evaluador = ?",$idEvaluador));
 		$evaluadoEvaluador = EvaluadorEvaluado::all($condicion);
-		print_r($evaluadoEvaluador);
+		
+		if(sizeof($evaluadoEvaluador)){
+			$respuesta["respuesta"] = array("exito" =>1);
+			foreach ($evaluadoEvaluador as $eval) {
+				$evaluado = Evaluado::find($eval->id_evaluado);
+				$usuario = Usuario::find($evaluado->id_usuario);
+				$respuesta["datos"][] = array("id_usuario" => $usuario->id,
+									"id_evaluado" => $evaluado->id,
+									"nombre" => "$usuario->nombre $usuario->apaterno $usuario->amaterno"
+							);
+			}
+		}else
+			$respuesta["respuesta"] = array("exito" =>0);
+		
+		echo json_encode($respuesta);
 		
 		
 	}

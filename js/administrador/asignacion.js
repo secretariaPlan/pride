@@ -5,7 +5,7 @@ function asignaEvaluadorEvaluado(idEvaluador,idEvaluado){
     }
     $.ajax({
         data: parametros,
-        url: "evaluador_evaluado/asignaEvaluadoAEvaluador",
+        url: "../evaluador_evaluado/asignaEvaluadoAEvaluador",
         type: "POST",
         beforeSend: function(){},
         success: function(response){
@@ -23,12 +23,56 @@ function asignaEvaluadorEvaluado(idEvaluador,idEvaluado){
 }
 
 function evaluadosAsignadosAEvaluador(idevaluador){
-     var tabla = '<tr>' + 
-                        '<td>' + nombreEvaluado + '</td>' + 
-                        '<td><button class="red small desasignar tooltip" title = "Desasignar profesor"><i class="fa fa-remove"></i></button></td>'
-                    '</tr>';
-        
-        $("#asignados").append(tabla);
+    var tabla ="";
+    var parametros = {
+        idEvaluador:idevaluador
+    }
+    $.ajax({
+        data: parametros,
+        url: "evaluadosAsignados",
+        type: "POST",
+        beforeSend: function(){},
+        success: function(response){
+            var respuesta = $.parseJSON(response);
+            //console.log(response);
+            if(respuesta.respuesta.exito){
+                $.each(respuesta.datos,function(index){
+                tabla += "<tr id='" + respuesta.datos[index].id_evaluado + "'>" + 
+                            "<td>" + respuesta.datos[index].nombre + "</td>" + 
+                            "<td><button class='red small desasignar tooltip'' title = 'Desasignar profesor'><i class='fa fa-remove'></i></button></td>" +
+                        "</tr>";
+                }); 
+                $("#asignados").html(tabla);
+            }
+                  
+        }
+    });
+}
+
+function desasignar(idEvaluador,idEvaluado){
+    var parametros={
+        idEvaluador:idEvaluador,
+        idEvaluado:idEvaluado
+    }
+    $.ajax({
+        data:parametros,
+        url:"../evaluador_evaluado/desasignar",
+        type: "POST",
+        beforeSend: function(){},
+        success: function(response){
+            var respuesta = $.parseJSON(response);
+            console.log(respuesta);
+            $("#alerta").removeClass();
+            $("#alerta").show();
+            $("#alerta").addClass("notice success");
+            $('html, body').animate({scrollTop: '0px'},"fast");
+            $("#alerta>p").html(respuesta.mensaje);
+            
+            setTimeout(function(){
+                     $("#alerta").hide();
+                },2000);
+        }
+    });
 }
 
 $(document).ready(function () {
@@ -42,6 +86,7 @@ $(document).ready(function () {
             $('input[name="idEvaluado"]').val("");
             $('input[name="nombreEvaluador"]').val("");
             $('input[name="nombreEvaluado"]').val("");
+            $("#asignados").html("");     
         }
         
     });
@@ -66,6 +111,7 @@ $(document).ready(function () {
         	$("#evaluador").val(ui.item.nombre);
             $('input[name="idEvaluador"]').val(ui.item.idEvaluador);
             $('input[name="nombreEvaluador"]').val(ui.item.nombre);
+            evaluadosAsignadosAEvaluador(ui.item.idEvaluador);
             return false;
         }
      }).data( "autocomplete" )._renderItem = function( ul, item ) {
@@ -74,6 +120,7 @@ $(document).ready(function () {
 			.append( "<a><strong>" + item.rfc + "</strong> / " + item.nombre + "</a>" )
 			.appendTo( ul );
 		};
+    
     //Obtiene el evaluado
     $("#evaluado").autocomplete({
         source:"busquedaEvaluadoPorNombre",
@@ -91,17 +138,24 @@ $(document).ready(function () {
 			.append( "<a><strong>" + item.rfc + "</strong> / " + item.nombre + "</a>" )
 			.appendTo( ul );
 		};
-    
+    //Asigna el profesor
     $("#asignar").click(function(){
         var idEvaluador = $('input[name="idEvaluador"]').val();
-        //var nombreEvaluador = $('input[name="nombreEvaluador"]').val();
+        var nombreEvaluador = $('input[name="nombreEvaluador"]').val();
         var idEvaluado = $('input[name="idEvaluado"]').val();
         var nombreEvaluado = $('input[name="nombreEvaluado"]').val();
         asignaEvaluadorEvaluado(idEvaluador,idEvaluado);
-        
+        evaluadosAsignadosAEvaluador(idEvaluador);
         $("#evaluado").val("");
         
     });
-
+    
+    //Desasignar el profesor
+    $(document).on("click",".desasignar",function(){
+        var idEvaluador = $('input[name="idEvaluador"]').val();
+        var idEvaluado = $(this).closest("tr").attr("id");
+        desasignar(idEvaluador,idEvaluado);
+        evaluadosAsignadosAEvaluador(idEvaluador);
+    });
     
 });
