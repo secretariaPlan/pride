@@ -17,6 +17,13 @@ class Periodo extends ActiveRecord\Model {
 			
 			$periodo->save();
 		}
+		
+		public function listaPeriodo(){
+			$periodos = Periodo::all();
+			foreach ($periodos as $periodo) {
+				echo $periodo->fineval;
+			}
+		}
 }
 
 ?>

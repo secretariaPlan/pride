@@ -8,6 +8,10 @@ class Periodos extends CI_Controller {
 				
 	}
 	
+	public function listaPeriodo() {
+		$this->periodo->listaPeriodo();
+	}
+	
 	
 }
 	
