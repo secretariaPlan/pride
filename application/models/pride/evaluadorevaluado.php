@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 class EvaluadorEvaluado extends ActiveRecord\Model{
 	
