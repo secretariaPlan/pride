@@ -32,28 +32,28 @@ class Administrador extends CI_Controller {
 	}
 	
 	public function profesoresEvaluadores(){
-		$this->load->model('pride/evaluador');
-		$evaluados= $this->evaluador->profesoresEvaluadores($cadena);
+		$this->load->model('pride/evaluador_model');
+		$evaluados= $this->evaluador_model->profesoresEvaluadores($cadena);
 		
 	}
 	
 	
 	public function profesoresEvaluados(){
-		$this->load->model('pride/evaluado');
-		$evaluados= $this->evaluado->profesoresEvaluados($cadena);
+		$this->load->model('pride/evaluado_model');
+		$evaluados= $this->evaluado_model->profesoresEvaluados($cadena);
 	
 	}
 	
 	
 	public function evaluadoSinEvaluador(){
-		$this->load->model('pride/evaluado');
-		$evaluados= $this->evaluado->evaluadoSinEvaluador();
+		$this->load->model('pride/evaluado_model');
+		$evaluados= $this->evaluado_model->evaluadoSinEvaluador();
 	
 	}
 	
 	public function evaluadoresAsignados(){
-		$this->load->model('pride/evaluador');
-		$evaluados= $this->evaluador->evaluadoresAsignados();
+		$this->load->model('pride/evaluador_model');
+		$evaluados= $this->evaluador_model->evaluadoresAsignados();
 	
 	}
 	
@@ -122,6 +122,15 @@ class Administrador extends CI_Controller {
 		$this->load->view("header");
 		$this->load->view("administrador/navegacion");
 		$this->load->view("administrador/nombrarEvaluador");
+		$this->load->view("footer");
+	
+	
+	}
+	
+	function nombrarEvaluado() {
+		$this->load->view("header");
+		$this->load->view("administrador/navegacion");
+		$this->load->view("administrador/nombrarEvaluado");
 		$this->load->view("footer");
 	
 	
@@ -207,19 +216,19 @@ class Administrador extends CI_Controller {
 	}
 	
 	public function busquedaEvaluadorPorNombre() {
-		$this->load->model('pride/evaluador');
+		$this->load->model('pride/evaluador_model');
 		if(isset($_GET['term'])){
 			$cadena = $_GET['term'];
-			$this->evaluador->profesoresEvaluadores($cadena);
+			$this->evaluador_model->profesoresEvaluadores($cadena);
 		}
 		
 	}
 	
 	public function busquedaEvaluadoPorNombre() {
-		$this->load->model('pride/evaluado');
+		$this->load->model('pride/evaluado_model');
 		if(isset($_GET['term'])){
 			$cadena = $_GET['term'];
-			$this->evaluado->profesoresEvaluados($cadena);
+			$this->evaluado_model->profesoresEvaluados($cadena);
 		}
 	
 	}
