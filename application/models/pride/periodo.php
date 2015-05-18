@@ -19,10 +19,13 @@ class Periodo extends ActiveRecord\Model {
 		}
 		
 		public function listaPeriodo(){
+			$respuesta = [];
 			$periodos = Periodo::all();
 			foreach ($periodos as $periodo) {
-				echo $periodo->fineval;
+				$respuesta["periodos"][] = array("id" => $periodo->id,
+												   "periodo"=>"$periodo->year-$periodo->numero");
 			}
+			echo json_encode($respuesta);
 		}
 }
 
