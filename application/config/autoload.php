@@ -52,7 +52,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('csvreader');
+$autoload['libraries'] = array('csvreader','session');
 $autoload['sparks'] = array("php-activerecord/0.0.2");
 
 
@@ -65,7 +65,7 @@ $autoload['sparks'] = array("php-activerecord/0.0.2");
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('form','url','session');
+$autoload['helper'] = array('form','url');
 
 
 /*

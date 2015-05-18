@@ -9,26 +9,47 @@ class Administrador extends CI_Controller {
 		
 	}
 	
+	function sesionActiva(){
+		if ($this->session->userdata("idAdministrador")) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
 	function index() {
-		$this->load->view("header");
-		$this->load->view("administrador/navegacion");
-		$this->load->view("administrador/bienvenido");
-		$this->load->view("footer");
+		if($this->sesionActiva()){
+			$this->load->view("header");
+			$this->load->view("administrador/navegacion");
+			$this->load->view("administrador/bienvenido");
+			$this->load->view("footer");
+		}else{
+			redirect("/login","refresh");
+		}
+		
 	}
 	
 	 function asignacion() {
-		$this->load->view("header");
-		$this->load->view("administrador/navegacion");
-		$this->load->view("administrador/asignacion");
-		$this->load->view("footer");
+	 	if($this->sesionActiva()){
+			$this->load->view("header");
+			$this->load->view("administrador/navegacion");
+			$this->load->view("administrador/asignacion");
+			$this->load->view("footer");
+		}else{
+			redirect("/login","refresh");
+		}	
 	}
 	
 	
 	function altaPeriodos() {
-		$this->load->view("header");
-		$this->load->view("administrador/navegacion");
-		$this->load->view("administrador/altaPeriodos");
-		$this->load->view("footer");
+		if($this->sesionActiva()){	
+			$this->load->view("header");
+			$this->load->view("administrador/navegacion");
+			$this->load->view("administrador/altaPeriodos");
+			$this->load->view("footer");
+		}else{
+			redirect("/login","refresh");
+		}	
 	}
 	
 	public function profesoresEvaluadores(){
@@ -109,31 +130,46 @@ class Administrador extends CI_Controller {
 	}
 	
 	function altaProfesores() {
-		$this->load->view("header");
-		$this->load->view("administrador/navegacion");
-		$manual=array('manual' => $this->load->view("administrador/manualAltaprofesor"));
-		$this->load->view("administrador/altaProfesores");
-		$this->load->view("footer");
+		if($this->sesionActiva()){
+			$this->load->view("header");
+			$this->load->view("administrador/navegacion");
+			$manual=array('manual' => $this->load->view("administrador/manualAltaprofesor"));
+			$this->load->view("administrador/altaProfesores");
+			$this->load->view("footer");
+		}else{
+			redirect("/login","refresh");
+		}	
 		
 		
 	}
 	
 	function nombrarEvaluador() {
-		$this->load->view("header");
-		$this->load->view("administrador/navegacion");
-		$this->load->view("administrador/nombrarEvaluador");
-		$this->load->view("footer");
-	
+		if($this->sesionActiva()){
+			$this->load->view("header");
+			$this->load->view("administrador/navegacion");
+			$this->load->view("administrador/nombrarEvaluador");
+			$this->load->view("footer");
+		}else{
+			redirect("/login","refresh");
+		}
 	
 	}
 	
 	function nombrarEvaluado() {
-		$this->load->view("header");
-		$this->load->view("administrador/navegacion");
-		$this->load->view("administrador/nombrarEvaluado");
-		$this->load->view("footer");
+		if($this->sesionActiva()){
+			$this->load->view("header");
+			$this->load->view("administrador/navegacion");
+			$this->load->view("administrador/nombrarEvaluado");
+			$this->load->view("footer");
+		}else{
+			redirect("/login","refresh");
+		}
 	
+	}
 	
+	function cerrarSesion(){
+		$this->session->sess_destroy();
+		redirect("/login","refresh");
 	}
 	
 	function nuevoProfesor() {

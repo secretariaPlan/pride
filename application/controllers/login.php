@@ -18,6 +18,9 @@ class Login extends CI_Controller {
 		$pass = md5($this->input->post("pass"));
 		
 		if($this->administrador->loginAdmin($rfc,$pass)){
+			$datosSesion = $this->administrador->datosAdmin($rfc,$pass);
+			$this->session->set_userdata($datosSesion);
+			
 			$this->load->view("header");
 			$this->load->view("administrador/navegacion");
 			$this->load->view("administrador/bienvenido");
