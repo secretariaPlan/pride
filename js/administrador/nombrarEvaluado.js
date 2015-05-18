@@ -36,7 +36,7 @@ function listaComisiones(){
     });
 }
 
-function nombrarEvaluador(idUsuario,idPeriodo,idComision){
+function nombrarEvaluado(idUsuario,idPeriodo,idComision){
     //console.log(idUsuario,idPeriodo,idComision);
     var parametros = {
         idUsuario: idUsuario,
@@ -45,7 +45,7 @@ function nombrarEvaluador(idUsuario,idPeriodo,idComision){
     }
     $.ajax({
         data: parametros,
-        url: "../evaluador_controller/nuevoEvaluador",
+        url: "../evaluado_controller/nuevoEvaluado",
         type: "POST",
         beforeSend: function(){},
         success: function(response){
@@ -68,9 +68,9 @@ function nombrarEvaluador(idUsuario,idPeriodo,idComision){
     });
 }
 
-function listaEvaluadoresDelPeriodo(){
+function listaEvaluadosDelPeriodo(){
     $.ajax({
-        url: "../evaluador_controller/evaluadoresDelPeriodo",
+        url: "../evaluado_controller/evaluadosDelPeriodo",
         type: "POST",
         beforeSend: function(){},
         success: function(response){
@@ -78,7 +78,7 @@ function listaEvaluadoresDelPeriodo(){
             var respuesta = $.parseJSON(response);
             $.each(respuesta.usuarios,function(index){
                 //console.log(respuesta.usuarios[index]);
-                tabla += "<tr id='"+ respuesta.usuarios[index].idEvaluador +"'>"+
+                tabla += "<tr id='"+ respuesta.usuarios[index].idEvaluado +"'>"+
                             "<td>"+ respuesta.usuarios[index].nombre +"</td>" +
                             "<td><button class='red small desasignar tooltip'' title = 'Desasignar profesor'><i class='fa fa-remove'></i></button></td>" +
                         "</tr>";
@@ -89,14 +89,15 @@ function listaEvaluadoresDelPeriodo(){
     });
 }
 
+
 $(document).ready(function () {
     
-    $("#evaluador").on("change keyup copy paste cut", function(){
+    $("#usuario").on("change keyup copy paste cut", function(){
         
-        if($("#evaluador").val().length < 5 && $('input[name="idEvaluador"]').val() ){
-            $("#evaluador").val("");
-            $('input[name="idEvaluador"]').val("");
-            $('input[name="nombreEvaluador"]').val("");
+        if($("#usuario").val().length < 5 && $('input[name="idEvaluador"]').val() ){
+            $("#usuario").val("");
+            $('input[name="idUsuario"]').val("");
+            $('input[name="nombreUsuario"]').val("");
             $("#asignados").html("");     
         }
         
@@ -135,9 +136,10 @@ $(document).ready(function () {
     listaComisiones();
     
     /////////////////////////////////
-    //ListaEvaluadores del Periodo//
+    //ListaEvaluados del Periodo//
     ///////////////////////////////
-    listaEvaluadoresDelPeriodo();
+    listaEvaluadosDelPeriodo();
+    
     //////////////////////////
     //Nombrar como evalaudor//
     /////////////////////////
@@ -147,8 +149,8 @@ $(document).ready(function () {
         var idPeriodo = $("#periodo").val();
         var idComision = $("#comision").val();
         console.log(idUsuario);
-        nombrarEvaluador(idUsuario,idPeriodo,idComision);
-        listaEvaluadoresDelPeriodo()
+        nombrarEvaluado(idUsuario,idPeriodo,idComision);
+        listaEvaluadosDelPeriodo();
     });
     
 });

@@ -9,7 +9,7 @@ $usuario = array(
 
 $hidden = array(
 		"idUsuario" => "",
-		"nombreEvaluador" => "",
+		"nombreUsuario" => "",
 );
 
 $boton = array(
@@ -21,7 +21,7 @@ $boton = array(
 		"value" => "Asignar"
 );
 ?>
-<script src="<?php echo base_url();?>js/administrador/nombrarEvaluador.js" ></script>
+<script src="<?php echo base_url();?>js/administrador/nombrarEvaluado.js" ></script>
 <body>
     <div class="grid flex">
     	<div class="col_12">
@@ -71,7 +71,7 @@ $boton = array(
             <div class="col_8 center">
                 <div class="col_12">
                     <fieldset>
-                        <legend>Evaluadores del Periodo</legend>
+                        <legend>Profesores</legend>
                         <div class="col_3"></div>
                         <div class="col_6">
                             <table class="sortable" cellspacing="0" cellpadding="0">
