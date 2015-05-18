@@ -4,15 +4,38 @@ class Evaluador extends ActiveRecord\Model{
 	
 	static $table_name = "evaluador";
 	
+	function verificarEvaluador($idUsuario,$idPeriodo,$idComision) {
+		
+		$condiciones = array("conditions" => array("id_usuario = ? AND id_periodo = ? AND id_comision = ?",$idUsuario.$idPeriodo,$idComision));
+		$evaluador = Evaluador::all($condiciones);
+		
+		if (!isset($evaluador)) 
+			return true;
+		else 
+			return false;
+	}
+	
 	function nuevoEvaluador($idUsuario,$idPeriodo,$idComision) {
 	
-		$evaluador = new Evaluador();
-	
-		$evaluador->id_usuario = $idUsuario;
-		$evaluador->id_periodo = $idPeriodo;
-		$evaluador->id_comision = $idComision;
-	
-		$evaluador->save();
+		if($this->verificarEvaluador($idUsuario, $idPeriodo, $idComision)){
+			$evaluador = new Evaluador();
+			
+			$evaluador->id_usuario = $idUsuario;
+			$evaluador->id_periodo = $idPeriodo;
+			$evaluador->id_comision = $idComision;
+			
+			$evaluador->save();
+			
+			$respuesta = array("exito" => 1,
+								"mensaje" => "Profesor guardaddo como evaluador"
+			);
+		}else 
+			
+			$respuesta = array("exito" => 0,
+					"mensaje" => "Profesor anteriormente guardado como evaluador");
+			
+			echo json_encode($respuesta);
+		
 	}
 	
 	
