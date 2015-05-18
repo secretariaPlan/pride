@@ -15,6 +15,13 @@
 			</ul>
             
 		</li>
+		
+		<li><a href="#">Evaluados</a>
+			<ul>
+				<li><a href="<?php echo site_url('administrador/nombrarEvaluado')?>">Nombrar Evaluados</a></li>
+			</ul>
+            
+		</li>
         
         <li><a href="#">Periodos</a>
 			<ul>
