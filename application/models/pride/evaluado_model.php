@@ -95,6 +95,17 @@ class Evaluado_Model extends ActiveRecord\Model{
 		}
 		echo json_encode($arreglo);
 	}
+	
+	function desasignarEvaluadoDelPeriodo($idEvaluado){
+	
+		$evaluado = Evaluado_Model::first("$idEvaluado");
+	
+		$evaluado->delete();
+	
+		$respuesta["mensaje"] = "Evaluado eliminado del periodo";
+	
+		echo json_encode($respuesta);
+	}
 
 }
 

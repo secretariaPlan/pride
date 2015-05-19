@@ -87,10 +87,15 @@ class Evaluador_Model extends ActiveRecord\Model{
 	}
 	
 	
-	public function DesasignarEvaluador(){
-		//$join = 'inner join evaluador e on (usuario.id=e.id_usuario)';
-		$evaluadores = EvaluadorModel::find_by_sql("DELETE FROM evaluador WHERE id = '1'");
-		//$evaluadores = Usuario::all(array('joins' => $join));
+	function desasignarEvaluadorDelPeriodo($idEvaluador){
+		
+		$evaluador = Evaluador_Model::first("$idEvaluador");
+		
+		$evaluador->delete();
+		
+		$respuesta["mensaje"] = "Evaluador eliminado del periodo";
+		
+		echo json_encode($respuesta);
 	}
 	
 	

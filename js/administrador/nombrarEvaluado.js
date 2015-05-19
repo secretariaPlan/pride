@@ -74,21 +74,47 @@ function listaEvaluadosDelPeriodo(){
         type: "POST",
         beforeSend: function(){},
         success: function(response){
+            $("#asignados").html("");
             var tabla = "";
             var respuesta = $.parseJSON(response);
-            $.each(respuesta.usuarios,function(index){
-                //console.log(respuesta.usuarios[index]);
-                tabla += "<tr id='"+ respuesta.usuarios[index].idEvaluado +"'>"+
-                            "<td>"+ respuesta.usuarios[index].nombre +"</td>" +
-                            "<td><button class='red small desasignar tooltip'' title = 'Desasignar profesor'><i class='fa fa-remove'></i></button></td>" +
-                        "</tr>";
-            });
-            $("#asignados").html(tabla);
-            console.log(tabla);
+            if(respuesta.exito){
+                $.each(respuesta.usuarios,function(index){
+                    //console.log(respuesta.usuarios[index]);
+                    tabla += "<tr id='"+ respuesta.usuarios[index].idEvaluado +"'>"+
+                                "<td>"+ respuesta.usuarios[index].nombre +"</td>" +
+                                "<td><button class='red small desasignar tooltip'' title = 'Desasignar profesor'><i class='fa fa-remove'></i></button></td>" +
+                            "</tr>";
+                });
+                $("#asignados").html(tabla);
+                //console.log(tabla);
+            }else{
+                $("#asignados").html("");
+            }
         }
     });
 }
 
+function desasignar(idEvaluado){
+    var parametros = {idEvaluado:idEvaluado}
+    $.ajax({
+        data:parametros,
+        url: "../evaluado_controller/desasignarEvaluadoDelPeriodo",
+        type: "POST",
+        beforeSend: function(){},
+        success: function(response){
+            console.log(response);
+            var respuesta = $.parseJSON(response);
+            $("#alerta").removeClass();
+            $("#alerta").addClass("notice success");
+            $("#alerta").show();
+            $('html, body').animate({scrollTop: '0px'},"fast");
+            $("#alerta>p").html(respuesta.mensaje);
+            setTimeout(function(){
+                 $("#alerta").hide();
+            },2000);
+        }
+    });
+}
 
 $(document).ready(function () {
     
@@ -150,6 +176,12 @@ $(document).ready(function () {
         var idComision = $("#comision").val();
         console.log(idUsuario);
         nombrarEvaluado(idUsuario,idPeriodo,idComision);
+        listaEvaluadosDelPeriodo();
+    });
+    
+    $(document).on("click",".desasignar",function(){
+        var idEvaluado = $(this).closest("tr").attr("id");
+        desasignar(idEvaluado);
         listaEvaluadosDelPeriodo();
     });
     

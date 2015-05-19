@@ -30,15 +30,26 @@ class Evaluado_Controller extends CI_Controller {
 	
 		$condiciones = array("conditions" => array("id_periodo = ?",$periodo->id));
 		$evaluados = Evaluado_Model::all($condiciones);
+		
+		if (sizeof($evaluados)){
+			$respuesta["exito"] = 1;
+			foreach ($evaluados as $evaluado) {
+				$usuario = Usuario::first($evaluado->id_usuario);
+				$respuesta["usuarios"][] = array("idUsuario" => $usuario->id,
+						"idEvaluado" => $evaluado->id,
+						"nombre" => "$usuario->nombre $usuario->apaterno $usuario->amaterno"
+				);
+			}
+		}else $respuesta["exito"] = 0;
 	
-		foreach ($evaluados as $evaluado) {
-			$usuario = Usuario::first($evaluado->id_usuario);
-			$respuesta["usuarios"][] = array("idUsuario" => $usuario->id,
-					"idEvaluador" => $evaluado->id,
-					"nombre" => "$usuario->nombre $usuario->apaterno $usuario->amaterno"
-			);
-		}
+		
 		echo json_encode($respuesta);
+	}
+	
+	function desasignarEvaluadoDelPeriodo(){
+		$idEvaluado = $this->input->post("idEvaluado");
+	
+		$this->evaluado_model->desasignarEvaluadoDelPeriodo($idEvaluado);
 	}
 }
 

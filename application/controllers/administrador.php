@@ -101,7 +101,7 @@ class Administrador extends CI_Controller {
 		
 		$periodo = Periodo::first(array("conditions" => array("year = ? AND numero = ?",$year,$numero)));
 		
-		if(!$periodo->id){
+		if(!isset($periodo)){
 			$inicioPer = $this->input->post("inicioPeriodo");
 			$finPer = $this->input->post("finPeriodo");
 			$inicioEval = $this->input->post("inicioEvaluacion");
@@ -284,7 +284,7 @@ class Administrador extends CI_Controller {
 		$this->load->model('pride/usuario');
 		$this->load->model('pride/evaluado');
 		$this->load->model('pride/evaluadorevaluado');
-		$respuesta = [];
+		$respuesta = array();
 		$idEvaluador = $this->input->post("idEvaluador");
 		
 		$condicion = array("conditions" => array("id_evaluador = ?",$idEvaluador));
