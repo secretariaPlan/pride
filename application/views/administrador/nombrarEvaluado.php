@@ -30,7 +30,7 @@ $boton = array(
             <div class="col_2"></div>
             <div class="col_8 center">
                 <fieldset>
-                    <legend>Nombrar Evaluador</legend>
+                    <legend>Nombrar Evaluados del periodo</legend>
                     <div class="col_12">
                         <div class="clearfix"></div>
                         <div class="col_4"></div>
