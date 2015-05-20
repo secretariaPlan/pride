@@ -10,11 +10,17 @@ function asignaEvaluadorEvaluado(idEvaluador,idEvaluado){
         beforeSend: function(){},
         success: function(response){
             var respuesta = $.parseJSON(response);
-            $("#alerta").show();
-            $("#alerta").addClass("notice error");
-            $('html, body').animate({scrollTop: '0px'},"fast");
+            console.log(respuesta);
+            $("#alerta").removeClass();
+            if(respuesta.status){
+                $("#alerta").addClass("notice success");
+            } 
+            else{
+                 $("#alerta").addClass("notice error");
+            }
             $("#alerta>p").html(respuesta.mensaje);
-            
+            $("#alerta").show();
+            $('html, body').animate({scrollTop: '0px'},"fast");
             setTimeout(function(){
                      $("#alerta").hide();
                 },2000);
@@ -35,6 +41,7 @@ function evaluadosAsignadosAEvaluador(idevaluador){
         success: function(response){
             var respuesta = $.parseJSON(response);
             //console.log(response);
+            $("#asignados").html("");
             if(respuesta.respuesta.exito){
                 $.each(respuesta.datos,function(index){
                 tabla += "<tr id='" + respuesta.datos[index].id_evaluado + "'>" + 
@@ -63,11 +70,10 @@ function desasignar(idEvaluador,idEvaluado){
             var respuesta = $.parseJSON(response);
             console.log(respuesta);
             $("#alerta").removeClass();
-            $("#alerta").show();
             $("#alerta").addClass("notice success");
+            $("#alerta>p").html(respuesta.respuesta.mensaje);
+            $("#alerta").show();
             $('html, body').animate({scrollTop: '0px'},"fast");
-            $("#alerta>p").html(respuesta.mensaje);
-            
             setTimeout(function(){
                      $("#alerta").hide();
                 },2000);
@@ -145,8 +151,12 @@ $(document).ready(function () {
         var idEvaluado = $('input[name="idEvaluado"]').val();
         var nombreEvaluado = $('input[name="nombreEvaluado"]').val();
         asignaEvaluadorEvaluado(idEvaluador,idEvaluado);
-        evaluadosAsignadosAEvaluador(idEvaluador);
+        setTimeout(function(){
+                     evaluadosAsignadosAEvaluador(idEvaluador);
+                },500);
         $("#evaluado").val("");
+        $('input[name="idEvaluado"]').val("");
+        $('input[name="nombreEvaluado"]').val("");
         
     });
     
@@ -155,7 +165,10 @@ $(document).ready(function () {
         var idEvaluador = $('input[name="idEvaluador"]').val();
         var idEvaluado = $(this).closest("tr").attr("id");
         desasignar(idEvaluador,idEvaluado);
-        evaluadosAsignadosAEvaluador(idEvaluador);
+        setTimeout(function(){
+                     evaluadosAsignadosAEvaluador(idEvaluador);
+                },500);
+        
     });
     
 });
