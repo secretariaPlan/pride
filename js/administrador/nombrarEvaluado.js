@@ -176,13 +176,18 @@ $(document).ready(function () {
         var idComision = $("#comision").val();
         console.log(idUsuario);
         nombrarEvaluado(idUsuario,idPeriodo,idComision);
-        listaEvaluadosDelPeriodo();
+        setTimeout(function(){
+                     listaEvaluadosDelPeriodo();
+                },500);
     });
     
     $(document).on("click",".desasignar",function(){
         var idEvaluado = $(this).closest("tr").attr("id");
         desasignar(idEvaluado);
-        listaEvaluadosDelPeriodo();
+        setTimeout(function(){
+                     listaEvaluadosDelPeriodo();
+                },500);
+        
     });
     
 });
