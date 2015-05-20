@@ -24,11 +24,11 @@ class EvaluadorEvaluado extends ActiveRecord\Model{
 			
 			$evaluador_evaluado->save();
 			
-			$status = array("status" => "1",
+			$status = array("status" => 1,
 							 "mensaje" => "Asignacion exitosa");
 		} else
 			
-			$status = array("status" => "0",
+			$status = array("status" => 0,
 							 "mensaje" => "Profesor anteriormente asignado");
 		
 		echo json_encode($status);
