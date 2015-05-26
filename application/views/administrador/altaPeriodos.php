@@ -154,6 +154,31 @@ $boton = array(
                      <?php echo form_close() ?>
                 </fieldset>
             </div>
+            <div class="col_2"></div>
+            <div class="clearfix"></div>
+            
+            <div class="col_2"></div>
+            <div class="col_8 center">
+                <div class="col_12">
+                    <fieldset>
+                        <legend>Periodos Registrados</legend>
+                        <div class="col_3"></div>
+                        <div class="col_6">
+                            <table class="sortable" cellspacing="0" cellpadding="0">
+                                <thead>
+                                    <th>Periodo</th>
+                                    <th>Opciones</th>
+                                </thead>
+                                <tbody id = "asignados">
+
+                                </tbody>
+                            </table>    
+                        </div>
+                        <div class="col_3"></div>
+                    </fieldset>    
+                </div>
+            </div>
+            <div class="col_2"></div>
        </div>
     </div>
 </body>
