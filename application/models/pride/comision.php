@@ -5,7 +5,7 @@ class Comision extends ActiveRecord\Model{
 	static $table_name = "comision";
 
 	public function listaComision(){
-		$respuesta = [];
+		$respuesta = array();
 		$comisiones = Comision::all();
 		foreach ($comisiones as $comision) {
 			$respuesta["comisiones"][] = array("id" => $comision->id,

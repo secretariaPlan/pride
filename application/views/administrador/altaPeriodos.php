@@ -72,10 +72,12 @@ $boton = array(
 		"value" => "Guardar Periodo"
 );
 ?>
-<script type="text/javascript" src="<?php echo base_url()?>js/periodo.js"></script>
+<script src="<?php echo base_url();?>js/periodo.js" ></script>
 <body>
     <div class="grid flex">
+
     	<div class="col_12">
+    	 
     		<?php if(isset($exito)){?>
     		<div class="col_4"></div>
             <div class="col_4 center">
@@ -92,6 +94,13 @@ $boton = array(
             <div class="col_4"></div>
             <div class="clearfix"></div>
     		<?php }?>
+    		<div class="col_4"></div>
+    		<div class="col_4 center">
+            	<div id="alerta"><p id="alertaMensaje" class="center"></p></div>
+            </div>
+ 
+     
+            <div class="clearfix"></div>            
             <div class="col_2"></div>
             <div class="col_8 center">
                 <fieldset>
@@ -169,8 +178,8 @@ $boton = array(
                                     <th>Periodo</th>
                                     <th>Opciones</th>
                                 </thead>
-                                <tbody id = "asignados">
-
+                                <tbody id = "ultimoPeriodo">
+                                <tbody id = "periodos">
                                 </tbody>
                             </table>    
                         </div>
@@ -182,3 +191,11 @@ $boton = array(
        </div>
     </div>
 </body>
+
+
+
+
+
+
+
+
