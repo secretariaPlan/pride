@@ -99,25 +99,33 @@ class Administrador extends CI_Controller {
 		$year = $this->input->post("year");
 		$numero = $this->input->post("numero");
 		
+		
 		$periodo = Periodo::first(array("conditions" => array("year = ? AND numero = ?",$year,$numero)));
+		$ultimaEntrega = Periodo::find_by_sql("SELECT finentrega FROM periodo ORDER BY finentrega DESC LIMIT 1");
 		
 		if(!isset($periodo)){
-			$inicioPer = $this->input->post("inicioPeriodo");
-			$finPer = $this->input->post("finPeriodo");
-			$inicioEval = $this->input->post("inicioEvaluacion");
-			$finEval = $this->input->post("finEvaluacion");
-			$inicioEntrega = $this->input->post("inicioEntrega");
-			$finEntrega = $this->input->post("finEntrega");
 			
-			if(($inicioPer < $finPer) &($inicioEval < $finEval) &($inicioEntrega < $finEntrega)){
-						
+				$inicioPer = $this->input->post("inicioPeriodo");
+				$finPer = $this->input->post("finPeriodo");
+				$inicioEval = $this->input->post("inicioEvaluacion");
+				$finEval = $this->input->post("finEvaluacion");
+				$inicioEntrega = $this->input->post("inicioEntrega");
+				$finEntrega = $this->input->post("finEntrega");
+			
+			
 				
-			$this->periodo->nuevoPeriodo($year,$numero,$inicioPer,$finPer,$inicioEval,$finEval,$inicioEntrega,$finEntrega);
-			
-			$mensaje["exito"] = "Periodo agregado correctamente";
-			}else  $mensaje["error"] = "Las Fechas de Inicio deben ser menores a las Fechas de Termino";
-			
-			
+				if(($inicioPer < $finPer) &($inicioEval < $finEval) &($inicioEntrega < $finEntrega)){
+							
+					if($ultimaEntrega == $finEntrega){
+						$mensaje["error"] = "La fecha $ultimaEntrega para la entrega de documentos aún no termina";
+							
+					}else
+						$this->periodo->nuevoPeriodo($year,$numero,$inicioPer,$finPer,$inicioEval,$finEval,$inicioEntrega,$finEntrega);
+						$mensaje["exito"] = "Periodo agregado correctamente";
+					
+				
+				}else  $mensaje["error"] = "Las Fechas de Inicio deben ser menores a las Fechas de Termino";
+				
 			
 		}else $mensaje["error"] = "El periodo $year-$numero ya ha sido dado de alta anteriormente";
 		
@@ -154,6 +162,18 @@ class Administrador extends CI_Controller {
 			$this->load->view("header");
 			$this->load->view("administrador/navegacion");
 			$this->load->view("administrador/nombrarEvaluador");
+			$this->load->view("footer");
+		}else{
+			redirect("/login","refresh");
+		}
+	
+	}
+	
+	function importarEvaluadores(){
+		if($this->sesionActiva()){
+			$this->load->view("header");
+			$this->load->view("administrador/navegacion");
+			$this->load->view("administrador/importarEvaluadores");
 			$this->load->view("footer");
 		}else{
 			redirect("/login","refresh");
@@ -221,7 +241,7 @@ class Administrador extends CI_Controller {
 			
 			$datos=$this->upload->data();
 			$ruta = $datos["full_path"];
-			$datosCsv["datos"] = $this->csvreader->parse_file($ruta);
+			$datosCsv["	"] = $this->csvreader->parse_file($ruta);
 			
 			$this->load->view("header");
 			$this->load->view("administrador/navegacion");
