@@ -48,9 +48,28 @@ class Evaluado_Controller extends CI_Controller {
 	
 	function desasignarEvaluadoDelPeriodo(){
 		$idEvaluado = $this->input->post("idEvaluado");
-	
 		$this->evaluado_model->desasignarEvaluadoDelPeriodo($idEvaluado);
 	}
+	
+	public function busquedaEvaluadoPorNombre() {
+		if(isset($_GET['term'])){
+			$cadena = $_GET['term'];
+			$this->evaluado_model->profesoresEvaluados($cadena);
+		}
+	}
+
+	public function evaluadosSinAsignar() {
+		$this->load->model('pride/evaluador');
+		$this->load->model('pride/periodo');
+	
+		if(isset($_GET['term'])){
+			$cadena = $_GET['term'];
+			$profesores = $this->usuario->funcionListaUsuarioNombre($cadena);
+				
+		}
+	}
+	
+	
 }
 
 ?>

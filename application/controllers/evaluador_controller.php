@@ -51,6 +51,42 @@ class Evaluador_Controller extends CI_Controller {
 		
 		$this->evaluador_model->desasignarEvaluadorDelPeriodo($idEvaluador);
 	}
+	
+	public function busquedaEvaluadorPorNombre() {
+		if(isset($_GET['term'])){
+			$cadena = $_GET['term'];
+			$this->evaluador_model->profesoresEvaluadores($cadena);
+		}
+	
+	}
+	
+	public function evaluadosAsignados() {
+		$this->load->model('pride/usuario');
+		$this->load->model('pride/evaluado');
+		$this->load->model('pride/evaluadorevaluado');
+		$respuesta = array();
+		$idEvaluador = $this->input->post("idEvaluador");
+	
+		$condicion = array("conditions" => array("id_evaluador = ?",$idEvaluador));
+		$evaluadoEvaluador = EvaluadorEvaluado::all($condicion);
+	
+		if(sizeof($evaluadoEvaluador)){
+			$respuesta["respuesta"] = array("exito" =>1);
+			foreach ($evaluadoEvaluador as $eval) {
+				$evaluado = Evaluado::find($eval->id_evaluado);
+				$usuario = Usuario::find($evaluado->id_usuario);
+				$respuesta["datos"][] = array("id_usuario" => $usuario->id,
+						"id_evaluado" => $evaluado->id,
+						"nombre" => "$usuario->nombre $usuario->apaterno $usuario->amaterno"
+				);
+			}
+		}else
+			$respuesta["respuesta"] = array("exito" =>0);
+	
+		echo json_encode($respuesta);
+	
+	
+	}
 }
 
 ?>

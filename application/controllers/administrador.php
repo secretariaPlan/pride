@@ -52,47 +52,6 @@ class Administrador extends CI_Controller {
 		}	
 	}
 	
-	public function profesoresEvaluadores(){
-		$this->load->model('pride/evaluador_model');
-		$evaluados= $this->evaluador_model->profesoresEvaluadores($cadena);
-		
-	}
-	
-	
-	public function profesoresEvaluados(){
-		$this->load->model('pride/evaluado_model');
-		$evaluados= $this->evaluado_model->profesoresEvaluados($cadena);
-	
-	}
-	
-	
-	public function evaluadoSinEvaluador(){
-		$this->load->model('pride/evaluado_model');
-		$evaluados= $this->evaluado_model->evaluadoSinEvaluador();
-	
-	}
-	
-	public function evaluadoresAsignados(){
-		$this->load->model('pride/evaluador_model');
-		$evaluados= $this->evaluador_model->evaluadoresAsignados();
-	
-	}
-	
-	
-	public function UsuarioNoEvaluador(){
-		$this->load->model('pride/usuario');
-		$evaluados= $this->usuario->UsuarioNoEvaluador();
-	
-	}
-	
-	
-	public function UsuariosEvaluadoresDelPeriodo(){
-		$this->load->model('pride/usuario');
-		$evaluados= $this->usuario->UsuariosEvaluadoresDelPeriodo();
-	
-	}
-
-	
 	function nuevoPeriodo() {
 		$this->load->model("pride/periodo");
 		
@@ -256,73 +215,15 @@ class Administrador extends CI_Controller {
 			$usuarios = $this->usuario->listaUsuarios();
 			
 	}
-	
-	public function busquedaEvaluadorPorNombre() {
-		$this->load->model('pride/evaluador_model');
-		if(isset($_GET['term'])){
-			$cadena = $_GET['term'];
-			$this->evaluador_model->profesoresEvaluadores($cadena);
-		}
 		
-	}
-	
-	public function busquedaEvaluadoPorNombre() {
-		$this->load->model('pride/evaluado_model');
-		if(isset($_GET['term'])){
-			$cadena = $_GET['term'];
-			$this->evaluado_model->profesoresEvaluados($cadena);
-		}
-	
-	}
-	
-	public function evaluadosSinAsignar() {
-		$this->load->model('pride/evaluador');
-		$this->load->model('pride/periodo');
-		
-		if(isset($_GET['term'])){
-			$cadena = $_GET['term'];
-			$profesores = $this->usuario->funcionListaUsuarioNombre($cadena);
-			
-		}
-	}
-	
-	public function evaluadosAsignados() {
-		$this->load->model('pride/usuario');
-		$this->load->model('pride/evaluado');
-		$this->load->model('pride/evaluadorevaluado');
-		$respuesta = array();
-		$idEvaluador = $this->input->post("idEvaluador");
-		
-		$condicion = array("conditions" => array("id_evaluador = ?",$idEvaluador));
-		$evaluadoEvaluador = EvaluadorEvaluado::all($condicion);
-		
-		if(sizeof($evaluadoEvaluador)){
-			$respuesta["respuesta"] = array("exito" =>1);
-			foreach ($evaluadoEvaluador as $eval) {
-				$evaluado = Evaluado::find($eval->id_evaluado);
-				$usuario = Usuario::find($evaluado->id_usuario);
-				$respuesta["datos"][] = array("id_usuario" => $usuario->id,
-									"id_evaluado" => $evaluado->id,
-									"nombre" => "$usuario->nombre $usuario->apaterno $usuario->amaterno"
-							);
-			}
-		}else
-			$respuesta["respuesta"] = array("exito" =>0);
-		
-		echo json_encode($respuesta);
-		
-		
-	}
-	
 	function buscarUsuarioPorNombre() {
-		
+	
 		if(isset($_GET['term'])){
 			$cadena = $_GET['term'];
 			$this->usuario->listaUsuarioNombre($cadena);
-				
-		}
-	}
 	
+		}
+	}	
 
 }
 

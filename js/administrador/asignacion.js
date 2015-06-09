@@ -35,7 +35,7 @@ function evaluadosAsignadosAEvaluador(idevaluador){
     }
     $.ajax({
         data: parametros,
-        url: "evaluadosAsignados",
+        url: "../evaluador_controller/evaluadosAsignados",
         type: "POST",
         beforeSend: function(){},
         success: function(response){
@@ -110,7 +110,7 @@ $(document).ready(function () {
     
     //Obtiene el evaluador
     $("#evaluador").autocomplete({
-        source:"busquedaEvaluadorPorNombre",
+        source:"../evaluador_controller/busquedaEvaluadorPorNombre",
         //source:data;
         minLength: 3,
         select: function(event,ui){
@@ -129,7 +129,7 @@ $(document).ready(function () {
     
     //Obtiene el evaluado
     $("#evaluado").autocomplete({
-        source:"busquedaEvaluadoPorNombre",
+        source:"../evaluado_controller/busquedaEvaluadoPorNombre",
         //source:data;
         minLength: 3,
         select: function(event,ui){
