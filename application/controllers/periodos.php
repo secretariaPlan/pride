@@ -13,6 +13,21 @@ class Periodos extends CI_Controller {
 	}
 	
 	
+	public function listaUltimoPeriodo() {
+		$this->periodo->listaUltimoPeriodo();
+	}
+	
+	public function listaSinUltimoPeriodo() {
+		$this->periodo->listaSinUltimoPeriodo();
+	}
+	
+	
+	function desasignarPeriodo(){
+		$id = $this->input->post("id");
+	
+		$this->periodo->desasignarPeriodo($id);
+	}
+	
 }
 	
 	?>
