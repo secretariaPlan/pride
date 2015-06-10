@@ -76,7 +76,7 @@ class Administrador extends CI_Controller {
 				if(($inicioPer < $finPer) &($inicioEval < $finEval) &($inicioEntrega < $finEntrega)){
 							
 					if($ultimaEntrega == $finEntrega){
-						$mensaje["error"] = "La fecha $ultimaEntrega para la entrega de documentos aún no termina";
+						$mensaje["error"] = "La fecha $ultimaEntrega para la entrega de documentos aï¿½n no termina";
 							
 					}else
 						$this->periodo->nuevoPeriodo($year,$numero,$inicioPer,$finPer,$inicioEval,$finEval,$inicioEntrega,$finEntrega);
@@ -200,7 +200,7 @@ class Administrador extends CI_Controller {
 			
 			$datos=$this->upload->data();
 			$ruta = $datos["full_path"];
-			$datosCsv["	"] = $this->csvreader->parse_file($ruta);
+			$datosCsv["datos"] = $this->csvreader->parse_file($ruta);
 			
 			$this->load->view("header");
 			$this->load->view("administrador/navegacion");

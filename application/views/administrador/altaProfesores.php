@@ -23,23 +23,25 @@ $contador = 0;
 
 <body>
     <div class="grid flex">
-  
-        <div class="col_4"></div>
-        <div class="col_4 center">
-        	
-			<h5>Cargar Archivo CSV</h5>
-        
-        	<?php if(!isset($datos)){ 
-        		echo form_open_multipart("administrador/cargarCsv") ?>
-	           	    <input type="file" name="userfile" value="archivo" />
-	                <br>
-	                <br>
-	                <button class="blue" id="boton">Cargar archivo</button>
-			<?php echo form_close();
-        	}?>
-        </div>
-        <div class="col_4"></div>
-       
+  		<div class="clearfix"></div>
+  		<div class="col_12">
+  			<div class="col_3"></div>
+	        <div class="col_6 center">
+	        	<?php if(!isset($datos)){ 
+	        	echo form_open_multipart("administrador/cargarCsv") ?>
+	        	<fieldset>
+	        		<legend>Cargar Archivo CSV</legend>
+	        		    <input type="file" name="userfile" value="archivo" />
+		                <br>
+		                <br>
+		                <button class="blue" id="boton">Cargar archivo</button>
+					
+	        	</fieldset>
+	        	<?php echo form_close();
+		        }?>
+			</div>
+	        <div class="col_3"></div>
+  		</div>
         <div class="clear fix"></div>
         <?php if (isset($datos)) {
         	echo form_open("administrador/guardarDatos") 
