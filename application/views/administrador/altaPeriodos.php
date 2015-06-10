@@ -4,8 +4,8 @@ $year = array(
 		"name" => "year",
 		"type" => "text",
 		"value" => date("Y"),
-		"size" => "5",
-		"readonly"=>"true"
+		"size" => "5"
+		
 );
 
 $numeroPeriodo = array(

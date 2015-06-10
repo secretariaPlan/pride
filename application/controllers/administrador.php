@@ -69,22 +69,7 @@ class Administrador extends CI_Controller {
 				$inicioEval = $this->input->post("inicioEvaluacion");
 				$finEval = $this->input->post("finEvaluacion");
 				$inicioEntrega = $this->input->post("inicioEntrega");
-				$finEntrega = $this->input->post("finEntrega");
-			
-			
-				
-				if(($inicioPer < $finPer) &($inicioEval < $finEval) &($inicioEntrega < $finEntrega)){
-							
-					if($ultimaEntrega == $finEntrega){
-						$mensaje["error"] = "La fecha $ultimaEntrega para la entrega de documentos a�n no termina";
-							
-					}else
-						$this->periodo->nuevoPeriodo($year,$numero,$inicioPer,$finPer,$inicioEval,$finEval,$inicioEntrega,$finEntrega);
-						$mensaje["exito"] = "Periodo agregado correctamente";
-					
-				
-				}else  $mensaje["error"] = "Las Fechas de Inicio deben ser menores a las Fechas de Termino";
-				
+				$finEntrega = $this->input->post("finEntrega");	
 			
 		}else $mensaje["error"] = "El periodo $year-$numero ya ha sido dado de alta anteriormente";
 		
