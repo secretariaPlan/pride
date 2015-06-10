@@ -71,7 +71,6 @@ $(document).ready(function(){
     
     listaPeriodoUltimo();
 
-
     //////////////////////
     //Lista de Periodos//
     ////////////////////
@@ -79,16 +78,12 @@ $(document).ready(function(){
 
     //Nombrar como evalaudor//
     /////////////////////////
-
     
     $(document).on("click",".desasignar",function(){
         var id = $(this).closest("tr").attr("id");
         desasignar(id);
         setTimeout(function(){
-                     listaPeriodos();
-                },500);
-        
+        	listaPeriodos();
+        },500);
     });
-
-		
 });
