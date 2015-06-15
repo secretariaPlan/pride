@@ -5,6 +5,8 @@
         <script src="<?php echo base_url();?>jquery/jquery-ui-1.9.2.custom.js"/></script>
         <script src="<?php echo base_url();?>js/kickstart.js" ></script>
         
+        <link rel="shortcut icon" href="<?php echo base_url()?>images/favicon.ico">
+        
         <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/kickstart.css" media="all">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/pride.css" media="all">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/style.css" media="all">
