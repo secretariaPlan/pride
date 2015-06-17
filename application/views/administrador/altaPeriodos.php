@@ -20,7 +20,9 @@ $inicioPeriodo = array(
 		"class" => "fecha",
 		"name" => "inicioPeriodo",
 		"type" => "text",
-		"placeholder" => "Elija una fecha"
+		"placeholder" => "Elija una fecha",
+        "value" => set_value('inicioPeriodo')
+        
 );
 
 $finPeriodo = array(
@@ -28,7 +30,9 @@ $finPeriodo = array(
 		"class" => "fecha",
 		"name" => "finPeriodo",
 		"type" => "text",
-		"placeholder" => "Elija una fecha"
+		"placeholder" => "Elija una fecha",
+        "value" => set_value('finPeriodo')
+
 );
 
 $inicioEvaluacion = array(
@@ -36,7 +40,8 @@ $inicioEvaluacion = array(
 		"class" => "fecha",
 		"name" => "inicioEvaluacion",
 		"type" => "text",
-		"placeholder" => "Elija una fecha"
+		"placeholder" => "Elija una fecha",
+        "value" => set_value('inicioEvaluacion')
 );
 
 $finEvaluacion = array(
@@ -44,7 +49,9 @@ $finEvaluacion = array(
 		"class" => "fecha",
 		"name" => "finEvaluacion",
 		"type" => "text",
-		"placeholder" => "Elija una fecha"
+		"placeholder" => "Elija una fecha",
+        "value" => set_value('finEvaluacion')
+
 );
 
 $inicioEntrega = array(
@@ -52,7 +59,8 @@ $inicioEntrega = array(
 		"class" => "fecha",
 		"name" => "inicioEntrega",
 		"type" => "text",
-		"placeholder" => "Elija una fecha"
+		"placeholder" => "Elija una fecha",
+        "value" => set_value('inicioEntrega')
 );
 
 $finEntrega = array(
@@ -60,7 +68,9 @@ $finEntrega = array(
 		"class" => "fecha",
 		"name" => "finEntrega",
 		"type" => "text",
-		"placeholder" => "Elija una fecha"
+		"placeholder" => "Elija una fecha",
+        "value" => set_value('finEntrega')
+        
 );
 
 $boton = array(
@@ -74,6 +84,7 @@ $boton = array(
 ?>
 <script src="<?php echo base_url();?>js/periodo.js" ></script>
 <body>
+
     <div class="grid flex">
 
     	<div class="col_12">
@@ -97,6 +108,9 @@ $boton = array(
     		<div class="col_4"></div>
     		<div class="col_4 center">
             	<div id="alerta"><p id="alertaMensaje" class="center"></p></div>
+                
+                <?php echo validation_errors(); ?>
+
             </div>
  
      
@@ -106,6 +120,7 @@ $boton = array(
                 <fieldset>
                     <legend>Nuevo periodo</legend>
                     <div class = "col_12">
+                        
                     	<?php echo form_open("administrador/nuevoPeriodo") ?>
                     	<div class = "col_1"></div>
                     	<div class = "col_5 right">
@@ -128,6 +143,7 @@ $boton = array(
                     	<div class = "col_5 right">
                     		<?php echo form_label("Fecha de termino","finPeriodo");?>
                     		<?php echo form_input($finPeriodo);?>
+
                     	</div>
                     	<div class = "col_1"></div>
                     	

@@ -42,11 +42,17 @@ class Administrador extends CI_Controller {
 	
 	
 	function altaPeriodos() {
-		if($this->sesionActiva()){	
+		if($this->sesionActiva()){
+
+			
+
 			$this->load->view("header");
 			$this->load->view("administrador/navegacion");
 			$this->load->view("administrador/altaPeriodos");
 			$this->load->view("footer");
+
+			
+
 		}else{
 			redirect("/login","refresh");
 		}	
@@ -54,7 +60,7 @@ class Administrador extends CI_Controller {
 	
 	function nuevoPeriodo() {
 		$this->load->model("pride/periodo");
-		
+		$mensaje['test'] ="Ok";
 		$year = $this->input->post("year");
 		$numero = $this->input->post("numero");
 		
@@ -63,23 +69,62 @@ class Administrador extends CI_Controller {
 		$ultimaEntrega = Periodo::find_by_sql("SELECT finentrega FROM periodo ORDER BY finentrega DESC LIMIT 1");
 		
 		if(!isset($periodo)){
+			$this->form_validation->set_rules('inicioPeriodo','Fecha de Inicio', 'callback_inicioPeriodo_check');
+			$this->form_validation->set_rules('finPeriodo','Fecha de Termino', 'required');
+			$this->form_validation->set_rules('inicioEvaluacion','Inicio de evaluación', 'required');
+			$this->form_validation->set_rules('finEvaluacion','Termino de evaluación', 'required');
+			$this->form_validation->set_rules('inicioEntrega','Inicio de entrega de doumentos', 'required');
+			$this->form_validation->set_rules('finEntrega','Termino de entrega de documentos', 'required');
+
 			
+			if ($this->form_validation->run() == FALSE)
+			{
+	
+				
+				$this ->altaPeriodos();
+			}
+			else
+			{
 				$inicioPer = $this->input->post("inicioPeriodo");
 				$finPer = $this->input->post("finPeriodo");
 				$inicioEval = $this->input->post("inicioEvaluacion");
 				$finEval = $this->input->post("finEvaluacion");
 				$inicioEntrega = $this->input->post("inicioEntrega");
 				$finEntrega = $this->input->post("finEntrega");	
+
+				$this->periodo->nuevoPeriodo($year,$numero,$inicioPer,$finPer,$inicioEval,$finEval,$inicioEntrega,$finEntrega);
+
+				$this ->altaPeriodos();
+			}
+				 
 			
-		}else $mensaje["error"] = "El periodo $year-$numero ya ha sido dado de alta anteriormente";
+		}else {
+			$mensaje["error"] = "El periodo $year-$numero ya ha sido dado de alta anteriormente";
+			$this->load->view("header");
+				$this->load->view("administrador/navegacion");
+				$this->load->view("administrador/altaPeriodos",$mensaje);
+				$this->load->view("footer");
+				
+		
+
+		}
 		
 		
-		$this->load->view("header");
-		$this->load->view("administrador/navegacion");
-		$this->load->view("administrador/altaPeriodos",$mensaje);
-		$this->load->view("footer");
 		
 		
+	}
+
+	public function inicioPeriodo_check($str)
+	{
+		if ($str == '04-06-2015')
+		{
+			$this->form_validation->set_message('inicioPeriodo_check', '%s');
+			return FALSE;
+		}
+		else
+		{
+			return TRUE;
+		}
 	}
 	
 	
