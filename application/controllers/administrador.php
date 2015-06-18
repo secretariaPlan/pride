@@ -80,7 +80,6 @@ class Administrador extends CI_Controller {
 			
 			if ($this->form_validation->run() == FALSE)
 			{
-	
 				
 				$this ->altaPeriodos();
 			}
@@ -95,16 +94,16 @@ class Administrador extends CI_Controller {
 
 				$this->periodo->nuevoPeriodo($year,$numero,$inicioPer,$finPer,$inicioEval,$finEval,$inicioEntrega,$finEntrega);
 
-				$this ->altaPeriodos();
+				redirect("/administrador/altaPeriodos","refresh");
 			}
 				 
 			
 		}else {
 			$mensaje["error"] = "El periodo $year-$numero ya ha sido dado de alta anteriormente";
 			$this->load->view("header");
-				$this->load->view("administrador/navegacion");
-				$this->load->view("administrador/altaPeriodos",$mensaje);
-				$this->load->view("footer");
+			$this->load->view("administrador/navegacion");
+			$this->load->view("administrador/altaPeriodos",$mensaje);
+			$this->load->view("footer");
 				
 		
 
