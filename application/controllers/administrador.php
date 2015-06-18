@@ -69,7 +69,8 @@ class Administrador extends CI_Controller {
 		$ultimaEntrega = Periodo::find_by_sql("SELECT finentrega FROM periodo ORDER BY finentrega DESC LIMIT 1");
 		
 		if(!isset($periodo)){
-			$this->form_validation->set_rules('inicioPeriodo','Fecha de Inicio', 'callback_inicioPeriodo_check');
+			$this->form_validation->set_error_delimiters('<div class = "notice error"><i class="icon-remove-sign icon-large"></i>', '</div>');
+			$this->form_validation->set_rules('inicioPeriodo','Fecha de Inicio', 'callback_inicioPeriodo_check['.$this->input->post('finPeriodo').']');
 			$this->form_validation->set_rules('finPeriodo','Fecha de Termino', 'required');
 			$this->form_validation->set_rules('inicioEvaluacion','Inicio de evaluación', 'required');
 			$this->form_validation->set_rules('finEvaluacion','Termino de evaluación', 'required');
@@ -114,11 +115,11 @@ class Administrador extends CI_Controller {
 		
 	}
 
-	public function inicioPeriodo_check($str)
+	public function inicioPeriodo_check($str,$finPeriodo)
 	{
-		if ($str == '04-06-2015')
+		if ($str > $finPeriodo)
 		{
-			$this->form_validation->set_message('inicioPeriodo_check', '%s');
+			$this->form_validation->set_message('inicioPeriodo_check', 'La Fecha de inicio  debe ser menor que la Fecha de Termino');
 			return FALSE;
 		}
 		else
