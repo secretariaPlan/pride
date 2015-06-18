@@ -117,7 +117,7 @@ class Administrador extends CI_Controller {
 
 	public function inicioPeriodo_check($str,$finPeriodo)
 	{
-		if ($str > $finPeriodo)
+		if ($str >= $finPeriodo)
 		{
 			$this->form_validation->set_message('inicioPeriodo_check', 'La Fecha de inicio  debe ser menor que la Fecha de Termino');
 			return FALSE;
