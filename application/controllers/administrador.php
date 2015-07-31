@@ -44,8 +44,6 @@ class Administrador extends CI_Controller {
 	function altaPeriodos() {
 		if($this->sesionActiva()){
 
-			
-
 			$this->load->view("header");
 			$this->load->view("administrador/navegacion");
 			$this->load->view("administrador/altaPeriodos");

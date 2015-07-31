@@ -35,7 +35,13 @@ class Periodo extends ActiveRecord\Model {
 			$periodos = Periodo::find_by_sql("SELECT * FROM periodo WHERE numero NOT IN (SELECT max(numero) FROM periodo)");
 			foreach ($periodos as $periodo) {
 				$respuesta["periodos"][] = array("id" => $periodo->id,
-						"periodo"=>"$periodo->year-$periodo->numero");
+						"periodo"=>"$periodo->year-$periodo->numero",
+						"inicioper"=>$periodo->inicioper->format('d-m-Y'),
+						"finper"=>$periodo->finper->format('d-m-Y'),
+						"inicioeval"=>$periodo->inicioeval->format('d-m-Y'),
+						"fineval"=>$periodo->fineval->format('d-m-Y'),
+						"inicioentrega"=>$periodo->inicioentrega->format('d-m-Y'),
+						"finentrega"=>$periodo->finentrega->format('d-m-Y'));
 			}
 			echo json_encode($respuesta);
 		}
@@ -46,7 +52,13 @@ class Periodo extends ActiveRecord\Model {
 			$periodos = Periodo::find_by_sql("SELECT * FROM periodo ORDER BY numero DESC LIMIT 1");
 			foreach ($periodos as $periodo) {
 				$respuesta["periodos"][] = array("id" => $periodo->id,
-						"periodo"=>"$periodo->year-$periodo->numero");
+						"periodo"=>"$periodo->year-$periodo->numero",
+						"inicioper"=>$periodo->inicioper->format('d-m-Y'),
+						"finper"=>$periodo->finper->format('d-m-Y'),
+						"inicioeval"=>$periodo->inicioeval->format('d-m-Y'),
+						"fineval"=>$periodo->fineval->format('d-m-Y'),
+						"inicioentrega"=>$periodo->inicioentrega->format('d-m-Y'),
+						"finentrega"=>$periodo->finentrega->format('d-m-Y'));
 			}
 			echo json_encode($respuesta);
 		}

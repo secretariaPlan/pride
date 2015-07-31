@@ -11,6 +11,12 @@ function listaPeriodoUltimo(){
                     //console.log(respuesta.usuarios[index]);
                     tabla += "<tr id='"+ respuesta.periodos[index].id +"'>"+
                                 "<td>"+ respuesta.periodos[index].periodo +"</td>" +
+                                "<td>"+ respuesta.periodos[index].inicioper +"</td>" +
+                                "<td>"+ respuesta.periodos[index].finper +"</td>" +
+                                "<td>"+ respuesta.periodos[index].inicioeval +"</td>" +
+                                "<td>"+ respuesta.periodos[index].fineval +"</td>" +
+                                "<td>"+ respuesta.periodos[index].inicioentrega +"</td>" +
+                                "<td>"+ respuesta.periodos[index].finentrega +"</td>" +
                                 "<td><button class='green small editar tooltip'' title = 'Editar'><i class='fa fa-pencil'></i></button></td>" +
                             "</tr>";
                 });
@@ -33,7 +39,13 @@ function listaPeriodos(){
                     //console.log(respuesta.usuarios[index]);
                     tabla += "<tr id='"+ respuesta.periodos[index].id +"'>"+
                                 "<td>"+ respuesta.periodos[index].periodo +"</td>" +
-                                "<td></td>" +
+                                "<td>"+ respuesta.periodos[index].inicioper +"</td>" +
+                                "<td>"+ respuesta.periodos[index].finper +"</td>" +
+                                "<td>"+ respuesta.periodos[index].inicioeval +"</td>" +
+                                "<td>"+ respuesta.periodos[index].fineval +"</td>" +
+                                "<td>"+ respuesta.periodos[index].inicioentrega +"</td>" +
+                                "<td>"+ respuesta.periodos[index].finentrega +"</td>" +
+                                "<td>"+"</td>"+
                             "</tr>";
                 });
                 $("#periodos").html(tabla);

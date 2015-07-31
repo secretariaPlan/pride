@@ -182,28 +182,34 @@ $boton = array(
             <div class="col_2"></div>
             <div class="clearfix"></div>
             
-            <div class="col_2"></div>
+            <div class="col_2 center"></div>
             <div class="col_8 center">
                 <div class="col_12">
                     <fieldset>
                         <legend>Periodos Registrados</legend>
-                        <div class="col_3"></div>
-                        <div class="col_6">
+
+                        <div class="col_12">
                             <table class="sortable" cellspacing="0" cellpadding="0">
-                                <thead>
+                                <thead><tr>
                                     <th>Periodo</th>
+                                    <th>Fecha de Inicio</th>
+                                    <th>Fecha de término</th>
+                                    <th>Inicio de evaluación</th>
+                                    <th>Término de evaluación</th>
+                                    <th>Inicio de entrega de documentos</th>
+                                    <th>Término de entrega de documentos</th>
                                     <th>Opciones</th>
-                                </thead>
-                                <tbody id = "ultimoPeriodo">
+                                </tr></thead>
+                                <tbody id = "ultimoPeriodo"></tbody>
                                 <tbody id = "periodos">
                                 </tbody>
                             </table>    
                         </div>
-                        <div class="col_3"></div>
+
                     </fieldset>    
                 </div>
             </div>
-            <div class="col_2"></div>
+            
        </div>
     </div>
 </body>
