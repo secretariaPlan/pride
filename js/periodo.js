@@ -17,7 +17,7 @@ function listaPeriodoUltimo(){
                                 "<td>"+ respuesta.periodos[index].fineval +"</td>" +
                                 "<td>"+ respuesta.periodos[index].inicioentrega +"</td>" +
                                 "<td>"+ respuesta.periodos[index].finentrega +"</td>" +
-                                "<td><button class='green small editar tooltip'' title = 'Editar'><i class='fa fa-pencil'></i></button></td>" +
+                                "<td><button class='green small editar tooltip' title = 'Editar'><i class='fa fa-pencil'></i></button></td>" +
                             "</tr>";
                 });
                 $("#ultimoPeriodo").html(tabla);
@@ -78,6 +78,11 @@ function desasignar(id){
     });
 }
 
+function editarPeriodo(){
+
+    alert('Se detecto el click. Ahora se desea mandar a llamar un nuevo controlador que cargue las views para la edición del periodo desde JQuery');
+}
+
 $(document).ready(function(){
     $(".fecha").datepicker({dateFormat: "dd-mm-yy"});
     
@@ -97,5 +102,10 @@ $(document).ready(function(){
         setTimeout(function(){
         	listaPeriodos();
         },500);
+    });
+
+    //Editar periodo actual
+     $(document).on("click",".editar",function(){
+        editarPeriodo();
     });
 });
