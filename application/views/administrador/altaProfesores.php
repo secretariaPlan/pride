@@ -64,14 +64,16 @@ $contador = 0;
 	                </thead>
 	            
 	                <tbody id="datos">
-	            	<?php foreach ($datos as $dato) {?>
+	            	<?php foreach ($datos["contenido"] as $dato) {
+	            	
+	            		?>
 	            		<tr>
-	            			<td><input type="text" id="rfc-<?php echo $contador?>" name="rfc[<?php echo $contador ?>]" value="<?php echo $dato["rfc"] ?>" ></td>
-	            			<td><input type="text" id="nombre-<?php echo $contador?>" name="nombre[<?php echo $contador ?>]" value="<?php echo $dato["nombre"] ?>" ></td>
-	            			<td><input type="text" id="apaterno-<?php echo $contador?>"name="apaterno[<?php echo $contador ?>]" value="<?php echo $dato["apaterno"] ?>" ></td>
-	            			<td><input type="text" id="amaterno-<?php echo $contador?>" name="amaterno[<?php echo $contador ?>]" value="<?php echo $dato["amaterno"] ?>" ></td>
-	            			<td><input type="password" id="pass-<?php echo $contador?>" name="pass[<?php echo $contador ?>]" value="<?php echo $dato["pass"] ?>" ></td>
-	            			<td><input type="text" id="correo-<?php echo $contador?>" name="correo[<?php echo $contador ?>]" value="<?php echo $dato["mail"] ?>" ></td>
+	            			<td><input type="text" id="rfc-<?php echo $contador?>" name="rfc[<?php echo $contador ?>]" value="<?php echo $dato[$datos["titulos"][0]] ?>" ></td>
+	            			<td><input type="text" id="nombre-<?php echo $contador?>" name="nombre[<?php echo $contador ?>]" value="<?php echo $dato[$datos["titulos"][1]] ?>" ></td>
+	            			<td><input type="text" id="apaterno-<?php echo $contador?>"name="apaterno[<?php echo $contador ?>]" value="<?php echo $dato[$datos["titulos"][2]] ?>" ></td>
+	            			<td><input type="text" id="amaterno-<?php echo $contador?>" name="amaterno[<?php echo $contador ?>]" value="<?php echo $dato[$datos["titulos"][3]] ?>" ></td>
+	            			<td><input type="password" id="pass-<?php echo $contador?>" name="pass[<?php echo $contador ?>]" value="<?php echo $dato[$datos["titulos"][4]] ?>" ></td>
+	            			<td><input type="text" id="correo-<?php echo $contador?>" name="correo[<?php echo $contador ?>]" value="<?php echo $dato[$datos["titulos"][5]]; ?>" ></td>
 	            		</tr>
 	            	<?php $contador++; }?>
 	                </tbody>

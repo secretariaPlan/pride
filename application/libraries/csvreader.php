@@ -53,6 +53,10 @@ class CSVReader {
  
                 if( !is_array($content) ) { // the first line contains fields names
                     $this->fields = $elements;
+                    $titulos = array();
+                    foreach ($elements as $elemento) {
+                    	$titulos[] = $elemento;
+                    }
                     $content = array();
                 } else {
                     $item = array();
@@ -61,7 +65,8 @@ class CSVReader {
                             $item[$field] = $elements[$id];
                         }
                     }
-                    $content[] = $item;
+                    $content["titulos"] = $titulos;
+                    $content["contenido"][] = $item;
                 }
             }
         }
