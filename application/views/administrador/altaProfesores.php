@@ -51,33 +51,36 @@ $contador = 0;
 	        	<div class="col_12 center">
 	        		<button class="blue center">Guardar registros</button>
 	        	</div>
-	            <table  cellspacing="0" cellpadding="0" class="striped">
-	                <thead>
-	                    <tr>
-	                        <th>RFC</td>
-	                        <th>Nombre</td>
-	                        <th>Apellido paterno</th>
-	                        <th>Apellido materno</th>
-	                        <th>Contrase&ntilde;a</th>
-	                        <th>Correo electronico</th>
-	                        </tr>
-	                </thead>
-	            
-	                <tbody id="datos">
-	            	<?php foreach ($datos["contenido"] as $dato) {
-	            	
-	            		?>
-	            		<tr>
-	            			<td><input type="text" id="rfc-<?php echo $contador?>" name="rfc[<?php echo $contador ?>]" value="<?php echo $dato[$datos["titulos"][0]] ?>" ></td>
-	            			<td><input type="text" id="nombre-<?php echo $contador?>" name="nombre[<?php echo $contador ?>]" value="<?php echo $dato[$datos["titulos"][1]] ?>" ></td>
-	            			<td><input type="text" id="apaterno-<?php echo $contador?>"name="apaterno[<?php echo $contador ?>]" value="<?php echo $dato[$datos["titulos"][2]] ?>" ></td>
-	            			<td><input type="text" id="amaterno-<?php echo $contador?>" name="amaterno[<?php echo $contador ?>]" value="<?php echo $dato[$datos["titulos"][3]] ?>" ></td>
-	            			<td><input type="password" id="pass-<?php echo $contador?>" name="pass[<?php echo $contador ?>]" value="<?php echo $dato[$datos["titulos"][4]] ?>" ></td>
-	            			<td><input type="text" id="correo-<?php echo $contador?>" name="correo[<?php echo $contador ?>]" value="<?php echo $dato[$datos["titulos"][5]]; ?>" ></td>
-	            		</tr>
-	            	<?php $contador++; }?>
-	                </tbody>
-	            </table>
+	        	<div class="clearfix></div>
+	        	<div class="col_12">
+		            <table  cellspacing="0" cellpadding="0" class="striped">
+		                <thead>
+		                    <tr>
+		                        <th>RFC</td>
+		                        <th>Nombre</td>
+		                        <th>Apellido paterno</th>
+		                        <th>Apellido materno</th>
+		                        <th>Contrase&ntilde;a</th>
+		                        <th>Correo electronico</th>
+		                        </tr>
+		                </thead>
+		            
+		                <tbody id="datos">
+		            	<?php
+		            	foreach ($datos["contenido"] as $dato) {
+		            	?>
+		            		<tr>
+		            			<td><input type="text" id="rfc-<?php echo $contador?>" name="rfc[<?php echo $contador ?>]" value="<?php echo $dato[0] ?>" ></td>
+		            			<td><input type="text" id="nombre-<?php echo $contador?>" name="nombre[<?php echo $contador ?>]" value="<?php echo $dato[1] ?>" ></td>
+		            			<td><input type="text" id="apaterno-<?php echo $contador?>"name="apaterno[<?php echo $contador ?>]" value="<?php echo $dato[2] ?>" ></td>
+		            			<td><input type="text" id="amaterno-<?php echo $contador?>" name="amaterno[<?php echo $contador ?>]" value="<?php echo $dato[3] ?>" ></td>
+		            			<td><input type="password" id="pass-<?php echo $contador?>" name="pass[<?php echo $contador ?>]" value="<?php echo $dato[4] ?>" ></td>
+		            			<td><input type="text" id="correo-<?php echo $contador?>" name="correo[<?php echo $contador ?>]" value="<?php echo $dato[5] ?>" ></td>
+		            		</tr>
+		            	<?php $contador++; }?>
+		                </tbody>
+		            </table>
+		         </div>   
 	        </div>
 	        <div class="col_2"></div>
 			        

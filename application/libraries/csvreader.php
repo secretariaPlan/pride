@@ -60,9 +60,13 @@ class CSVReader {
                     $content = array();
                 } else {
                     $item = array();
+                    /*Con esto los campos se guardan con los titulos de las columnas*/
                     foreach( $this->fields as $id => $field ) {
                         if( isset($elements[$id]) ) {
-                            $item[$field] = $elements[$id];
+                            $item[] = $elements[$id];
+                            /*Si se desea que los campos tengan el nombre de las columnas se usa:
+                             $item[$field] = $elements[$id];
+                              */
                         }
                     }
                     $content["titulos"] = $titulos;
