@@ -17,6 +17,8 @@ class Usuario extends ActiveRecord\Model{
 		
 		$usuario->save();
 		
+		return $usuario->id;
+		
 	}
 		
 	public function agregar()

@@ -25,17 +25,7 @@ class Evaluador_Model extends ActiveRecord\Model{
 			$evaluador->id_comision = $idComision;
 			
 			$evaluador->save();
-			
-			$respuesta = array("exito" => 1,
-								"mensaje" => "Profesor guardado como evaluador"
-			);
-		}else 
-			
-			$respuesta = array("exito" => 0,
-					"mensaje" => "Profesor anteriormente guardado como evaluador");
-			
-			echo json_encode($respuesta);
-		
+		}
 	}
 	
 	

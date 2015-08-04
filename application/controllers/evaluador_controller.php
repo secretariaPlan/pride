@@ -13,11 +13,7 @@ class Evaluador_Controller extends CI_Controller {
 		$this->load->view("evaluador");
 	}
 	
-	function nuevoEvaluador(){
-		
-		$idUsuario = $this->input->post("idUsuario");
-		$idPeriodo = $this->input->post("idPeriodo");
-		$idComision = $this->input->post("idComision");
+	function nuevoEvaluador($idUsuario,$idPeriodo,$idComision){
 		
 		$this->evaluador_model->nuevoEvaluador($idUsuario,$idPeriodo,$idComision);
 	}
