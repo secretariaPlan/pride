@@ -168,6 +168,18 @@ class Administrador extends CI_Controller {
 	
 	}
 	
+	function altaEvaluados(){
+		if($this->sesionActiva()){
+			$this->load->view("header");
+			$this->load->view("administrador/navegacion");
+			$this->load->view("administrador/altaEvaluados");
+			$this->load->view("footer");
+		}else{
+			redirect("/login","refresh");
+		}
+	
+	}
+	
 	function nombrarEvaluado() {
 		if($this->sesionActiva()){
 			$this->load->view("header");
@@ -237,6 +249,30 @@ class Administrador extends CI_Controller {
 		}		
 	}
 	
+	function cargarCsvEvaluado() {
+		$config['upload_path'] = './subidas/';
+		$config['allowed_types'] = 'csv';
+		$this->load->library('upload', $config);
+	
+		if(!$this->upload->do_upload()){
+			$error=array('error' => $this->upload->display_errors());
+			$this->load->view("header");
+			$this->load->view("administrador/navegacion");
+			$this->load->view('administrador/altaEvaluados', $error);
+			$this->load->view("footer");
+		}else {
+				
+			$datos=$this->upload->data();
+			$ruta = $datos["full_path"];
+			$datosCsv["datos"] = $this->csvreader->parse_file($ruta);
+				
+			$this->load->view("header");
+			$this->load->view("administrador/navegacion");
+			$this->load->view("administrador/altaEvaluados",$datosCsv);
+			$this->load->view("footer");
+		}
+	}
+	
 	function guardarDatos() {
 		
 		$i=0;
@@ -286,7 +322,38 @@ class Administrador extends CI_Controller {
 		$exito = array("exito" => "Los registros se han guardado correctamente");
 		$this->load->view("header");
 		$this->load->view("administrador/navegacion");
-		$this->load->view('administrador/altaProfesores', $exito);
+		$this->load->view('administrador/altaEvaluadores', $exito);
+		$this->load->view("footer");
+	}
+	
+	function guardarEvaluados() {
+	
+		$this->load->model("pride/periodo");
+		$this->load->model("pride/evaluado_model");
+		$this->load->model("pride/comision");
+	
+		$rfc = $this->input->post("rfc");
+		$nombre = $this->input->post("nombre");
+		$apaterno  = $this->input->post("apaterno");
+		$amaterno  = $this->input->post("amaterno");
+		$pass = $this->input->post("pass");
+		$correo = $this->input->post("correo");
+	
+		$periodo = Periodo::last();
+		$comision = Comision::find(1);
+	
+		$i=0;
+		foreach ($rfc as $rfc) {
+			$usuarioId = $this->usuario->nuevoUsuario($rfc,$nombre[$i],$apaterno[$i],$amaterno[$i],md5($pass[$i]),$correo[$i]);
+			$evaluado = new Evaluado_Model();
+			$evaluado->nuevoEvaluado($usuarioId,$periodo->id,$comision->id);
+			$i++;
+		}
+			
+		$exito = array("exito" => "Los registros se han guardado correctamente");
+		$this->load->view("header");
+		$this->load->view("administrador/navegacion");
+		$this->load->view('administrador/altaEvaluados', $exito);
 		$this->load->view("footer");
 	}
 	
