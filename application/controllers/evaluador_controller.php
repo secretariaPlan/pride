@@ -58,7 +58,7 @@ class Evaluador_Controller extends CI_Controller {
 	
 	public function evaluadosAsignados() {
 		$this->load->model('pride/usuario');
-		$this->load->model('pride/evaluado');
+		$this->load->model('pride/evaluado_model');
 		$this->load->model('pride/evaluadorevaluado');
 		$respuesta = array();
 		$idEvaluador = $this->input->post("idEvaluador");
@@ -69,7 +69,7 @@ class Evaluador_Controller extends CI_Controller {
 		if(sizeof($evaluadoEvaluador)){
 			$respuesta["respuesta"] = array("exito" =>1);
 			foreach ($evaluadoEvaluador as $eval) {
-				$evaluado = Evaluado::find($eval->id_evaluado);
+				$evaluado = Evaluado_Model::find($eval->id_evaluado);
 				$usuario = Usuario::find($evaluado->id_usuario);
 				$respuesta["datos"][] = array("id_usuario" => $usuario->id,
 						"id_evaluado" => $evaluado->id,

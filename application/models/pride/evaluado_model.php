@@ -29,12 +29,7 @@ class Evaluado_Model extends ActiveRecord\Model{
 			$respuesta = array("exito" => 1,
 								"mensaje" => "Profesor guardado como evaluado"
 			);
-		}else 
-			
-			$respuesta = array("exito" => 0,
-					"mensaje" => "Profesor anteriormente guardado como evaluado");
-			
-			echo json_encode($respuesta);
+		}
 	}
 	
 	
