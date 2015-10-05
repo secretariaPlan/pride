@@ -68,17 +68,16 @@ class Administrador extends CI_Controller {
 		
 		if(!isset($periodo)){
 			$this->form_validation->set_error_delimiters('<div class = "notice error"><i class="icon-remove-sign icon-large"></i>', '</div>');
-			$this->form_validation->set_rules('inicioPeriodo','Fecha de Inicio', 'callback_inicioPeriodo_check['.$this->input->post('finPeriodo').']');
-			$this->form_validation->set_rules('finPeriodo','Fecha de Termino', 'required');
-			$this->form_validation->set_rules('inicioEvaluacion','Inicio de evaluación', 'required');
-			$this->form_validation->set_rules('finEvaluacion','Termino de evaluación', 'required');
-			$this->form_validation->set_rules('inicioEntrega','Inicio de entrega de doumentos', 'required');
-			$this->form_validation->set_rules('finEntrega','Termino de entrega de documentos', 'required');
+			$this->form_validation->set_rules('inicioPeriodo','fecha de Inicio', 'callback_inicioPeriodo_check['.$this->input->post('finPeriodo').']');
+			$this->form_validation->set_rules('finPeriodo','fecha de Termino', 'required');
+			$this->form_validation->set_rules('inicioEvaluacion','Inicio de evaluación', 'callback_fechaInicio_check['.$this->input->post('inicioPeriodo').']' . '|' . 'callback_fechaFin_check['.$this->input->post('finPeriodo').']');
+			$this->form_validation->set_rules('finEvaluacion','Termino de evaluación', 'callback_fechaInicio_check['.$this->input->post('inicioPeriodo').']' . '|' . 'callback_fechaFin_check['.$this->input->post('finPeriodo').']');
+			$this->form_validation->set_rules('inicioEntrega','Inicio de entrega de documentos', 'callback_fechaInicio_check['.$this->input->post('inicioPeriodo').']' . '|' . 'callback_fechaFin_check['.$this->input->post('finPeriodo').']');
+			$this->form_validation->set_rules('finEntrega','Termino de entrega de documentos', 'callback_fechaInicio_check['.$this->input->post('inicioPeriodo').']' . '|' . 'callback_fechaFin_check['.$this->input->post('finPeriodo').']');
 
 			
 			if ($this->form_validation->run() == FALSE)
 			{
-				
 				$this ->altaPeriodos();
 			}
 			else
@@ -112,16 +111,59 @@ class Administrador extends CI_Controller {
 		
 	}
 
-	public function inicioPeriodo_check($str,$finPeriodo)
-	{
-		if ($str >= $finPeriodo)
-		{
-			$this->form_validation->set_message('inicioPeriodo_check', 'La Fecha de inicio  debe ser menor que la Fecha de Termino');
+	public function inicioPeriodo_check($str,$finPeriodo){
+		
+		if($str != ""){
+			if($finPeriodo != ""){
+				if ($str >= $finPeriodo){
+					$this->form_validation->set_message('inicioPeriodo_check', 'La fecha de Inicio  debe ser menor que la fecha de Termino');
+					return FALSE;
+				}
+				else{
+					return TRUE;
+				}
+			}
+			else{
+				return TRUE;
+			}
+		}
+		else{
+			$this->form_validation->set_message('inicioPeriodo_check', 'El campo fecha de Inicio es obligatorio');
 			return FALSE;
 		}
-		else
-		{
-			return TRUE;
+	}
+
+	public function fechaInicio_check($str,$inicioPeriodo){
+		
+		if($str != ""){
+			if ($str <= $inicioPeriodo){
+				$this->form_validation->set_message('fechaInicio_check', 'La fecha de %s debe ser mayor que la fecha de Inicio');
+				return FALSE;
+			}
+			else{
+				return TRUE;
+			}
+		}
+		else{
+			$this->form_validation->set_message('fechaInicio_check', 'El campo %s es obligatorio');
+			return FALSE;
+		}
+	}
+
+	public function fechaFin_check($str,$finPeriodo){
+		
+		if($str != ""){
+			if ($str >= $finPeriodo){
+				$this->form_validation->set_message('fechaFin_check', 'La fecha de %s debe ser menor que la fecha de Termino');
+				return FALSE;
+			}
+			else{
+				return TRUE;
+			}
+		}
+		else{
+			$this->form_validation->set_message('fechaFin_check', 'El campo %s es obligatorio');
+			return FALSE;
 		}
 	}
 	
