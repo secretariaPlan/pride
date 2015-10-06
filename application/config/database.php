@@ -50,8 +50,25 @@ $active_record = TRUE;
 
 $db['pride']['hostname'] = 'localhost';
 $db['pride']['username'] = 'root';
-$db['pride']['password'] = '';
-$db['pride']['database'] = 'pride';
+$db['pride']['password'] = 'imladris';
+$db['pride']['database'] = 'dbpride';
+$db['pride']['dbdriver'] = 'mysql';
+$db['pride']['dbprefix'] = '';
+$db['pride']['pconnect'] = TRUE;
+$db['pride']['db_debug'] = TRUE;
+$db['pride']['cache_on'] = FALSE;
+$db['pride']['cachedir'] = '';
+$db['pride']['char_set'] = 'utf8';
+$db['pride']['dbcollat'] = 'utf8_general_ci';
+$db['pride']['swap_pre'] = '';
+$db['pride']['autoinit'] = TRUE;
+$db['pride']['stricton'] = FALSE;
+
+/*
+$db['pride']['hostname'] = 'localhost';
+$db['pride']['username'] = 'ucomisiones';
+$db['pride']['password'] = 'Co#i2ioN';
+$db['pride']['database'] = 'dbcomisiones';
 $db['pride']['dbdriver'] = 'mysql';
 $db['pride']['dbprefix'] = '';
 $db['pride']['pconnect'] = TRUE;
@@ -64,8 +81,8 @@ $db['pride']['swap_pre'] = '';
 $db['pride']['autoinit'] = TRUE;
 $db['pride']['stricton'] = FALSE;
 /*
-$db['sicpa']['hostname'] = 'localhost';
-$db['sicpa']['username'] = 'root';
+$db['sicpa']['hostname'] = '132.248.103.9';
+$db['sicpa']['username'] = 'ucomisiones';
 $db['sicpa']['password'] = '';
 $db['sicpa']['database'] = 'sicpa';
 $db['sicpa']['dbdriver'] = 'mysql';

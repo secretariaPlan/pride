@@ -27,7 +27,7 @@ $contador = 0;
 			<h5>Cargar Archivo CSV de Evaluadores</h5>
         
         	<?php if(!isset($datos)){ 
-        		echo form_open_multipart("administrador/cargarCsv") ?>
+        		echo form_open_multipart("admin/administrador/cargarCsv") ?>
 	           	    <input type="file" name="userfile" value="archivo" />
 	                <br>
 	                <br>
@@ -39,7 +39,7 @@ $contador = 0;
        
         <div class="clear fix"></div>
         <?php if (isset($datos)) {
-        	echo form_open("administrador/guardarDatos") 
+        	echo form_open("admin/administrador/guardarDatos") 
         ?>
             <div class="col_2"></div>
 	        <div class="col_8">

@@ -121,7 +121,7 @@ $boton = array(
                     <legend>Nuevo periodo</legend>
                     <div class = "col_12">
                         
-                    	<?php echo form_open("administrador/nuevoPeriodo") ?>
+                    	<?php echo form_open("admin/administrador/nuevoPeriodo") ?>
                     	<div class = "col_1"></div>
                     	<div class = "col_5 right">
                     		<?php echo form_label("Año","año");?>

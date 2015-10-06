@@ -91,7 +91,7 @@ class Administrador extends CI_Controller {
 
 				$this->periodo->nuevoPeriodo($year,$numero,$inicioPer,$finPer,$inicioEval,$finEval,$inicioEntrega,$finEntrega);
 
-				redirect("/administrador/altaPeriodos","refresh");
+				redirect("/admin/administrador/altaPeriodos","refresh");
 			}
 				 
 			
