@@ -9,7 +9,7 @@ class Administrador extends CI_Controller {
 		
 	}
 	
-	function sesionActiva(){
+	function sesionActivaAdmin(){
 		if ($this->session->userdata("idAdministrador")) {
 			return true;
 		}else{
@@ -18,7 +18,7 @@ class Administrador extends CI_Controller {
 	}
 	
 	function index() {
-		if($this->sesionActiva()){
+		if($this->sesionActivaAdmin()){
 			$this->load->view("header");
 			$this->load->view("administrador/navegacion");
 			$this->load->view("administrador/bienvenido");
@@ -30,7 +30,7 @@ class Administrador extends CI_Controller {
 	}
 	
 	 function asignacion() {
-	 	if($this->sesionActiva()){
+	 	if($this->sesionActivaAdmin()){
 			$this->load->view("header");
 			$this->load->view("administrador/navegacion");
 			$this->load->view("administrador/asignacion");
@@ -42,7 +42,7 @@ class Administrador extends CI_Controller {
 	
 	
 	function altaPeriodos() {
-		if($this->sesionActiva()){
+		if($this->sesionActivaAdmin()){
 
 			$this->load->view("header");
 			$this->load->view("administrador/navegacion");
@@ -173,7 +173,7 @@ class Administrador extends CI_Controller {
 	}
 	
 	function altaProfesores() {
-		if($this->sesionActiva()){
+		if($this->sesionActivaAdmin()){
 			$this->load->view("header");
 			$this->load->view("administrador/navegacion");
 			$manual=array('manual' => $this->load->view("administrador/manualAltaprofesor"));
@@ -187,7 +187,7 @@ class Administrador extends CI_Controller {
 	}
 	
 	function nombrarEvaluador() {
-		if($this->sesionActiva()){
+		if($this->sesionActivaAdmin()){
 			$this->load->view("header");
 			$this->load->view("administrador/navegacion");
 			$this->load->view("administrador/nombrarEvaluador");
@@ -199,7 +199,7 @@ class Administrador extends CI_Controller {
 	}
 	
 	function altaEvaluadores(){
-		if($this->sesionActiva()){
+		if($this->sesionActivaAdmin()){
 			$this->load->view("header");
 			$this->load->view("administrador/navegacion");
 			$this->load->view("administrador/altaEvaluadores");
@@ -211,7 +211,7 @@ class Administrador extends CI_Controller {
 	}
 	
 	function altaEvaluados(){
-		if($this->sesionActiva()){
+		if($this->sesionActivaAdmin()){
 			$this->load->view("header");
 			$this->load->view("administrador/navegacion");
 			$this->load->view("administrador/altaEvaluados");
@@ -223,7 +223,7 @@ class Administrador extends CI_Controller {
 	}
 	
 	function nombrarEvaluado() {
-		if($this->sesionActiva()){
+		if($this->sesionActivaAdmin()){
 			$this->load->view("header");
 			$this->load->view("administrador/navegacion");
 			$this->load->view("administrador/nombrarEvaluado");
