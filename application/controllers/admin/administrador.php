@@ -115,7 +115,9 @@ class Administrador extends CI_Controller {
 		
 		if($str != ""){
 			if($finPeriodo != ""){
-				if ($str >= $finPeriodo){
+				$periodoInicio = new DateTime($str);
+				$periodoFin = new DateTime($finPeriodo);
+				if ($periodoInicio >= $periodoFin){
 					$this->form_validation->set_message('inicioPeriodo_check', 'La fecha de Inicio  debe ser menor que la fecha de Termino');
 					return FALSE;
 				}
@@ -136,7 +138,9 @@ class Administrador extends CI_Controller {
 	public function fechaInicio_check($str,$inicioPeriodo){
 		
 		if($str != ""){
-			if ($str <= $inicioPeriodo){
+			$periodoInicio = new DateTime($inicioPeriodo);
+			$str = new DateTime($str);
+			if ($str <= $periodoInicio){
 				$this->form_validation->set_message('fechaInicio_check', 'La fecha de %s debe ser mayor que la fecha de Inicio');
 				return FALSE;
 			}
@@ -153,7 +157,9 @@ class Administrador extends CI_Controller {
 	public function fechaFin_check($str,$finPeriodo){
 		
 		if($str != ""){
-			if ($str >= $finPeriodo){
+			$periodoFin = new DateTime($finPeriodo);
+			$str = new DateTime($str);
+			if ($str >= $periodoFin){
 				$this->form_validation->set_message('fechaFin_check', 'La fecha de %s debe ser menor que la fecha de Termino');
 				return FALSE;
 			}
