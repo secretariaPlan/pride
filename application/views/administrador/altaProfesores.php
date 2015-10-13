@@ -51,7 +51,7 @@ $contador = 0;
 	        	<div class="col_12 center">
 	        		<button class="blue center">Guardar registros</button>
 	        	</div>
-	        	<div class="clearfix></div>
+	        	<div class="clearfix"></div>
 	        	<div class="col_12">
 		            <table  cellspacing="0" cellpadding="0" class="striped">
 		                <thead>

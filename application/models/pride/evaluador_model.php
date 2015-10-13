@@ -1,9 +1,34 @@
 <?php
 
+use ActiveRecord\Model;
 class Evaluador_Model extends ActiveRecord\Model{
 	
 	static $table_name = "evaluador";
 	
+	function loginEvaluador($rfc,$pass,$idPeriodo){
+		
+		$usuario = Usuario::first(array("conditions" => array("rfc = ? AND password = ?",$rfc,$pass)));
+		
+		if(isset($usuario)){
+			$evaluador = Evaluador_Model::first(array("conditions" => array("id_usuario = ? AND id_periodo = ?",$usuario->id,$idPeriodo)));
+			
+			if(isset($evaluador)){
+				$datos = array("exito" => 1,
+						"idUsuario" => $usuario->id,
+						"idEvaluador" => $evaluador->id,
+						"tipo" => 2
+				);
+			}else{
+				$datos = array("exito"=>0);
+			}
+		
+		}else{
+				$datos = array("exito"=>0);
+			}
+		
+		return $datos;
+	}
+		
 	function verificarEvaluador($idUsuario,$idPeriodo,$idComision) {
 		
 		$condiciones = array("conditions" => array("id_usuario = ? AND id_periodo = ? AND id_comision = ?",$idUsuario,$idPeriodo,$idComision));
@@ -29,7 +54,7 @@ class Evaluador_Model extends ActiveRecord\Model{
 	}
 	
 	
-	public function profesoresEvaluadores($cadena){
+	function profesoresEvaluadores($cadena){
 		//$join = 'inner join evaluador e on (usuario.id=e.id_usuario)';
 		$evaluadores = Evaluador_Model::find_by_sql("SELECT u.id as id_usuario, u.rfc, CONCAT_WS(' ', u.nombre, u.apaterno, u.amaterno ) as nombre, e.id as id_evaluador
 												FROM usuario u
@@ -57,7 +82,7 @@ class Evaluador_Model extends ActiveRecord\Model{
 	}
 	
 	
-	public function evaluadoresAsignados(){
+	function evaluadoresAsignados(){
 		//$join = 'inner join evaluador e on (usuario.id=e.id_usuario)';
 		$evaluadores = EvaluadorModel::find_by_sql("select concat(a.id) as id_evaluador, a.id_usuario, u.rfc, concat(u.nombre,' ',u.apaterno,' ',u.amaterno) as evaluador from evaluador a, usuario u where u.id=a.id_usuario and a.id in(select e.id_evaluador from evaluador_evaluado e inner join evaluador a on e.id_evaluador=a.id)");
 		//$evaluadores = Usuario::all(array('joins' => $join));

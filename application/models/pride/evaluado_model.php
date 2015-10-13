@@ -4,6 +4,30 @@ class Evaluado_Model extends ActiveRecord\Model{
 	
 	static $table_name = "evaluado";
 	
+function loginEvaluado($rfc,$pass,$idPeriodo){
+		
+		$usuario = Usuario::first(array("conditions" => array("rfc = ? AND password = ?",$rfc,$pass)));
+		
+		if(isset($usuario)){
+			$evaluado = Evaluado_Model::first(array("conditions" => array("id_usuario = ? AND id_periodo = ?",$usuario->id,$idPeriodo)));
+			
+			if(isset($evaluado)){
+				$datos = array("exito" => 1,
+						"idUsuario" => $usuario->id,
+						"idEvaluado" => $evaluado->id,
+						"tipo" => 3
+				);
+			}else{
+				$datos = array("exito"=>0);
+			}
+		
+		}else{
+				$datos = array("exito"=>0);
+			}
+		
+		return $datos;
+	}
+	
 	function verificarEvaluado($idUsuario,$idPeriodo,$idComision) {
 	
 		$condiciones = array("conditions" => array("id_usuario = ? AND id_periodo = ? AND id_comision = ?",$idUsuario,$idPeriodo,$idComision));

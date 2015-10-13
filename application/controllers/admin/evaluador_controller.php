@@ -13,6 +13,40 @@ class Evaluador_Controller extends CI_Controller {
 		$this->load->view("evaluador");
 	}
 	
+	function sesionActivaEvaluador(){
+		if ($this->session->userdata("idUsuario") && $this->session->userdata("tipo") == 2) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	function vistaListaEvaluados(){
+		$this->load->model('pride/usuario');
+		$this->load->model('pride/evaluado_model');
+		$this->load->model('pride/evaluadorevaluado');
+		$respuesta = array();
+		$idEvaluador = $this->input->post("idEvaluador");
+		
+		$condicion = array("conditions" => array("id_evaluador = ?",$idEvaluador));
+		$evaluadoEvaluador = EvaluadorEvaluado::all($condicion);
+		
+		if(sizeof($evaluadoEvaluador)){
+			$respuesta["respuesta"] = array("exito" =>1);
+			foreach ($evaluadoEvaluador as $eval) {
+				$evaluado = Evaluado_Model::find($eval->id_evaluado);
+				$usuario = Usuario::find($evaluado->id_usuario);
+				$respuesta["datos"][] = array("id_usuario" => $usuario->id,
+						"id_evaluado" => $evaluado->id,
+						"nombre" => "$usuario->nombre $usuario->apaterno $usuario->amaterno"
+				);
+			}
+		}else
+			$respuesta["respuesta"] = array("exito" =>0);
+		
+		return $respuesta;
+	}
+	
 	function nuevoEvaluador($idUsuario,$idPeriodo,$idComision){
 		
 		$this->evaluador_model->nuevoEvaluador($idUsuario,$idPeriodo,$idComision);
@@ -83,6 +117,7 @@ class Evaluador_Controller extends CI_Controller {
 	
 	
 	}
+	
 }
 
 ?>
