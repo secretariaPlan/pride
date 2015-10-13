@@ -47,8 +47,7 @@ class Login extends CI_Controller {
 		$respuestaAdmin = $this->administrador->loginAdmin($rfc,$pass);
 		
 		if($respuestaAdmin["exito"]){
-			$datosSesionAdmin = array($respuestaAdmin["idAdministrador"],$respuestaAdmin["rfc"],$respuestaAdmin["tipo"]);
-			$this->session->set_userdata($datosSesionAdmin);
+			$this->session->set_userdata($respuestaAdmin);
 			
 			$this->load->view("header");
 			$this->load->view("administrador/navegacion");
@@ -64,7 +63,7 @@ class Login extends CI_Controller {
 				//Pantalla de seleccion para elegir como entrar
 				echo "Evaluador y Evaluado";
 			} elseif ($respuestaEvaluador["exito"]){
-				$datosSesionEvaluador = array($respuestaEvaluador["idUsuario"],$respuestaEvaluador["idEvaluador"],$respuestaEvaluador["tipo"]);
+				$datosSesionEvaluador = array($respuestaEvaluador);
 				$this->session->set_userdata($datosSesionEvaluador);
 				$this->load->view("header");
 				$this->load->view("evaluador/menuBienvenido");

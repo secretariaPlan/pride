@@ -23,7 +23,7 @@
 
 	            	
 	                <fieldset id="nuevoProfesor">
-	                	 <?php echo form_open('admin/administrador/nuevoProfesor'); ?>
+	                	 <?php echo form_open('administrador/nuevoProfesor'); ?>
 		            	<?php
 															$boton = array (
 																	'class' => 'blue',

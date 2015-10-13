@@ -28,7 +28,7 @@ $contador = 0;
   			<div class="col_3"></div>
 	        <div class="col_6 center">
 	        	<?php if(!isset($datos)){ 
-	        	echo form_open_multipart("admin/administrador/cargarCsv") ?>
+	        	echo form_open_multipart("administrador/cargarCsv") ?>
 	        	<fieldset>
 	        		<legend>Cargar Archivo CSV</legend>
 	        		    <input type="file" name="userfile" value="archivo" />
@@ -44,7 +44,7 @@ $contador = 0;
   		</div>
         <div class="clear fix"></div>
         <?php if (isset($datos)) {
-        	echo form_open("admin/administrador/guardarDatos") 
+        	echo form_open("administrador/guardarDatos") 
         ?>
             <div class="col_2"></div>
 	        <div class="col_8">
