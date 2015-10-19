@@ -114,8 +114,70 @@ class Evaluador_Controller extends CI_Controller {
 			$respuesta["respuesta"] = array("exito" =>0);
 	
 		echo json_encode($respuesta);
+	}
 	
+	function informacionEvaluado(){
+		$this->load->model('pride/evaluado_model');
+		$this->load->view("header");
+		$this->load->view("evaluador/navegacion");
+		$this->load->view("evaluador/informacionEvaluado");
+		$this->load->view("footer");
+	}
 	
+	function formacionTrayectoriaAcademica(){
+		$this->load->model('pride/evaluado_model');
+		$this->load->view("header");
+		$this->load->view("evaluador/navegacion");
+		$this->load->view("evaluador/formacionTrayectoriaAcademica");
+		$this->load->view("footer");
+	}
+	
+	function productividadAcademica(){
+		$this->load->model('pride/evaluado_model');
+		$this->load->view("header");
+		$this->load->view("evaluador/navegacion");
+		$this->load->view("evaluador/productividadAcademica");
+		$this->load->view("footer");
+	}
+	
+	function materialDocente(){
+		$this->load->model('pride/evaluado_model');
+		$this->load->view("header");
+		$this->load->view("evaluador/navegacion");
+		$this->load->view("evaluador/materialDocente");
+		$this->load->view("footer");
+	}
+		
+	function formacionRecursosHumanos(){
+		$this->load->model('pride/evaluado_model');
+		$this->load->view("header");
+		$this->load->view("evaluador/navegacion");
+		$this->load->view("evaluador/formacionRecursosHumanos");
+		$this->load->view("footer");
+	}
+	
+	function docencia(){
+		$this->load->model('pride/evaluado_model');
+		$this->load->view("header");
+		$this->load->view("evaluador/navegacion");
+		$this->load->view("evaluador/docencia");
+		$this->load->view("footer");
+	}
+	
+	function difusion(){
+		$this->load->model('pride/evaluado_model');
+		$this->load->view("header");
+		$this->load->view("evaluador/navegacion");
+		$this->load->view("evaluador/difusion");
+		$this->load->view("footer");
+	}
+	
+	function participacionInstitucional(){
+		$this->load->model('pride/evaluado_model');
+		$this->load->view("header");
+		$this->load->view("evaluador/navegacion");
+		$this->load->view("evaluador/participacionInstitucional");
+		$this->load->view("footer");
 	}
 	
 }
