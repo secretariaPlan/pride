@@ -117,64 +117,72 @@ class Evaluador_Controller extends CI_Controller {
 	}
 	
 	function informacionEvaluado(){
+		$datosMenu = array("seccion"=>"informacion");
 		$this->load->model('pride/evaluado_model');
-		$this->load->view("header");
+		$this->load->view("header",$datosMenu);
 		$this->load->view("evaluador/navegacion");
 		$this->load->view("evaluador/informacionEvaluado");
 		$this->load->view("footer");
 	}
 	
 	function formacionTrayectoriaAcademica(){
+		$datosMenu = array("seccion"=>"formacionT");
 		$this->load->model('pride/evaluado_model');
-		$this->load->view("header");
+		$this->load->view("header",$datosMenu);
 		$this->load->view("evaluador/navegacion");
 		$this->load->view("evaluador/formacionTrayectoriaAcademica");
 		$this->load->view("footer");
 	}
 	
 	function productividadAcademica(){
+		$datosMenu = array("seccion"=>"productividad");
 		$this->load->model('pride/evaluado_model');
-		$this->load->view("header");
+		$this->load->view("header",$datosMenu);
 		$this->load->view("evaluador/navegacion");
 		$this->load->view("evaluador/productividadAcademica");
 		$this->load->view("footer");
 	}
 	
 	function materialDocente(){
+		$datosMenu = array("seccion"=>"material");
 		$this->load->model('pride/evaluado_model');
-		$this->load->view("header");
+		$this->load->view("header",$datosMenu);
 		$this->load->view("evaluador/navegacion");
 		$this->load->view("evaluador/materialDocente");
 		$this->load->view("footer");
 	}
 		
 	function formacionRecursosHumanos(){
+		$datosMenu = array("seccion"=>"formacionR");
 		$this->load->model('pride/evaluado_model');
-		$this->load->view("header");
+		$this->load->view("header",$datosMenu);
 		$this->load->view("evaluador/navegacion");
 		$this->load->view("evaluador/formacionRecursosHumanos");
 		$this->load->view("footer");
 	}
 	
 	function docencia(){
+		$datosMenu = array("seccion"=>"docencia");
 		$this->load->model('pride/evaluado_model');
-		$this->load->view("header");
+		$this->load->view("header",$datosMenu);
 		$this->load->view("evaluador/navegacion");
 		$this->load->view("evaluador/docencia");
 		$this->load->view("footer");
 	}
 	
 	function difusion(){
+		$datosMenu = array("seccion"=>"difusion");
 		$this->load->model('pride/evaluado_model');
-		$this->load->view("header");
+		$this->load->view("header",$datosMenu);
 		$this->load->view("evaluador/navegacion");
 		$this->load->view("evaluador/difusion");
 		$this->load->view("footer");
 	}
 	
 	function participacionInstitucional(){
+		$datosMenu = array("seccion"=>"participacion");
 		$this->load->model('pride/evaluado_model');
-		$this->load->view("header");
+		$this->load->view("header",$datosMenu);
 		$this->load->view("evaluador/navegacion");
 		$this->load->view("evaluador/participacionInstitucional");
 		$this->load->view("footer");
