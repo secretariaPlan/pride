@@ -1,7 +1,7 @@
 $(document).ready(function(){
     $("#comentario").hide();
     $("#comentario").html("<div class='col_12'>" +
-                            "<textarea id='texto' class='col_12' placeholder='Agregue un comentario'></textarea>"
+                            "<textarea id='texto' class='col_12' placeholder='Agregue un comentario'></textarea>" +
                         "</div>" +
                         "<div class='col_12 center'>" +
                             "<button id='guardar' class='small green'>Guardar</button>"+
@@ -13,5 +13,9 @@ $(document).ready(function(){
             show: { effect: 'drop', direction: "up" },
             modal:true
         });
+    });
+    
+    $("#guardar").click(function(){
+        var comentario = $("#texto").val();
     });
 });

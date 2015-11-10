@@ -8,4 +8,8 @@ $(document).ready(function(){
             modal:true
         });
     });
+    
+    $("#guardar").click(function(){
+        alert();
+    });
 });

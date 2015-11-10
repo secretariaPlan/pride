@@ -1,4 +1,4 @@
-<script src="<?php echo base_url();?>js/evaluador/matDoc.js" ></script>
+<script src="<?php echo base_url();?>js/evaluador/comentario.js" ></script>
 <body>
     <div class="grid flex">
     	<div class="col_12">
@@ -51,7 +51,7 @@
                             <textarea id="texto" class="col_12" placeholder="Agregue un comentario"></textarea>
                         </div>
                         <div class="12 center">
-                            <button class="small green">Guardar</button>
+                            <button id="guardar" class="small green">Guardar</button>
                         </div>
                     </div>
                 </fieldset>
