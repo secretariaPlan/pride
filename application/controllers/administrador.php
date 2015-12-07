@@ -5,7 +5,7 @@ class Administrador extends CI_Controller {
 	public function  __construct()
 	{
 		parent::__construct();
-		$this->load->model('pride/usuario');
+		$this->load->model('pride/usuario_model');
 		
 	}
 	
@@ -48,14 +48,11 @@ class Administrador extends CI_Controller {
 			$this->load->view("administrador/navegacion");
 			$this->load->view("administrador/altaPeriodos");
 			$this->load->view("footer");
-
-			
-
 		}else{
 			redirect("/login","refresh");
 		}	
 	}
-	
+
 	function nuevoPeriodo() {
 		$this->load->model("pride/periodo");
 		$mensaje['test'] ="Ok";
@@ -101,14 +98,7 @@ class Administrador extends CI_Controller {
 			$this->load->view("administrador/navegacion");
 			$this->load->view("administrador/altaPeriodos",$mensaje);
 			$this->load->view("footer");
-				
-		
-
 		}
-		
-		
-		
-		
 	}
 
 	public function inicioPeriodo_check($str,$finPeriodo){
@@ -215,6 +205,19 @@ class Administrador extends CI_Controller {
 		}
 	
 	}
+
+	function listaEvaluadores(){
+		if($this->sesionActivaAdmin()){
+			$this->load->model("pride/evaluador_model");
+			$datos["lista"] = $this->evaluador_model->listaEvaluadores();
+			$this->load->view("header");
+			$this->load->view("administrador/navegacion");
+			$this->load->view("administrador/listaEvaluadores",$datos);
+			$this->load->view("footer");
+		}else{
+			redirect("/login","refresh");
+		}
+	}
 	
 	function altaEvaluados(){
 		if($this->sesionActivaAdmin()){
@@ -226,6 +229,19 @@ class Administrador extends CI_Controller {
 			redirect("/login","refresh");
 		}
 	
+	}
+
+	function listaEvaluados(){
+		if($this->sesionActivaAdmin()){
+			$this->load->model("pride/evaluado_model");
+			$datos["lista"] = $this->evaluado_model->listaEvaluados();
+			$this->load->view("header");
+			$this->load->view("administrador/navegacion");
+			$this->load->view("administrador/listaEvaluados",$datos);
+			$this->load->view("footer");
+		}else{
+			redirect("/login","refresh");
+		}
 	}
 	
 	function nombrarEvaluado() {
@@ -247,14 +263,14 @@ class Administrador extends CI_Controller {
 	
 	function nuevoProfesor() {
 		if($this->input->post()){
-			//$this->usuario->agregar();
+			//$this->usuario_model->agregar();
 			$rfc=$this->input->post("rfc");
 			$nombre=$this->input->post("nombre");
 			$apaterno=$this->input->post("apaterno");
 			$amaterno=$this->input->post("amaterno");
 			$pass=$this->input->post("password");
 			$email=$this->input->post("correo");
-			$this->usuario->nuevoUsuario($rfc,$nombre,$apaterno,$amaterno,md5($pass),$email);
+			$this->usuario_model->nuevoUsuario($rfc,$nombre,$apaterno,$amaterno,md5($pass),$email);
 			
 			$mensaje=array('mensaje' => "Profesor Agregado Exitosamente");
 			$this->load->view("header");
@@ -333,7 +349,7 @@ class Administrador extends CI_Controller {
 		$correo = $this->input->post("correo");
 		
 		foreach ($rfc as $rfc) {
-			$this->usuario->nuevoUsuario($rfc,$nombre[$i],$apaterno[$i],$amaterno[$i],md5($pass[$i]),$correo[$i]);
+			$this->usuario_model->nuevoUsuario($rfc,$nombre[$i],$apaterno[$i],$amaterno[$i],md5($pass[$i]),$correo[$i]);
 			$i++;
 		}
 		$exito = array("exito" => "Los registros se han guardado correctamente");
@@ -361,7 +377,7 @@ class Administrador extends CI_Controller {
 				
 		$i=0;
 		foreach ($rfc as $rfc) {
-			$usuarioId = $this->usuario->nuevoUsuario($rfc,$nombre[$i],$apaterno[$i],$amaterno[$i],md5($pass[$i]),$correo[$i]);
+			$usuarioId = $this->usuario_model->nuevoUsuario($rfc,$nombre[$i],$apaterno[$i],$amaterno[$i],md5($pass[$i]),$correo[$i]);
 			$evaluador = new Evaluador_Model();
 			$evaluador->nuevoEvaluador($usuarioId,$periodo->id,$comision->id);
 			$i++;
@@ -392,7 +408,7 @@ class Administrador extends CI_Controller {
 	
 		$i=0;
 		foreach ($rfc as $rfc) {
-			$usuarioId = $this->usuario->nuevoUsuario($rfc,$nombre[$i],$apaterno[$i],$amaterno[$i],md5($pass[$i]),$correo[$i]);
+			$usuarioId = $this->usuario_model->nuevoUsuario($rfc,$nombre[$i],$apaterno[$i],$amaterno[$i],md5($pass[$i]),$correo[$i]);
 			$evaluado = new Evaluado_Model();
 			$evaluado->nuevoEvaluado($usuarioId,$periodo->id,$comision->id);
 			$i++;
@@ -406,7 +422,7 @@ class Administrador extends CI_Controller {
 	}
 	
 	function listaUsuarios() {
-			$usuarios = $this->usuario->listaUsuarios();
+			$usuarios = $this->usuario_model->listaUsuarios();
 			
 	}
 		
@@ -414,7 +430,7 @@ class Administrador extends CI_Controller {
 	
 		if(isset($_GET['term'])){
 			$cadena = $_GET['term'];
-			$this->usuario->listaUsuarioNombre($cadena);
+			$this->usuario_model->listaUsuarioNombre($cadena);
 	
 		}
 	}	

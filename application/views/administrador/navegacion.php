@@ -12,13 +12,14 @@
         <li><a href="#">Evaluadores</a>
 			<ul>
 				<li><a href="<?php echo site_url('administrador/altaEvaluadores')?>">Alta de Evaluadores</a></li>
+				<li><a href="<?php echo site_url('administrador/listaEvaluadores')?>">Lista de Evaluadores</a></li>
 			</ul>
-            
 		</li>
 		
 		<li><a href="#">Evaluados</a>
 			<ul>
 				<li><a href="<?php echo site_url('administrador/altaEvaluados')?>">Alta de Evaluados</a></li>
+				<li><a href="<?php echo site_url('administrador/listaEvaluados')?>">Lista de Evaluados</a></li>
 			</ul>
             
 		</li>

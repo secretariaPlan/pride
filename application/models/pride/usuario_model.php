@@ -1,12 +1,12 @@
 <?php
 
-class Usuario extends ActiveRecord\Model{
+class Usuario_Model extends ActiveRecord\Model{
 	
 	static $table_name = "usuario";
 	
 	public function nuevoUsuario($rfc,$nombre,$apaterno,$amaterno,$pass,$email) {
 		
-		$usuario = new Usuario();
+		$usuario = new Usuario_Model();
 		
 		$usuario->rfc = $rfc;
 		$usuario->nombre = $nombre;
@@ -24,7 +24,7 @@ class Usuario extends ActiveRecord\Model{
 	public function agregar()
 	{
 
-		$post=new Usuario;	
+		$post=new Usuario_Model;	
 		$post->rfc=$_POST['rfc'];
 		$post->nombre=$_POST['nombre'];
 		$post->apaterno=$_POST['apaterno'];
@@ -36,7 +36,7 @@ class Usuario extends ActiveRecord\Model{
 	}
 	
 	public function listaUsuarios() {
-		$usuarios = Usuario::all();
+		$usuarios = Usuario_Model::all();
 		$arreglo = array();
 		foreach ($usuarios as $usuario) {
 			$arreglo[] = array("id" => "$usuario->id",
@@ -51,7 +51,7 @@ class Usuario extends ActiveRecord\Model{
 	
 	public function listaUsuarioNombre($cadena) {
 		$condicion = array("conditions" => array("rfc LIKE '%$cadena%' OR CONCAT( nombre, apaterno, amaterno) LIKE '%$cadena%' "));
-		$usuarios = Usuario::all($condicion);
+		$usuarios = Usuario_Model::all($condicion);
 		//$arreglo = array();
 		foreach ($usuarios as $usuario) {
 			$arreglo['id'] = htmlentities(stripslashes("$usuario->id"));
@@ -69,9 +69,9 @@ class Usuario extends ActiveRecord\Model{
 	
 	
 	public function very_correo(){
-		$usuario = Usuario::first(1);
+		$usuario = Usuario_Model::first(1);
 	
-	foreach (Usuario::find("correo='gabrieldelabarrera@gmail.com'") as $usuario) {
+	foreach (Usuario_Model::find("correo='gabrieldelabarrera@gmail.com'") as $usuario) {
         echo"Usuario encontrado";
 
 	}
@@ -79,7 +79,7 @@ class Usuario extends ActiveRecord\Model{
 	}	
 	
 	public function recoverPass($email,$reemail) {
-		$user = Usuario::first(array("conditions" => array("correo = ? AND correo = ?",$email,$reemail) ));
+		$user = Usuario_Model::first(array("conditions" => array("correo = ? AND correo = ?",$email,$reemail) ));
 		if(isset($user))return true;
 		else return false;
 	}
@@ -87,8 +87,8 @@ class Usuario extends ActiveRecord\Model{
 	
 public function UsuarioNoEvaluador(){
 		//$join = 'inner join evaluador e on (usuario.id=e.id_usuario)';
-		$usuarios = Usuario::find_by_sql("select u.id id_usuario, rfc, nombre, apaterno, amaterno from usuario u left join evaluador e on u.id=e.id_usuario where e.id_usuario is null");
-		//$evaluadores = Usuario::all(array('joins' => $join));
+		$usuarios = Usuario_Model::find_by_sql("select u.id id_usuario, rfc, nombre, apaterno, amaterno from usuario u left join evaluador e on u.id=e.id_usuario where e.id_usuario is null");
+		//$evaluadores = Usuario_Model::all(array('joins' => $join));
 	
 	
 		$arreglo = array();
@@ -110,13 +110,13 @@ public function UsuarioNoEvaluador(){
 	
 	public function UsuariosEvaluadoresDelPeriodo(){
 		//$join = 'inner join evaluador e on (usuario.id=e.id_usuario)';
-		$usuarios = Usuario::find_by_sql("SELECT e.id_usuario, e.id_periodo, e.id_comision, u.rfc, CONCAT( u.nombre,  ' ', u.apaterno,  ' ', u.amaterno ) AS Usuario
+		$usuarios = Usuario_Model::find_by_sql("SELECT e.id_usuario, e.id_periodo, e.id_comision, u.rfc, CONCAT( u.nombre,  ' ', u.apaterno,  ' ', u.amaterno ) AS Usuario
 FROM usuario u
 INNER JOIN evaluador e ON u.id = e.id_usuario
 WHERE e.id_periodo = ( 
 SELECT MAX( id ) 
 FROM periodo )");
-		//$evaluadores = Usuario::all(array('joins' => $join));
+		//$evaluadores = Usuario_Model::all(array('joins' => $join));
 	
 	
 		$arreglo = array();
@@ -131,6 +131,17 @@ FROM periodo )");
 		echo json_encode($arreglo);
 	
 	
+	}
+
+	function cambiarPassword($idUsuario,$password){
+		$usuario = Usuario_Model::find($idUsuario);
+		$usuario->password =md5($password);
+		if($usuario->save())
+			$datos["exito"] = 1;
+		else
+			$datos["exito"] = 0;
+
+		echo json_encode($datos);
 	}
 	
 	

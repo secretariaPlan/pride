@@ -8,7 +8,7 @@ class Login extends CI_Controller {
 		$this->load->model("pride/evaluador_model");
 		$this->load->model("pride/evaluado_model");
 		$this->load->model("pride/administrador");
-		$this->load->model("pride/usuario");
+		$this->load->model("pride/usuario_model");
 		$this->load->model("pride/periodo");
 		
 	}

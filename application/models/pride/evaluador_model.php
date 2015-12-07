@@ -77,11 +77,29 @@ class Evaluador_Model extends ActiveRecord\Model{
 			);
 		}
 		echo json_encode($arreglo);
-	
-	
 	}
+
+	function listaEvaluadores(){
+		//$join = 'inner join evaluador e on (usuario.id=e.id_usuario)';
+		$evaluadores = Evaluador_Model::find_by_sql("SELECT u.id as id_usuario, u.rfc, CONCAT_WS(' ', u.nombre, u.apaterno, u.amaterno ) as nombre, e.id as id_evaluador
+												FROM usuario u
+												INNER JOIN evaluador e ON u.id = e.id_usuario
+												WHERE e.id_periodo = ( 
+												SELECT MAX( id ) 
+												FROM periodo )");
+		//$evaluadores = Usuario::all(array('joins' => $join));
 	
-	
+		$arreglo = array();
+		foreach ($evaluadores as $evaluador) {
+			$arreglo[] = array("idUsuario" => $evaluador->id_usuario,
+					"rfc" => $evaluador->rfc,
+					"nombre" => $evaluador->nombre,
+					"idEvaluador" => $evaluador->id_evaluador,
+			);
+		}
+		return ($arreglo);
+	}
+
 	function evaluadoresAsignados(){
 		//$join = 'inner join evaluador e on (usuario.id=e.id_usuario)';
 		$evaluadores = EvaluadorModel::find_by_sql("select concat(a.id) as id_evaluador, a.id_usuario, u.rfc, concat(u.nombre,' ',u.apaterno,' ',u.amaterno) as evaluador from evaluador a, usuario u where u.id=a.id_usuario and a.id in(select e.id_evaluador from evaluador_evaluado e inner join evaluador a on e.id_evaluador=a.id)");
