@@ -80,6 +80,25 @@ $db['pride']['dbcollat'] = 'utf8_general_ci';
 $db['pride']['swap_pre'] = '';
 $db['pride']['autoinit'] = TRUE;
 $db['pride']['stricton'] = FALSE;
+*/
+
+$db['sicpa']['hostname'] = 'localhost';
+$db['sicpa']['username'] = 'root';
+$db['sicpa']['password'] = 'imladris';
+$db['sicpa']['database'] = 'sicpa';
+$db['sicpa']['dbdriver'] = 'mysql';
+$db['sicpa']['dbprefix'] = '';
+$db['sicpa']['pconnect'] = TRUE;
+$db['sicpa']['db_debug'] = TRUE;
+$db['sicpa']['cache_on'] = FALSE;
+$db['sicpa']['cachedir'] = '';
+$db['sicpa']['char_set'] = 'utf8';
+$db['sicpa']['dbcollat'] = 'utf8_general_ci';
+$db['sicpa']['swap_pre'] = '';
+$db['sicpa']['autoinit'] = TRUE;
+$db['sicpa']['stricton'] = FALSE;
+
+
 /*
 $db['sicpa']['hostname'] = '132.248.103.9';
 $db['sicpa']['username'] = 'ucomisiones';
