@@ -24,7 +24,7 @@ class Evaluado_Controller extends CI_Controller {
 	
 	function evaluadosDelPeriodo(){
 		$this->load->model("pride/periodo");
-		$this->load->model("pride/usuario");
+		$this->load->model("pride/usuario_model");
 	
 		$periodo = Periodo::last();
 	
@@ -34,7 +34,7 @@ class Evaluado_Controller extends CI_Controller {
 		if (sizeof($evaluados)){
 			$respuesta["exito"] = 1;
 			foreach ($evaluados as $evaluado) {
-				$usuario = Usuario::first($evaluado->id_usuario);
+				$usuario = Usuario_Model::first($evaluado->id_usuario);
 				$respuesta["usuarios"][] = array("idUsuario" => $usuario->id,
 						"idEvaluado" => $evaluado->id,
 						"nombre" => "$usuario->nombre $usuario->apaterno $usuario->amaterno"

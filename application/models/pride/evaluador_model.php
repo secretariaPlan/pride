@@ -7,7 +7,7 @@ class Evaluador_Model extends ActiveRecord\Model{
 	
 	function loginEvaluador($rfc,$pass,$idPeriodo){
 		
-		$usuario = Usuario::first(array("conditions" => array("rfc = ? AND password = ?",$rfc,$pass)));
+		$usuario = Usuario_Model::first(array("conditions" => array("rfc = ? AND password = ?",$rfc,$pass)));
 		
 		if(isset($usuario)){
 			$evaluador = Evaluador_Model::first(array("conditions" => array("id_usuario = ? AND id_periodo = ?",$usuario->id,$idPeriodo)));

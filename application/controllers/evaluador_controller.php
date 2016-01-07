@@ -22,7 +22,7 @@ class Evaluador_Controller extends CI_Controller {
 	}
 	
 	function vistaListaEvaluados(){
-		$this->load->model('pride/usuario');
+		$this->load->model('pride/usuario_model');
 		$this->load->model('pride/evaluado_model');
 		$this->load->model('pride/evaluadorevaluado');
 		$respuesta = array();
@@ -35,7 +35,7 @@ class Evaluador_Controller extends CI_Controller {
 			$respuesta["respuesta"] = array("exito" =>1);
 			foreach ($evaluadoEvaluador as $eval) {
 				$evaluado = Evaluado_Model::find($eval->id_evaluado);
-				$usuario = Usuario::find($evaluado->id_usuario);
+				$usuario = Usuario_Model::find($evaluado->id_usuario);
 				$respuesta["datos"][] = array("id_usuario" => $usuario->id,
 						"id_evaluado" => $evaluado->id,
 						"nombre" => "$usuario->nombre $usuario->apaterno $usuario->amaterno"
@@ -54,7 +54,7 @@ class Evaluador_Controller extends CI_Controller {
 	
 	function evaluadoresDelPeriodo(){
 		$this->load->model("pride/periodo");
-		$this->load->model("pride/usuario");
+		$this->load->model("pride/usuario_model");
 		
 		$periodo = Periodo::last();
 		
@@ -64,7 +64,7 @@ class Evaluador_Controller extends CI_Controller {
 		if (sizeof($evaluadores)){
 			$respuesta["exito"] = 1;
 			foreach ($evaluadores as $evaluador) {
-				$usuario = Usuario::first($evaluador->id_usuario);
+				$usuario = Usuario_Model::first($evaluador->id_usuario);
 				$respuesta["usuarios"][] = array("idUsuario" => $usuario->id,
 						"idEvaluador" => $evaluador->id,
 						"nombre" => "$usuario->nombre $usuario->apaterno $usuario->amaterno"
@@ -91,7 +91,7 @@ class Evaluador_Controller extends CI_Controller {
 	}
 	
 	public function evaluadosAsignados() {
-		$this->load->model('pride/usuario');
+		$this->load->model('pride/usuario_model');
 		$this->load->model('pride/evaluado_model');
 		$this->load->model('pride/evaluadorevaluado');
 		$respuesta = array();
@@ -104,7 +104,7 @@ class Evaluador_Controller extends CI_Controller {
 			$respuesta["respuesta"] = array("exito" =>1);
 			foreach ($evaluadoEvaluador as $eval) {
 				$evaluado = Evaluado_Model::find($eval->id_evaluado);
-				$usuario = Usuario::find($evaluado->id_usuario);
+				$usuario = Usuario_Model::find($evaluado->id_usuario);
 				$respuesta["datos"][] = array("id_usuario" => $usuario->id,
 						"id_evaluado" => $evaluado->id,
 						"nombre" => "$usuario->nombre $usuario->apaterno $usuario->amaterno"
