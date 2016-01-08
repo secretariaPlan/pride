@@ -1,0 +1,28 @@
+- Contraseña minima de 8 caracteres
+
+- En la lista de evaluados poner la opcion de "Evaluar" por cada evaluado
+
+- Aclaracion en las comisiones-profesor
+	- Catalogo comisiones
+	- Definir que elemento de corresponde
+
+- Se agrega una lista de comentarios en cada rubro del evaluado
+
+- Pantalla evaluacion
+	- Menu desplegable para nivel actual y al que se postula
+
+- Archivos evaluadores
+	- Solo PDF y < 2Mb
+	- Por pantalla y se elige a que apartado pertenece
+	- El evaluador ve el compendio de archivos subidos
+
+- En la evaluacion
+	- Se quita "Candidato al nivel "D""
+	- En "Dictamen Propuesto"
+		- Se cambia "Dictamen propuesto" por "Dictamen"
+		- Se colocan las opciones: A, B, C, Candidato a nivel D
+	- Los integrantes de la comision evaluadora no llevan grado
+
+
+
+
