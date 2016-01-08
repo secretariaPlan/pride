@@ -1,17 +1,58 @@
 <body>
-    <div class="grid flex">
-    	<div class="col_12">
-            
-            
-            <div class="col_2"></div>
-            <div class="col_8 center">
-  				<h1>Bienvenido</h1>
+    <div class="grid">
+        <h4 class="center">Lista de Evaluados</h4>
+        <div class="col_12">
+             <div class="center">
+                <fieldset>
+                    <table class="striped visible" cellspacing="0" cellpadding="0">
+                        <thead>
+                            <tr>
+                                <th>RFC</th>
+                                <th>Nombre</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            foreach ($datos as $evaluado) {
+                                   $fila = "<tr>";
+                                   $fila .= "<td>".$evaluado["rfc"]."</td>";
+                                   $fila .= "<td><a href='".site_url('evaluador_controller/informacionEvaluado')."'>".$evaluado["nombre"]."</a></td>";
+                                   $fila .= "</tr>";
+                                   echo $fila; 
+                                }    
+                            ?>
+                            <!-- <tr class="">
+                                <th rel="0" value="RFC 1">RFC 1</th>
+                                <td value="Profesor 2">Profesor 1</td>
+                                <td value="opciones">
+                                    <a href=""><i>Ver</i></a>
+                                    <a href=""><i>Evaluar</i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr class="">
+                                <th rel="0" value="RFC 1">RFC 2</th>
+                                <td value="Profesor 2">Profesor 2</td>
+                                <td value="opciones">
+                                    <a href=""><i>Ver</i></a>
+                                    <a href=""><i>Evaluar</i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr class="">
+                                <th rel="0" value="RFC 1">RFC 3</th>
+                                <td value="Profesor 2">Profesor 3</td>
+                                <td value="opciones">
+                                    <a href=""><i>Ver</i></a>
+                                    <a href=""><i>Evaluar</i></a>
+                                </td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </fieldset>
             </div>
-      
-            
-            <div class="col_2"></div>
-     
-            <div class="col_2"></div>
         </div>
     </div>
 </body>

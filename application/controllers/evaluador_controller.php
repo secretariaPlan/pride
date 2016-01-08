@@ -26,7 +26,8 @@ class Evaluador_Controller extends CI_Controller {
 		$this->load->model('pride/evaluado_model');
 		$this->load->model('pride/evaluadorevaluado');
 		$respuesta = array();
-		$idEvaluador = $this->input->post("idEvaluador");
+		$idEvaluador = $this->session->all_userdata()[0]["idEvaluador"];
+		//print_r($idEvaluador);
 		
 		$condicion = array("conditions" => array("id_evaluador = ?",$idEvaluador));
 		$evaluadoEvaluador = EvaluadorEvaluado::all($condicion);
@@ -37,6 +38,7 @@ class Evaluador_Controller extends CI_Controller {
 				$evaluado = Evaluado_Model::find($eval->id_evaluado);
 				$usuario = Usuario_Model::find($evaluado->id_usuario);
 				$respuesta["datos"][] = array("id_usuario" => $usuario->id,
+						"rfc" => $usuario->rfc,
 						"id_evaluado" => $evaluado->id,
 						"nombre" => "$usuario->nombre $usuario->apaterno $usuario->amaterno"
 				);
@@ -44,7 +46,9 @@ class Evaluador_Controller extends CI_Controller {
 		}else
 			$respuesta["respuesta"] = array("exito" =>0);
 		
-		return $respuesta;
+		$this->load->view("header");
+		$this->load->view("evaluador/listaEvaluados",$respuesta);
+		$this->load->view("footer");
 	}
 	
 	function nuevoEvaluador($idUsuario,$idPeriodo,$idComision){
@@ -114,6 +118,10 @@ class Evaluador_Controller extends CI_Controller {
 			$respuesta["respuesta"] = array("exito" =>0);
 	
 		echo json_encode($respuesta);
+	}
+
+	function listaEvaluados(){
+
 	}
 	
 	function informacionEvaluado(){

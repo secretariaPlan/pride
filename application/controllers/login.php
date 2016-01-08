@@ -42,7 +42,7 @@ class Login extends CI_Controller {
 	public function ingresa() {
 		$rfc = $this->input->post("rfc");
 		$pass = md5($this->input->post("pass"));
-		$periodo = Periodo::last();
+		//$periodo = Periodo::last();
 		
 		$respuestaAdmin = $this->administrador->loginAdmin($rfc,$pass);
 		
@@ -54,7 +54,7 @@ class Login extends CI_Controller {
 			$this->load->view("administrador/bienvenido");
 			$this->load->view("footer");
 		}else{
-			
+			$periodo = Periodo::last();
 			$respuestaEvaluador = $this->evaluador_model->loginEvaluador($rfc,$pass,$periodo->id);
 			$respuestaEvaluado = $this->evaluado_model->loginEvaluado($rfc,$pass,$periodo->id);;
 			

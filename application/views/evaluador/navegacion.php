@@ -27,7 +27,7 @@
         <li <?php echo isset($docencia) ? $docencia :"" ?>><a href="<?php echo site_url('evaluador_controller/docencia')?>">Docencia</a></li>
         <li <?php echo isset($difusion) ? $difusion :"" ?>><a href="<?php echo site_url('evaluador_controller/difusion')?>">Difusi&oacute;n</a></li>
         <li <?php echo isset($participacion) ? $participacion :"" ?>><a href="<?php echo site_url('evaluador_controller/participacionInstitucional')?>">Participaci&oacute;n institucional</a></li>
-        <li <?php echo isset($lista) ? $lista :"" ?>><a href="<?php echo site_url('evaluador_controller/')?>">Lista de evaluados</a></li>
+        <li <?php echo isset($lista) ? $lista :"" ?>><a href="<?php echo site_url('evaluador_controller/vistaListaEvaluados')?>">Lista de evaluados</a></li>
 		<li><a href="<?php echo site_url('evaluador_controller/cerrarSesion')?>"><i class="fa fa-cog"></i> Salir </a></li>
 	</ul>
 </div>	
