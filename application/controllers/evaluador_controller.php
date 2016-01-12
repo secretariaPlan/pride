@@ -120,6 +120,13 @@ class Evaluador_Controller extends CI_Controller {
 		echo json_encode($respuesta);
 	}
 
+	function pruebaSicpa(){
+		$this->load->model('sicpa/profesor_model');
+
+		print_r($this->profesor_model->buscaProfesorPorRFC("AAAL800909SZ0"));
+
+	}
+
 	function listaEvaluados(){
 
 	}
