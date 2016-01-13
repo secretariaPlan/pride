@@ -606,6 +606,39 @@ if ( ! function_exists('timezones'))
 	}
 }
 
+/**
+ * Tiempo transcurrido
+ *
+ * Regresa el tiempo transcurrido, en años, meses, dias, horas, minutos o segundos.  This is a helper function
+ * for various other ones in this library
+ *
+ * @access	public
+ * @param	string	tiempoTranscurrido
+ * @return	string
+ */
+if ( ! function_exists('tiempoTranscurrido'))
+{
+	function tiempoTranscurrido($fecha, $unidad = "Y"){
+		$segundos = strtotime('now') - strtotime($fecha);
+		if($unidad == "s") return $segundos;
+
+		$minutos = $segundos/60;
+		if($unidad == "m") return $minutos;
+
+		$horas = $minutos/60;
+		if($unidad == "h") return $horas;
+
+		$dias = $horas/24;
+		if($unidad == "d") return $dias;
+
+		$meses = $dias/30;
+		if($unidad == "M") return $meses;
+
+		$year = $meses/12;
+		if($unidad == "Y") return $year;
+	}
+}
+
 
 /* End of file date_helper.php */
 /* Location: ./system/helpers/date_helper.php */

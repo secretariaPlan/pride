@@ -121,9 +121,10 @@ class Evaluador_Controller extends CI_Controller {
 	}
 
 	function pruebaSicpa(){
-		$this->load->model('sicpa/profesor_model');
+		$this->load->model('sicpa/formacionacademica_model');
+		$id = $this->input->post("id");
 
-		print_r($this->profesor_model->buscaProfesorPorRFC("AAAL800909SZ0"));
+		$this->formacionacademica_model->buscaPorIdProfesor($id);
 
 	}
 
