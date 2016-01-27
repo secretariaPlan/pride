@@ -57,10 +57,10 @@ class Evaluador_Controller extends CI_Controller {
 	}
 	
 	function evaluadoresDelPeriodo(){
-		$this->load->model("pride/periodo");
+		$this->load->model("pride/periodo_model");
 		$this->load->model("pride/usuario_model");
 		
-		$periodo = Periodo::last();
+		$periodo = Periodo_Model::last();
 		
 		$condiciones = array("conditions" => array("id_periodo = ?",$periodo->id));
 		$evaluadores = Evaluador_Model::all($condiciones);
@@ -121,10 +121,11 @@ class Evaluador_Controller extends CI_Controller {
 	}
 
 	function pruebaSicpa(){
-		$this->load->model('sicpa/formacionacademica_model');
+		$this->load->model('sicpa/cursoextracurr_model');
+		
 		$id = $this->input->post("id");
-
-		$this->formacionacademica_model->buscaPorIdProfesor($id);
+		
+		print_r($this->cursoextracurr_model->buscaCursoExtraCurrPoridProfesor($id));
 
 	}
 

@@ -9,7 +9,7 @@ class Login extends CI_Controller {
 		$this->load->model("pride/evaluado_model");
 		$this->load->model("pride/administrador");
 		$this->load->model("pride/usuario_model");
-		$this->load->model("pride/periodo");
+		$this->load->model("pride/periodo_model");
 		
 	}
 	
@@ -21,7 +21,7 @@ class Login extends CI_Controller {
 	
 	public function pruebaLoginEvaluador(){
 		
-		$periodo = Periodo::last();
+		$periodo = Periodo_Model::last();
 		$rfc = $this->input->post("rfc");
 		$pass = md5($this->input->post("pass"));
 		
@@ -31,7 +31,7 @@ class Login extends CI_Controller {
 	
 	public function pruebaLoginEvaluado(){
 	
-		$periodo = Periodo::last();
+		$periodo = Periodo_Model::last();
 		$rfc = $this->input->post("rfc");
 		$pass = md5($this->input->post("pass"));
 	
@@ -42,7 +42,7 @@ class Login extends CI_Controller {
 	public function ingresa() {
 		$rfc = $this->input->post("rfc");
 		$pass = md5($this->input->post("pass"));
-		//$periodo = Periodo::last();
+		//$periodo = Periodo_Model::last();
 		
 		$respuestaAdmin = $this->administrador->loginAdmin($rfc,$pass);
 		
@@ -54,7 +54,7 @@ class Login extends CI_Controller {
 			$this->load->view("administrador/bienvenido");
 			$this->load->view("footer");
 		}else{
-			$periodo = Periodo::last();
+			$periodo = Periodo_Model::last();
 			$respuestaEvaluador = $this->evaluador_model->loginEvaluador($rfc,$pass,$periodo->id);
 			$respuestaEvaluado = $this->evaluado_model->loginEvaluado($rfc,$pass,$periodo->id);;
 			

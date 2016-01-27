@@ -1,10 +1,10 @@
 <?php
-class Periodo extends ActiveRecord\Model {
+class Periodo_Model extends ActiveRecord\Model {
 	static $table_name = "periodo";
 	
 		public function nuevoPeriodo($year,$numero,$inicioPeriodo,$finPeriodo,$inicioEvaluacion,$finEvaluacion,$inicioEntrega,$finEntrega) {
 		
-			$periodo = new Periodo();
+			$periodo = new Periodo_Model();
 			
 			$periodo->year = $year;
 			$periodo->numero = $numero;
@@ -17,22 +17,30 @@ class Periodo extends ActiveRecord\Model {
 			
 			$periodo->save();
 		}
+
+		public function periodoBusqueda(){
+			$periodo = Periodo_Model::last();
+			$finPerBusqueda = date("Y-m-d",strtotime("$periodo->inicioper"));
+			$inicioPerBusqueda = date("Y-m-d",strtotime("$finPerBusqueda - 5 year"));
+			$respuesta = array("inicioPeriodoBusqueda" => $inicioPerBusqueda,
+								"finPeriodoBusqueda" => $finPerBusqueda);
+
+			return $respuesta;
+		}
 		
 		public function listaPeriodo(){
 			$respuesta = array();
-			$periodos = Periodo::all();
+			$periodos = Periodo_Model::all();
 			foreach ($periodos as $periodo) {
 				$respuesta["periodos"][] = array("id" => $periodo->id,
 												   "periodo"=>"$periodo->year-$periodo->numero");
 			}
 			echo json_encode($respuesta);
 		}
-		
-		
-		
+				
 		public function listaSinUltimoPeriodo(){
 			$respuesta = array();
-			$periodos = Periodo::find_by_sql("SELECT * FROM periodo WHERE numero NOT IN (SELECT max(numero) FROM periodo)");
+			$periodos = Periodo_Model::find_by_sql("SELECT * FROM periodo WHERE numero NOT IN (SELECT max(numero) FROM periodo)");
 			foreach ($periodos as $periodo) {
 				$respuesta["periodos"][] = array("id" => $periodo->id,
 						"periodo"=>"$periodo->year-$periodo->numero",
@@ -45,11 +53,10 @@ class Periodo extends ActiveRecord\Model {
 			}
 			echo json_encode($respuesta);
 		}
-		
-		
+				
 		public function listaUltimoPeriodo(){
 			$respuesta = array();
-			$periodos = Periodo::find_by_sql("SELECT * FROM periodo ORDER BY numero DESC LIMIT 1");
+			$periodos = Periodo_Model::find_by_sql("SELECT * FROM periodo ORDER BY numero DESC LIMIT 1");
 			foreach ($periodos as $periodo) {
 				$respuesta["periodos"][] = array("id" => $periodo->id,
 						"periodo"=>"$periodo->year-$periodo->numero",
@@ -63,12 +70,9 @@ class Periodo extends ActiveRecord\Model {
 			echo json_encode($respuesta);
 		}
 		
-	
-		
-
 		function desasignarPeriodo($id){
 		
-			$periodo = Periodo::first("$id");
+			$periodo = Periodo_Model::first("$id");
 		
 			$periodo->delete();
 		

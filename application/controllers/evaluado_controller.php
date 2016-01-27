@@ -23,10 +23,10 @@ class Evaluado_Controller extends CI_Controller {
 	}
 	
 	function evaluadosDelPeriodo(){
-		$this->load->model("pride/periodo");
+		$this->load->model("pride/periodo_model");
 		$this->load->model("pride/usuario_model");
 	
-		$periodo = Periodo::last();
+		$periodo = Periodo_Model::last();
 	
 		$condiciones = array("conditions" => array("id_periodo = ?",$periodo->id));
 		$evaluados = Evaluado_Model::all($condiciones);
@@ -60,7 +60,7 @@ class Evaluado_Controller extends CI_Controller {
 
 	public function evaluadosSinAsignar() {
 		$this->load->model('pride/evaluador');
-		$this->load->model('pride/periodo');
+		$this->load->model('pride/periodo_model');
 	
 		if(isset($_GET['term'])){
 			$cadena = $_GET['term'];

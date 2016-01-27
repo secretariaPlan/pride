@@ -54,14 +54,14 @@ class Administrador extends CI_Controller {
 	}
 
 	function nuevoPeriodo() {
-		$this->load->model("pride/periodo");
+		$this->load->model("pride/periodo_model");
 		$mensaje['test'] ="Ok";
 		$year = $this->input->post("year");
 		$numero = $this->input->post("numero");
 		
 		
-		$periodo = Periodo::first(array("conditions" => array("year = ? AND numero = ?",$year,$numero)));
-		$ultimaEntrega = Periodo::find_by_sql("SELECT finentrega FROM periodo ORDER BY finentrega DESC LIMIT 1");
+		$periodo = Periodo_Model::first(array("conditions" => array("year = ? AND numero = ?",$year,$numero)));
+		$ultimaEntrega = Periodo_Model::find_by_sql("SELECT finentrega FROM periodo ORDER BY finentrega DESC LIMIT 1");
 		
 		if(!isset($periodo)){
 			$this->form_validation->set_error_delimiters('<div class = "notice error"><i class="icon-remove-sign icon-large"></i>', '</div>');
@@ -86,7 +86,7 @@ class Administrador extends CI_Controller {
 				$inicioEntrega = $this->input->post("inicioEntrega");
 				$finEntrega = $this->input->post("finEntrega");	
 
-				$this->periodo->nuevoPeriodo($year,$numero,$inicioPer,$finPer,$inicioEval,$finEval,$inicioEntrega,$finEntrega);
+				$this->periodo_model->nuevoPeriodo($year,$numero,$inicioPer,$finPer,$inicioEval,$finEval,$inicioEntrega,$finEntrega);
 
 				redirect("administrador/altaPeriodos","refresh");
 			}
@@ -361,7 +361,7 @@ class Administrador extends CI_Controller {
 	
 	function guardarEvaluadores() {
 		
-		$this->load->model("pride/periodo");
+		$this->load->model("pride/periodo_model");
 		$this->load->model("pride/evaluador_model");
 		$this->load->model("pride/comision");
 	
@@ -372,7 +372,7 @@ class Administrador extends CI_Controller {
 		$pass = $this->input->post("pass");
 		$correo = $this->input->post("correo");
 		
-		$periodo = Periodo::last();
+		$periodo = Periodo_Model::last();
 		$comision = Comision::find(1);
 				
 		$i=0;
@@ -392,7 +392,7 @@ class Administrador extends CI_Controller {
 	
 	function guardarEvaluados() {
 	
-		$this->load->model("pride/periodo");
+		$this->load->model("pride/periodo_model");
 		$this->load->model("pride/evaluado_model");
 		$this->load->model("pride/comision");
 	
@@ -403,7 +403,7 @@ class Administrador extends CI_Controller {
 		$pass = $this->input->post("pass");
 		$correo = $this->input->post("correo");
 	
-		$periodo = Periodo::last();
+		$periodo = Periodo_Model::last();
 		$comision = Comision::find(1);
 	
 		$i=0;
