@@ -24,7 +24,6 @@
 			$cadenaBusquedaYear .= "AND year LIKE '%$i%' ";
 		}
 
-		$a = array("1,2,3,4,5");
 		$condicion = array("select"=> 'cursoid, horas, semestreotro',
 							"conditions" => array("profesorid = ? AND ($cadenaBusquedaYear OR semestreid in (?))",$id,$semestreIds));
 		

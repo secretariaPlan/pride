@@ -1,0 +1,21 @@
+*Formacion y Trayectoria Academica*
+
+- Estudios realizados durante el periodo
+	-[ ] Licenciatura
+	-[ ] Maestria
+	-[ ] Doctorado
+	-[ ] Postdoctorado
+
+- Cursos Tomados
+	-[ ] Con Evaluacion
+	-[ ] Sin evaluacion
+
+-[X] Premios Recibidos
+-[ ] Reconocimientos obtenidos
+-[ ] Nivel en el SNI
+-[ ] Otros (Precisar)
+
+
+- Se tiene la busqueda de "Estudios realizados durante el periodo", pero falta el criterio para decidir el tipo.
+- Se tiene la busqueda "Curso extracurricular" y "curso fuera"
+

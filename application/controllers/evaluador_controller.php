@@ -121,11 +121,11 @@ class Evaluador_Controller extends CI_Controller {
 	}
 
 	function pruebaSicpa(){
-		$this->load->model('sicpa/cursoextracurr_model');
+		$this->load->model('sicpa/servsocialalumno_model');
 		
 		$id = $this->input->post("id");
 		
-		print_r($this->cursoextracurr_model->buscaCursoExtraCurrPoridProfesor($id));
+		print_r($this->servsocialalumno_model->buscaAlumnosporIdProfesor($id));
 
 	}
 

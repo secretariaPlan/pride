@@ -1,0 +1,11 @@
+*Difusion*
+
+- Presentación de trabajos en congresos (cartel/oral) (¿reunion?)
+	-[ ] Nacional
+	-[ ] Internacional
+
+-[X] Conferencias impartidas
+-[ ] Organizacion de eventos ¿?
+-[ ] Otros (precisar)
+
+

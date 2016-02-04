@@ -1,0 +1,24 @@
+*Productividad Academica*
+
+- Publicaciones nacionales
+	-[ ] Con arbitraje
+	-[ ] Sin arbitraje
+
+- Publicaciones internacionales
+	-[ ] Con arbitraje
+	-[ ] Sin arbitraje
+
+-[ ] Proyectos de investigación de los que no se es responsable
+-[ ] Capítulos en libros publicados (i_p_libro_capitulo)
+-[ ] Libros publicados (i_p_libro)
+-[ ] Participaciones como árbitro de publicaciones (i_p_participacion)
+
+- Citas en publicaciones
+	-[ ] Nacional
+	-[ ] Internacional
+
+- Memorias in extenso de Congresos (i_p_memoria,i_p_otro)
+	-[ ] Nacional
+	-[ ] Internacional
+
+-[ ] Patentes registradas (i_p_patente)

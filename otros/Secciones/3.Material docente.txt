@@ -1,0 +1,10 @@
+*Material docente*
+
+-[ ] Manuales
+-[X] Software
+-[ ] Videos
+-[ ] Participación en el diseño de programas de asignatura
+-[X] Diseño de practicas de laboratorio
+-[ ] Participación en el diseño de exámenes departamentales
+-[ ] Otros (precisar)
+
