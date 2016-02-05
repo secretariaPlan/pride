@@ -1,19 +1,19 @@
 *Productividad Academica*
 
-- Publicaciones nacionales
+- Publicaciones nacionales (pub_articulo)
 	-[ ] Con arbitraje
 	-[ ] Sin arbitraje
 
-- Publicaciones internacionales
+- Publicaciones internacionales (pub_articulo)
 	-[ ] Con arbitraje
 	-[ ] Sin arbitraje
 
--[ ] Proyectos de investigación de los que no se es responsable
+-[ ] Proyectos de investigación de los que no se es responsable (¿?)
 -[ ] Capítulos en libros publicados (i_p_libro_capitulo)
 -[ ] Libros publicados (i_p_libro)
 -[ ] Participaciones como árbitro de publicaciones (i_p_participacion)
 
-- Citas en publicaciones
+- Citas en publicaciones (¿?)
 	-[ ] Nacional
 	-[ ] Internacional
 

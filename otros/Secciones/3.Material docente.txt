@@ -1,4 +1,4 @@
-*Material docente*
+*Material docente* (apoyo_acad apoyo_acad_aux servicio servicio_tipo)
 
 -[ ] Manuales
 -[X] Software

@@ -14,6 +14,6 @@
 -[X] Integrante de Comisiones Dictaminadoras
 -[X] Integrante de Comisiones Evaluadoras del PRIDE
 -[ ] Participación en proyectos institucionales
--[ ] Otros (precisar)
+-[ ] Otros (precisar) (Lista de otros)
 
 -¿La tabla comision_especial que indica?

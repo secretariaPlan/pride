@@ -9,5 +9,5 @@
 	-[X] Horas totales
 
 -[X] Cursos extracurriculares impartidos
--[ ] Cursos intersemestrales impartidos
+-[ ] Cursos intersemestrales impartidos (campo de entrada para el evaluado)
 -[ ] Otros (precisar)
