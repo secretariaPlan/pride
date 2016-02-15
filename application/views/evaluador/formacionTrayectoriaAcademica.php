@@ -8,12 +8,28 @@
                     <legend>FORMACI&Oacute;N Y TRAYECTORIA ACAD&Eacute;MICA</legend>
                     <table class="striped visible" cellspacing="0" cellpadding="0" >
                         <tr>
-                            <td width="50%" rowspan="4">Estudios realizados durante el periodo:</td>
+                            <td width="50%" rowspan="9">Estudios realizados durante el periodo:</td>
+                            <td width="30%">Técnico</td>
+                            <td width="20%">Valor</td>
+                        </tr>
+                        <tr>
+                            <td width="30%">Bachillerato</td>
+                            <td width="20%">Valor</td>
+                        </tr>
+                        <tr>
                             <td width="30%">Licenciatura</td>
                             <td width="20%">Valor</td>
                         </tr>
                         <tr>
-                            <td width="30%">Maestr&iacute;a</td>
+                            <td width="30%">Diplomado</td>
+                            <td width="20%">Valor</td>
+                        </tr>
+                        <tr>
+                            <td width="30%">Especialización</td>
+                            <td width="20%">Valor</td>
+                        </tr>
+                        <tr>
+                            <td width="30%">Maestría</td>
                             <td width="20%">Valor</td>
                         </tr>
                         <tr>
@@ -21,7 +37,11 @@
                             <td width="20%">Valor</td>
                         </tr>
                         <tr>
-                            <td width="30%">Posdoctorado</td>
+                            <td width="30%">Posdocotorado</td>
+                            <td width="20%">Valor</td>
+                        </tr>
+                        <tr>
+                            <td width="30%">Licenciatura(en otras instituciones)</td>
                             <td width="20%">Valor</td>
                         </tr>
                         <tr>

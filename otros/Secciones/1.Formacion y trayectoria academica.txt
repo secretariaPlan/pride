@@ -1,10 +1,10 @@
 *Formacion y Trayectoria Academica*
 
 - Estudios realizados durante el periodo (agregar todas las opciones de "nivel_aux", posdoctorado por tutoria)
-	-[ ] Licenciatura
-	-[ ] Maestria
-	-[ ] Doctorado
-	-[ ] Postdoctorado
+	-[X] Licenciatura
+	-[X] Maestria
+	-[X] Doctorado
+	-[X] Postdoctorado
 
 - Cursos Tomados
 	-[ ] Con Evaluacion
