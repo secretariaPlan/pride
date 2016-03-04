@@ -25,7 +25,8 @@
 
 		$horasTotales = $minutosTotales/60;
 
-		$respuesta = array('numGrupos' => $numGrupos, '$horasTotales' => $horasTotales);
+		$respuesta = array('numGrupos' => $numGrupos, 
+							'horasTotales' => $horasTotales);
 		
 		return $respuesta;
 

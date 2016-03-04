@@ -13,7 +13,7 @@ class ComisionEvaluadora_Model extends ActiveRecord\Model {
 		$finPerBusqueda = $fechas["finPeriodoBusqueda"];
 
 		$respuesta = array();
-		$condicion = array("select" => 'comisionId,comisionevalauxid,comisionevalotro,inicio,concluido',
+		$condicion = array("select" => 'comisionid,comisionevalauxid,comisionevalotro,inicio,concluido',
 							"conditions" => array("profesorid = ? AND DATE(inicio) BETWEEN '$inicioPerBusqueda' AND '$finPerBusqueda'",$id));
 	
 
@@ -23,7 +23,24 @@ class ComisionEvaluadora_Model extends ActiveRecord\Model {
 		$comisionDictaminadora = 0;
 		$comisionPride = 0;
 
-		print_r($comisiones);die();	
+		foreach($comisiones as $comision){
+			if($comision->comisionevalauxid == 1)
+				$juradoCalificador ++;
+
+			elseif($comision->comisionevalauxid == 2)
+				$comisionDictaminadora ++;
+
+			elseif($comision->comisionevalauxid == 3)
+				$comisionPride ++;
+
+		}
+
+		$respuesta = array("total" => sizeof($comisiones),
+							"juradoCalificador" => $comisionDictaminadora,
+							"comisionDictaminadora" => $comisionDictaminadora,
+							"comisionPride" => $comisionPride);
+
+		return $respuesta;
 	}
 }
 ?>

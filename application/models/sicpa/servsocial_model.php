@@ -11,13 +11,15 @@
 
 			$idServSocial = ServSocial_Model::find("all",$condicion);
 
-			$ids = array();
+			// $ids = array();
 
-			foreach ($idServSocial as $id) {
-				array_push($ids,$id->id);
-			}
+			// foreach ($idServSocial as $id) {
+			// 	array_push($ids,$id->id);
+			// }
 
-			return $ids;
+			// return $ids;
+
+			return sizeof($idServSocial);
 		} 
 	} 
 ?>

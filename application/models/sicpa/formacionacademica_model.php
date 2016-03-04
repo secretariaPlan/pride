@@ -13,7 +13,6 @@ class FormacionAcademica_Model extends ActiveRecord\Model {
 		$inicioPerBusqueda = $fechas["inicioPeriodoBusqueda"];
 		$finPerBusqueda = $fechas["finPeriodoBusqueda"];
 		
-		$respuesta = array();
 		$condicion = array("conditions" => array("profesorid = ? AND DATE(inicio) BETWEEN '$inicioPerBusqueda' AND '$finPerBusqueda'",$id));
 		$registros = FormacionAcademica_Model::find("all",$condicion);
 		

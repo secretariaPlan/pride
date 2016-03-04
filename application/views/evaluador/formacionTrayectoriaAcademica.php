@@ -10,39 +10,39 @@
                         <tr>
                             <td width="50%" rowspan="9">Estudios realizados durante el periodo:</td>
                             <td width="30%">Técnico</td>
-                            <td width="20%">Valor</td>
+                            <td width="20%"><?php echo $formacion["tecnico"] ?></td>
                         </tr>
                         <tr>
                             <td width="30%">Bachillerato</td>
-                            <td width="20%">Valor</td>
+                            <td width="20%"><?php echo $formacion["bachillerato"] ?></td>
                         </tr>
                         <tr>
                             <td width="30%">Licenciatura</td>
-                            <td width="20%">Valor</td>
+                            <td width="20%"><?php echo $formacion["licenciatura"] ?></td>
                         </tr>
                         <tr>
                             <td width="30%">Diplomado</td>
-                            <td width="20%">Valor</td>
+                            <td width="20%"><?php echo $formacion["diplomado"] ?></td>
                         </tr>
                         <tr>
                             <td width="30%">Especialización</td>
-                            <td width="20%">Valor</td>
+                            <td width="20%"><?php echo $formacion["especializacion"] ?></td>
                         </tr>
                         <tr>
                             <td width="30%">Maestría</td>
-                            <td width="20%">Valor</td>
+                            <td width="20%"><?php echo $formacion["maestria"] ?></td>
                         </tr>
                         <tr>
                             <td width="30%">Doctorado</td>
-                            <td width="20%">Valor</td>
+                            <td width="20%"><?php echo $formacion["doctorado"] ?></td>
                         </tr>
                         <tr>
                             <td width="30%">Posdocotorado</td>
-                            <td width="20%">Valor</td>
+                            <td width="20%"><?php echo $formacion["posdoctorado"] ?></td>
                         </tr>
                         <tr>
                             <td width="30%">Licenciatura(en otras instituciones)</td>
-                            <td width="20%">Valor</td>
+                            <td width="20%"><?php echo $formacion["licenciaturaOtras"] ?></td>
                         </tr>
                         <tr>
                             <td width="50%" rowspan="2">Cursos tomados</td>
@@ -56,7 +56,7 @@
                         <tr>
                             <td width="50%">Premios recibidos</td>
                             <td width="30%"></td>
-                            <td width="20%">Valor</td>
+                            <td width="20%"><?php echo $premios ?></td>
                         </tr>
                         <tr>
                             <td width="50%">Reconocimientos obtenidos</td>

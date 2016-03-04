@@ -1,6 +1,6 @@
 *Docencia*
 
-- Asignaturas curriculares impartidas en licencitaura
+- Asignaturas curriculares impartidas en licenciatura
 	-[X] No Grupos
 	-[X] Horas totales
 
@@ -9,5 +9,7 @@
 	-[X] Horas totales
 
 -[X] Cursos extracurriculares impartidos
--[ ] Cursos intersemestrales impartidos (campo de entrada para el evaluado)
--[ ] Otros (precisar)
+-[*] Cursos intersemestrales impartidos (campo de entrada para el evaluado)
+-[*] Otros (precisar)
+
+(*)Falta definicion de busquedas

@@ -9,14 +9,17 @@
                             <tr>
                                 <th>RFC</th>
                                 <th>Nombre</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
                             foreach ($datos as $evaluado) {
+                                   $idProfesor = $evaluado["idSicpa"]; 
                                    $fila = "<tr>";
                                    $fila .= "<td>".$evaluado["rfc"]."</td>";
-                                   $fila .= "<td><a href='".site_url('evaluador_controller/informacionEvaluado')."'>".$evaluado["nombre"]."</a></td>";
+                                   $fila .= "<td>".$evaluado["nombre"]."</a></td>";
+                                   $fila .= "<td><a class = 'button pop blue' href = '".site_url("evaluador_controller/informacionEvaluado/id/$idProfesor")."'>Evaluar</a></td>";
                                    $fila .= "</tr>";
                                    echo $fila; 
                                 }    

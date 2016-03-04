@@ -8,7 +8,7 @@
                     <table class="striped visible" cellspacing="0" cellpadding="0" >
                         <tr>
                             <td width="30%">Nombre:</td>
-                            <td width="70%">Nombre del Evaluado</td>
+                            <td width="70%"><?php echo $nombre ?></td>
                         </tr>
                         <tr>
                             <td width="30%">Nombramiento:</td>

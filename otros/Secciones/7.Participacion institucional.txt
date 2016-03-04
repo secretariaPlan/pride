@@ -5,15 +5,17 @@
 -[X] Participación como jurado calificador
 
 - Coordinación o jefatura de
-	-[ ] Asignatura
-	-[ ] Laboratorio
-	-[ ] Examenes
+	-[*] Asignatura
+	-[*] Laboratorio
+	-[*] Examenes
 
--[ ] Integrante del Consejo Universitario
--[ ] Integrante del Consejo Técnico
+-[*] Integrante del Consejo Universitario
+-[*] Integrante del Consejo Técnico
 -[X] Integrante de Comisiones Dictaminadoras
 -[X] Integrante de Comisiones Evaluadoras del PRIDE
--[ ] Participación en proyectos institucionales
--[ ] Otros (precisar) (Lista de otros)
+-[*] Participación en proyectos institucionales
+-[*] Otros (precisar) (Lista de otros)
 
 -¿La tabla comision_especial que indica?
+
+(*)Falta definicion de busquedas

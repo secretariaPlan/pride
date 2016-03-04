@@ -1,24 +1,26 @@
 *Productividad Academica*
 
 - Publicaciones nacionales (pub_articulo)
-	-[ ] Con arbitraje
-	-[ ] Sin arbitraje
+	-[X] Con arbitraje
+	-[X] Sin arbitraje
 
 - Publicaciones internacionales (pub_articulo)
-	-[ ] Con arbitraje
-	-[ ] Sin arbitraje
+	-[X] Con arbitraje
+	-[X] Sin arbitraje
 
--[ ] Proyectos de investigación de los que no se es responsable (¿?)
--[ ] Capítulos en libros publicados (i_p_libro_capitulo)
--[ ] Libros publicados (i_p_libro)
--[ ] Participaciones como árbitro de publicaciones (i_p_participacion)
+-[*] Proyectos de investigación de los que no se es responsable (¿?)
+-[X] Capítulos en libros publicados (i_p_libro_capitulo)
+-[X] Libros publicados (i_p_libro)
+-[X] Participaciones como árbitro de publicaciones (i_p_participacion)
 
 - Citas en publicaciones (¿?)
-	-[ ] Nacional
-	-[ ] Internacional
+	-[*] Nacional
+	-[*] Internacional
 
-- Memorias in extenso de Congresos (i_p_memoria,i_p_otro)
-	-[ ] Nacional
-	-[ ] Internacional
+- Memorias in extenso de Congresos (i_p_memoria,¿i_p_otro?)
+	-[X] Nacional
+	-[X] Internacional
 
--[ ] Patentes registradas (i_p_patente)
+-[X] Patentes registradas (i_p_patente)
+
+(*)Falta definicion de busquedas

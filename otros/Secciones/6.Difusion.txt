@@ -5,7 +5,7 @@
 	-[X] Internacional
 
 -[X] Conferencias impartidas
--[ ] Organizacion de eventos (actividad actividad_aux)
--[ ] Otros (precisar)
+-[X] Organizacion de eventos (actividad actividad_aux)
+-[*] Otros (precisar)
 
-
+(*)Falta definicion de busquedas

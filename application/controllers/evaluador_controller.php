@@ -25,6 +25,7 @@ class Evaluador_Controller extends CI_Controller {
 		$this->load->model('pride/usuario_model');
 		$this->load->model('pride/evaluado_model');
 		$this->load->model('pride/evaluadorevaluado');
+		$this->load->model('sicpa/profesor_model');
 		$respuesta = array();
 		$idEvaluador = $this->session->all_userdata()[0]["idEvaluador"];
 		//print_r($idEvaluador);
@@ -33,13 +34,16 @@ class Evaluador_Controller extends CI_Controller {
 		$evaluadoEvaluador = EvaluadorEvaluado::all($condicion);
 		
 		if(sizeof($evaluadoEvaluador)){
+
 			$respuesta["respuesta"] = array("exito" =>1);
 			foreach ($evaluadoEvaluador as $eval) {
 				$evaluado = Evaluado_Model::find($eval->id_evaluado);
 				$usuario = Usuario_Model::find($evaluado->id_usuario);
+				$profesorSicpa = $this->profesor_model->buscaProfesorPorRFC($usuario->rfc);
 				$respuesta["datos"][] = array("id_usuario" => $usuario->id,
 						"rfc" => $usuario->rfc,
-						"id_evaluado" => $evaluado->id,
+						"idEvaluado" => $evaluado->id,
+						"idSicpa" => $profesorSicpa,
 						"nombre" => "$usuario->nombre $usuario->apaterno $usuario->amaterno"
 				);
 			}
@@ -121,11 +125,11 @@ class Evaluador_Controller extends CI_Controller {
 	}
 
 	function pruebaSicpa(){
-		$this->load->model('sicpa/servsocialalumno_model');
+		$this->load->model('sicpa/tutoria_model');
 		
 		$id = $this->input->post("id");
 		
-		print_r($this->servsocialalumno_model->buscaAlumnosporIdProfesor($id));
+		print_r($this->tutoria_model->buscaTutoriasPorIdProfesor($id));
 
 	}
 
@@ -134,74 +138,168 @@ class Evaluador_Controller extends CI_Controller {
 	}
 	
 	function informacionEvaluado(){
-		$datosMenu = array("seccion"=>"informacion");
+		$this->load->model('sicpa/profesor_model');
+
+		$parametros = $this->uri->uri_to_assoc();
+		$id =$parametros["id"];
+		$datosMenu = array("seccion" => "informacion",
+							"id" => $id );
+
+		$profesor = $this->profesor_model->informacionProfesor($id);
+
 		$this->load->model('pride/evaluado_model');
-		$this->load->view("header",$datosMenu);
-		$this->load->view("evaluador/navegacion");
-		$this->load->view("evaluador/informacionEvaluado");
+		$this->load->view("header");
+		$this->load->view("evaluador/navegacion",$datosMenu);
+		$this->load->view("evaluador/informacionEvaluado",$profesor);
 		$this->load->view("footer");
 	}
 	
 	function formacionTrayectoriaAcademica(){
-		$datosMenu = array("seccion"=>"formacionT");
+		$this->load->model('sicpa/formacionacademica_model');
+		$this->load->model('sicpa/premio_model');
+
+		$parametros = $this->uri->uri_to_assoc();
+		$id =$parametros["id"];
+		$datosMenu = array("seccion"=>"formacionT",
+							"id" => $id );
+		$datos = array();
+		$datos["formacion"] = $this->formacionacademica_model->buscarRegistroPorIdProfesor($id);
+		$datos["premios"] = $this->premio_model->buscaPremioPorIdProfesor($id);
+		
 		$this->load->model('pride/evaluado_model');
-		$this->load->view("header",$datosMenu);
-		$this->load->view("evaluador/navegacion");
-		$this->load->view("evaluador/formacionTrayectoriaAcademica");
+		$this->load->view("header");
+		$this->load->view("evaluador/navegacion",$datosMenu);
+		$this->load->view("evaluador/formacionTrayectoriaAcademica",$datos);
 		$this->load->view("footer");
 	}
 	
 	function productividadAcademica(){
-		$datosMenu = array("seccion"=>"productividad");
+		$this->load->model('sicpa/pubarticulo_model');
+		$this->load->model('sicpa/iplibrocapitulo_model');
+		$this->load->model('sicpa/iplibro_model');
+		$this->load->model('sicpa/ipparticipacion_model');
+		$this->load->model('sicpa/ipmemoria_model');
+		$this->load->model('sicpa/ippatente_model');
+
+		$parametros = $this->uri->uri_to_assoc();
+		$id =$parametros["id"];
+		$datosMenu = array("seccion"=>"productividad",
+							"id" => $id );
+
+		$datos = array();
+		$datos["articulo"] = $this->pubarticulo_model->buscaPubArticuloPorIdProfesor($id);
+		$datos["capitulo"] = $this->iplibrocapitulo_model->buscaCapitulosPorIdProfesor($id);
+		$datos["libro"] = $this->iplibro_model->buscaLibrosPorIdProfesor($id);
+		$datos["participacion"] = $this->ipparticipacion_model->buscaParticipacionPorIdProfesor($id);
+		$datos["memoria"] = $this->ipmemoria_model->buscaMemoriasPorIdProfesor($id);
+		$datos["patente"] = $this->ippatente_model->buscaPatentePorIdProfesor($id);
+
 		$this->load->model('pride/evaluado_model');
-		$this->load->view("header",$datosMenu);
-		$this->load->view("evaluador/navegacion");
-		$this->load->view("evaluador/productividadAcademica");
+		$this->load->view("header");
+		$this->load->view("evaluador/navegacion",$datosMenu);
+		$this->load->view("evaluador/productividadAcademica",$datos);
 		$this->load->view("footer");
 	}
 	
 	function materialDocente(){
-		$datosMenu = array("seccion"=>"material");
+		$this->load->model('sicpa/pubarticulo_model');
+
+		$parametros = $this->uri->uri_to_assoc();
+		$id =$parametros["id"];
+		$datosMenu = array("seccion"=>"material",
+							"id" => $id );
+
 		$this->load->model('pride/evaluado_model');
-		$this->load->view("header",$datosMenu);
-		$this->load->view("evaluador/navegacion");
+		$this->load->view("header");
+		$this->load->view("evaluador/navegacion",$datosMenu);
 		$this->load->view("evaluador/materialDocente");
 		$this->load->view("footer");
 	}
 		
 	function formacionRecursosHumanos(){
-		$datosMenu = array("seccion"=>"formacionR");
+		$this->load->model('sicpa/titulacion_model');
+		$this->load->model('sicpa/examenposgrado_model');
+		$this->load->model('sicpa/tutoria_model');
+		$this->load->model('sicpa/servsocial_model');
+
+		$parametros = $this->uri->uri_to_assoc();
+		$id =$parametros["id"];
+		$datosMenu = array("seccion"=>"formacionR",
+							"id" => $id );
+
+		$datos["tesisConcluidas"] = $this->titulacion_model->buscaTitulacionPorIdProfesor($id);
+		//$datos["tesisLicenciaturaSupervisor"] = $this->titulacion_model->buscaTesisSupervisorPorIdProfesor($id);
+		$datos["examenesSupervisor"] = $this->examenposgrado_model->buscaExamenesComoSupervisorPorIdProfesor($id);
+		$datos["examenesJurado"] = $this->examenposgrado_model->buscaExamenesJuradoPorIdProfesor($id);
+		$datos["tutorias"] = $this->tutoria_model->buscaTutoriasPorIdProfesor($id);
+		$datos["tutoriasConcluidas"] = $this->tutoria_model->buscaTutoriasConcluidasPorIdProfesor($id);
+		$datos["servSocial"] = $this->servsocial_model->buscaServicioSocialPorIdProfesor($id);
+
 		$this->load->model('pride/evaluado_model');
-		$this->load->view("header",$datosMenu);
-		$this->load->view("evaluador/navegacion");
-		$this->load->view("evaluador/formacionRecursosHumanos");
+		$this->load->view("header");
+		$this->load->view("evaluador/navegacion",$datosMenu);
+		$this->load->view("evaluador/formacionRecursosHumanos",$datos);
 		$this->load->view("footer");
 	}
 	
 	function docencia(){
-		$datosMenu = array("seccion"=>"docencia");
+		$this->load->model('sicpa/cursolicenciatura_model');
+		$this->load->model('sicpa/cursoposgrado_model');
+		$this->load->model('sicpa/cursoextracurr_model');
+
+		$parametros = $this->uri->uri_to_assoc();
+		$id =$parametros["id"];
+		$datosMenu = array("seccion"=>"docencia",
+							"id" => $id );
+
+		$datos["cursosLicenciatura"] = $this->cursolicenciatura_model->buscarCursosPorIdProfesor($id);
+		$datos["cursosPosgrado"] = $this->cursoposgrado_model->buscarCursosPorIdProfesor($id);
+		$datos["cursosExtra"] = $this->cursoextracurr_model->buscaCursoExtraCurrPoridProfesor($id);
+		
 		$this->load->model('pride/evaluado_model');
-		$this->load->view("header",$datosMenu);
-		$this->load->view("evaluador/navegacion");
-		$this->load->view("evaluador/docencia");
+		$this->load->view("header");
+		$this->load->view("evaluador/navegacion",$datosMenu);
+		$this->load->view("evaluador/docencia",$datos);
 		$this->load->view("footer");
 	}
 	
 	function difusion(){
-		$datosMenu = array("seccion"=>"difusion");
+		$this->load->model('sicpa/reunion_model');
+		$this->load->model('sicpa/conferencia_model');
+		$this->load->model('sicpa/actividad_model');
+
+		$parametros = $this->uri->uri_to_assoc();
+		$id =$parametros["id"];
+		$datosMenu = array("seccion"=>"difusion",
+							"id" => $id );
+
+		$datos["presentacion"] = $this->reunion_model->buscaCongresoPorIdProfesor($id);
+		$datos["conferencia"] = $this->conferencia_model->buscarConferenciaPorIdProfesor($id);
+		$datos["eventos"] = $this->actividad_model->buscaActividadPorIdProfesor($id);
+		
 		$this->load->model('pride/evaluado_model');
-		$this->load->view("header",$datosMenu);
-		$this->load->view("evaluador/navegacion");
-		$this->load->view("evaluador/difusion");
+		$this->load->view("header");
+		$this->load->view("evaluador/navegacion",$datosMenu);
+		$this->load->view("evaluador/difusion",$datos);
 		$this->load->view("footer");
 	}
 	
 	function participacionInstitucional(){
-		$datosMenu = array("seccion"=>"participacion");
+		$this->load->model('sicpa/cargo_model');
+		$this->load->model('sicpa/comisionevaluadora_model');
+
+		$parametros = $this->uri->uri_to_assoc();
+		$id =$parametros["id"];
+		$datosMenu = array("seccion"=>"participacion",
+							"id" => $id );
+
+		$datos["cargo"] = $this->cargo_model->buscaCargoPorIdProfesor($id);
+		$datos["comisiones"] = $this->comisionevaluadora_model->buscaComisionEvaluadoraPorIdProfesor($id);
+
 		$this->load->model('pride/evaluado_model');
-		$this->load->view("header",$datosMenu);
-		$this->load->view("evaluador/navegacion");
-		$this->load->view("evaluador/participacionInstitucional");
+		$this->load->view("header");
+		$this->load->view("evaluador/navegacion",$datosMenu);
+		$this->load->view("evaluador/participacionInstitucional",$datos);
 		$this->load->view("footer");
 	}
 	

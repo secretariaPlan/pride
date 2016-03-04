@@ -1,34 +1,35 @@
 *Formacion de recursos humanos*
 
 - Dirección de tésis concluidas (completar con la informacion de la tabla "nivel_aux")
-	-[ ] Licenciatura
-	-[ ] Especialidad
-	-[ ] Maestria
-	-[ ] Doctorado
+	-[X] Licenciatura
+	-[X] Especialidad
+	-[X] Maestria
+	-[X] Doctorado
 
-- Tesis concluidas en las que participo como supervisor
-	-[ ] Licenciatura (titulacion nivel_aux funcion_aux)
-	-[ ] Especialidad (examen_posgrado)
-	-[ ] Maestria	(examen_posgrado)
-	-[ ] Doctorado (examen_posgrado)
+- Tesis concluidas en las que participo como supervisor 
+	-[X] Licenciatura (titulacion nivel_aux funcion_aux id=12)
+	-[X] Especialidad (examen_posgrado)
+	-[X] Maestria	(examen_posgrado)
+	-[X] Doctorado (examen_posgrado)
 
 - Examenes de titulació en donde participó como jurado (examen_posgrado funcion_aux)
-	-[ ] Licenciatura
-	-[ ] Especialidad
-	-[ ] Maestria
-	-[ ] Doctorado
+	-[X] Licenciatura
+	-[X] Especialidad
+	-[X] Maestria
+	-[X] Doctorado
 
 - Número de alumnos asesorados en subprogramas (tutoria tutoria_aux)
-	-[ ] 121
-	-[ ] 127
-	-[ ] Otros
+	-[X] 121 tutoria_aux id=4
+	-[X] 127 tutoria_aux id=6
+	-[X] Otros
 
 -[X] Alumnos con Servicio Social concluido
--[ ] Participación en Comités Tutorales (campo de entrada para el evaluado)
+-[*] Participación en Comités Tutorales (campo de entrada para el evaluado)
 
-- Tutorías de posdoctorales (titulacion nivel_aux funcion_aux)
-	-[ ] Concluidas
-	-[ ] En proceso
+- Tutorías de posdoctorales (tutorias nivel_aux funcion_aux)
+	-[X] Concluidas
+	-[X] En proceso
 
--[ ] Otros (precisar)
+-[*] Otros (precisar)
 
+(*)Falta definicion de busquedas

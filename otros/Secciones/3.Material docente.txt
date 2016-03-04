@@ -2,9 +2,9 @@
 
 -[ ] Manuales
 -[X] Software
--[ ] Videos
--[ ] Participación en el diseño de programas de asignatura
+-[ ] Videos (servicio servicio_aux_id=9)
+-[ ] Participación en el diseño de programas de asignatura 
 -[X] Diseño de practicas de laboratorio
--[ ] Participación en el diseño de exámenes departamentales
+-[ ] Participación en el diseño de exámenes departamentales (apoyo_acad_aux id=6)
 -[ ] Otros (precisar)
 

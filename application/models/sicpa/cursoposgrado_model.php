@@ -37,7 +37,8 @@
 			$horasTotales += $curso->horas;
 		}
 		
-		$respuesta = array('numGrupos' => $numGrupos, '$horasTotales' => $horasTotales);
+		$respuesta = array('numGrupos' => $numGrupos, 
+							'horasTotales' => $horasTotales);
 		
 		return $respuesta;
 	}

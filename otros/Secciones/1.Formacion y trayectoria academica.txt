@@ -7,15 +7,17 @@
 	-[X] Postdoctorado
 
 - Cursos Tomados
-	-[ ] Con Evaluacion
-	-[ ] Sin evaluacion
+	-[*] Con Evaluacion 
+	-[*] Sin evaluacion
 
 -[X] Premios Recibidos
--[ ] Reconocimientos obtenidos
--[ ] Nivel en el SNI
--[ ] Otros (Precisar)
+-[*] Reconocimientos obtenidos
+-[*] Nivel en el SNI
+-[*] Otros (Precisar)
 
 
 - Se tiene la busqueda de "Estudios realizados durante el periodo", pero falta el criterio para decidir el tipo.
 - Se tiene la busqueda "Curso extracurricular" y "curso fuera"
 
+
+(*)Falta definicion de busquedas
