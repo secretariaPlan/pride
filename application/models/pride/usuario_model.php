@@ -34,6 +34,12 @@ class Usuario_Model extends ActiveRecord\Model{
 
 		$post->save();
 	}
+
+	public function encuentraUsuarioPorId($idUsuario){
+
+		$usuario = Usuario_Model::find($idUsuario);
+		return $usuario;
+	}
 	
 	public function listaUsuarios() {
 		$usuarios = Usuario_Model::all();

@@ -133,10 +133,6 @@ class Evaluador_Controller extends CI_Controller {
 
 	}
 
-	function listaEvaluados(){
-
-	}
-	
 	function informacionEvaluado(){
 		$this->load->model('sicpa/profesor_model');
 

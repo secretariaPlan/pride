@@ -63,50 +63,67 @@ class Login extends CI_Controller {
 				//Pantalla de seleccion para elegir como entrar
 				echo "Evaluador y Evaluado";
 			} elseif ($respuestaEvaluador["exito"]){
-				$datosSesionEvaluador = array($respuestaEvaluador);
-				$this->session->set_userdata($datosSesionEvaluador);
 
+				//Pantalla de Evaluador
+				$this->load->model('pride/usuario_model');
+ 				$this->load->model('pride/evaluado_model');
+ 				$this->load->model('pride/evaluadorevaluado');
+ 				$this->load->model('sicpa/profesor_model');
+
+ 				//$respuesta = array();
+ 				$datosSesionEvaluador = array($respuestaEvaluador);
+				$this->session->set_userdata($datosSesionEvaluador);
+ 				$idEvaluador = $this->session->all_userdata()[0]["idEvaluador"];
+
+				$condicion = array("conditions" => array("id_evaluador = ?",$idEvaluador));
+ 				$evaluadoEvaluador = EvaluadorEvaluado::all($condicion);
+ 				
+ 				if(sizeof($evaluadoEvaluador)){
+ 
+ 					$respuesta["respuesta"] = array("exito" =>1);
+ 					foreach ($evaluadoEvaluador as $eval) {
+ 						$evaluado = Evaluado_Model::find($eval->id_evaluado);
+ 						$usuario = Usuario_Model::find($evaluado->id_usuario);
+ 						$profesorSicpa = $this->profesor_model->buscaProfesorPorRFC($usuario->rfc);
+ 						$respuesta["datos"][] = array("id_usuario" => $usuario->id,
+ 								"rfc" => $usuario->rfc,
+ 								"idEvaluado" => $evaluado->id,
+ 								"idSicpa" => $profesorSicpa,
+ 								"nombre" => "$usuario->nombre $usuario->apaterno $usuario->amaterno"
+ 						);
+ 					}
+ 				}else
+ 					$respuesta["respuesta"] = array("exito" =>0);
+				
+				$this->load->view("header");
+				$this->load->view("evaluador/listaEvaluados",$respuesta);
+ 				$this->load->view("footer");
+								
+			}elseif ($respuestaEvaluado["exito"]){
+				//Pantalla de Evaluado
 				$this->load->model('pride/usuario_model');
 				$this->load->model('pride/evaluado_model');
 				$this->load->model('pride/evaluadorevaluado');
 				$this->load->model('sicpa/profesor_model');
-				$respuesta = array();
-				$idEvaluador = $this->session->all_userdata()[0]["idEvaluador"];
-				//print_r($idEvaluador);
+				$this->load->model('sicpa/formacionacademica_model');
+				$this->load->model('sicpa/nivelaux_model');
 				
-				$condicion = array("conditions" => array("id_evaluador = ?",$idEvaluador));
-				$evaluadoEvaluador = EvaluadorEvaluado::all($condicion);
-				
-				if(sizeof($evaluadoEvaluador)){
+				$datosSesionEvaluado = $respuestaEvaluado;
+				$datosSesionEvaluado["idProfesorSicpa"] = $this->profesor_model->buscaProfesorPorRFC($respuestaEvaluado["rfc"]);
+				$profesor = $this->profesor_model->informacionProfesor($datosSesionEvaluado["idProfesorSicpa"]);
+				// $formacion = $this->formacionacademica_model->buscarRegistroPorIdProfesor($datosSesionEvaluado["idProfesorSicpa"]);
+				// print_r($formacion);die();
 
-					$respuesta["respuesta"] = array("exito" =>1);
-					foreach ($evaluadoEvaluador as $eval) {
-						$evaluado = Evaluado_Model::find($eval->id_evaluado);
-						$usuario = Usuario_Model::find($evaluado->id_usuario);
-						$profesorSicpa = $this->profesor_model->buscaProfesorPorRFC($usuario->rfc);
-						$respuesta["datos"][] = array("id_usuario" => $usuario->id,
-								"rfc" => $usuario->rfc,
-								"idEvaluado" => $evaluado->id,
-								"idSicpa" => $profesorSicpa,
-								"nombre" => "$usuario->nombre $usuario->apaterno $usuario->amaterno"
-						);
-					}
-				}else
-					$respuesta["respuesta"] = array("exito" =>0);
-				
+				// $profesor["grado"] = $this->nivelaux_model->buscaNivelPorId($formacion->nivelid);
+
+				$this->session->set_userdata($datosSesionEvaluado);
+				$datosMenu = array("seccion" => "informacion");
+
 				$this->load->view("header");
-				$this->load->view("evaluador/listaEvaluados",$respuesta);
+				$this->load->view("evaluado/navegacion",$datosMenu);
+				$this->load->view("evaluador/informacionEvaluado",$profesor);
 				$this->load->view("footer");
-				
-				// $this->load->view("header");
-				// $this->load->view("evaluador/menuBienvenido");
-				// $this->load->view("evaluador/bienvenido");
-				// $this->load->view("footer"); 
-				//Pantalla de Evaluador
-				
-			}elseif ($respuestaEvaluado["exito"]){
-				//Pantalla de Evaluado
-				echo "Evaluado";
+
 			}
 			else {
 				$error = array("error" => "Datos incorrectos");
