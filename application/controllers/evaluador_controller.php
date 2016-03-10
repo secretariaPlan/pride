@@ -137,9 +137,12 @@ class Evaluador_Controller extends CI_Controller {
 		$this->load->model('sicpa/profesor_model');
 
 		$parametros = $this->uri->uri_to_assoc();
-		$id =$parametros["id"];
-		$datosMenu = array("seccion" => "informacion",
-							"id" => $id );
+		$id =$parametros['id'];
+		$idEvaluado =$parametros['idEvaluado'];
+		$datosEvaluado = array("idEvaluadoSicpa" => $id,
+								"idEvaluado" => $idEvaluado);
+		$this->session->set_userdata($datosEvaluado);
+		$datosMenu = array("seccion" => "informacion");
 
 		$profesor = $this->profesor_model->informacionProfesor($id);
 
@@ -151,14 +154,16 @@ class Evaluador_Controller extends CI_Controller {
 	}
 	
 	function formacionTrayectoriaAcademica(){
+
 		$this->load->model('sicpa/formacionacademica_model');
 		$this->load->model('sicpa/premio_model');
 
-		$parametros = $this->uri->uri_to_assoc();
-		$id =$parametros["id"];
-		$datosMenu = array("seccion"=>"formacionT",
-							"id" => $id );
-		$datos = array();
+		$datosMenu = array("seccion"=>"formacionT");
+		
+		$id = $this->session->all_userdata()["idEvaluadoSicpa"];
+		$datos["idUsuario"] = $this->session->all_userdata()[0]["idUsuario"];
+		$datos["idEvaluado"] = $this->session->all_userdata()["idEvaluado"];
+
 		$datos["formacion"] = $this->formacionacademica_model->buscarRegistroPorIdProfesor($id);
 		$datos["premios"] = $this->premio_model->buscaPremioPorIdProfesor($id);
 		
@@ -177,12 +182,12 @@ class Evaluador_Controller extends CI_Controller {
 		$this->load->model('sicpa/ipmemoria_model');
 		$this->load->model('sicpa/ippatente_model');
 
-		$parametros = $this->uri->uri_to_assoc();
-		$id =$parametros["id"];
-		$datosMenu = array("seccion"=>"productividad",
-							"id" => $id );
+		$datosMenu = array("seccion"=>"productividad");
 
-		$datos = array();
+		$id = $this->session->all_userdata()["idEvaluadoSicpa"];
+		$datos["idUsuario"] = $this->session->all_userdata()[0]["idUsuario"];
+		$datos["idEvaluado"] = $this->session->all_userdata()["idEvaluado"];
+
 		$datos["articulo"] = $this->pubarticulo_model->buscaPubArticuloPorIdProfesor($id);
 		$datos["capitulo"] = $this->iplibrocapitulo_model->buscaCapitulosPorIdProfesor($id);
 		$datos["libro"] = $this->iplibro_model->buscaLibrosPorIdProfesor($id);
@@ -200,16 +205,18 @@ class Evaluador_Controller extends CI_Controller {
 	function materialDocente(){
 		$this->load->model('sicpa/pubarticulo_model');
 
-		$parametros = $this->uri->uri_to_assoc();
-		$id =$parametros["id"];
-		$datosMenu = array("seccion"=>"material",
-							"id" => $id );
+		$datosMenu = array("seccion"=>"material");
+
+		$id = $this->session->all_userdata()["idEvaluadoSicpa"];
+		$datos["idUsuario"] = $this->session->all_userdata()[0]["idUsuario"];
+		$datos["idEvaluado"] = $this->session->all_userdata()["idEvaluado"];
 
 		$this->load->model('pride/evaluado_model');
 		$this->load->view("header");
 		$this->load->view("evaluador/navegacion",$datosMenu);
-		$this->load->view("evaluador/materialDocente");
+		$this->load->view("evaluador/materialDocente",$datos);
 		$this->load->view("footer");
+
 	}
 		
 	function formacionRecursosHumanos(){
@@ -218,10 +225,11 @@ class Evaluador_Controller extends CI_Controller {
 		$this->load->model('sicpa/tutoria_model');
 		$this->load->model('sicpa/servsocial_model');
 
-		$parametros = $this->uri->uri_to_assoc();
-		$id =$parametros["id"];
-		$datosMenu = array("seccion"=>"formacionR",
-							"id" => $id );
+		$datosMenu = array("seccion"=>"formacionR");
+
+		$id = $this->session->all_userdata()["idEvaluadoSicpa"];
+		$datos["idUsuario"] = $this->session->all_userdata()[0]["idUsuario"];
+		$datos["idEvaluado"] = $this->session->all_userdata()["idEvaluado"];
 
 		$datos["tesisConcluidas"] = $this->titulacion_model->buscaTitulacionPorIdProfesor($id);
 		//$datos["tesisLicenciaturaSupervisor"] = $this->titulacion_model->buscaTesisSupervisorPorIdProfesor($id);
@@ -242,11 +250,12 @@ class Evaluador_Controller extends CI_Controller {
 		$this->load->model('sicpa/cursolicenciatura_model');
 		$this->load->model('sicpa/cursoposgrado_model');
 		$this->load->model('sicpa/cursoextracurr_model');
+		
+		$datosMenu = array("seccion"=>"docencia");
 
-		$parametros = $this->uri->uri_to_assoc();
-		$id =$parametros["id"];
-		$datosMenu = array("seccion"=>"docencia",
-							"id" => $id );
+		$id = $this->session->all_userdata()["idEvaluadoSicpa"];
+		$datos["idUsuario"] = $this->session->all_userdata()[0]["idUsuario"];
+		$datos["idEvaluado"] = $this->session->all_userdata()["idEvaluado"];
 
 		$datos["cursosLicenciatura"] = $this->cursolicenciatura_model->buscarCursosPorIdProfesor($id);
 		$datos["cursosPosgrado"] = $this->cursoposgrado_model->buscarCursosPorIdProfesor($id);
@@ -264,10 +273,11 @@ class Evaluador_Controller extends CI_Controller {
 		$this->load->model('sicpa/conferencia_model');
 		$this->load->model('sicpa/actividad_model');
 
-		$parametros = $this->uri->uri_to_assoc();
-		$id =$parametros["id"];
-		$datosMenu = array("seccion"=>"difusion",
-							"id" => $id );
+		$datosMenu = array("seccion"=>"difusion");
+
+		$id = $this->session->all_userdata()["idEvaluadoSicpa"];
+		$datos["idUsuario"] = $this->session->all_userdata()[0]["idUsuario"];
+		$datos["idEvaluado"] = $this->session->all_userdata()["idEvaluado"];
 
 		$datos["presentacion"] = $this->reunion_model->buscaCongresoPorIdProfesor($id);
 		$datos["conferencia"] = $this->conferencia_model->buscarConferenciaPorIdProfesor($id);
@@ -284,11 +294,12 @@ class Evaluador_Controller extends CI_Controller {
 		$this->load->model('sicpa/cargo_model');
 		$this->load->model('sicpa/comisionevaluadora_model');
 
-		$parametros = $this->uri->uri_to_assoc();
-		$id =$parametros["id"];
-		$datosMenu = array("seccion"=>"participacion",
-							"id" => $id );
+		$datosMenu = array("seccion"=>"participacion");
 
+		$id = $this->session->all_userdata()["idEvaluadoSicpa"];
+		$datos["idUsuario"] = $this->session->all_userdata()[0]["idUsuario"];
+		$datos["idEvaluado"] = $this->session->all_userdata()["idEvaluado"];
+		
 		$datos["cargo"] = $this->cargo_model->buscaCargoPorIdProfesor($id);
 		$datos["comisiones"] = $this->comisionevaluadora_model->buscaComisionEvaluadoraPorIdProfesor($id);
 

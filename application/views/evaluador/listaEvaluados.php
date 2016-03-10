@@ -15,11 +15,12 @@
                         <tbody>
                             <?php
                             foreach ($datos as $evaluado) {
-                                   $idProfesor = $evaluado["idSicpa"]; 
+                                   $idProfesor = $evaluado["idSicpa"];
+                                   $idEvaluado = $evaluado["idEvaluado"]; 
                                    $fila = "<tr>";
                                    $fila .= "<td>".$evaluado["rfc"]."</td>";
                                    $fila .= "<td>".$evaluado["nombre"]."</a></td>";
-                                   $fila .= "<td><a class = 'button pop blue' href = '".site_url("evaluador_controller/informacionEvaluado/id/$idProfesor")."'>Evaluar</a></td>";
+                                   $fila .= "<td><a class = 'button pop blue' href = '".site_url("evaluador_controller/informacionEvaluado/id/$idProfesor/idEvaluado/$idEvaluado")."'>Evaluar</a></td>";
                                    $fila .= "</tr>";
                                    echo $fila; 
                                 }    

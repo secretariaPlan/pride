@@ -1,10 +1,14 @@
 <script src="<?php echo base_url();?>js/comentario.js" ></script>
 <body>
+    <input type = "hidden" id= "idUsuario" value = "<?php echo $idUsuario?>" />
+    <input type = "hidden" id= "idEvaluado" value = "<?php echo $idEvaluado?>" />
+    <input type = "hidden" id= "idseccion" value = "1" />
     <div class="grid flex">
     	<div class="col_12">
             <div class="col_2"></div>
             <div class="col_8">
   				<fieldset>
+                    <div id="alerta"><p id="alertaMensaje" class="center"></p></div>
                     <legend>FORMACI&Oacute;N Y TRAYECTORIA ACAD&Eacute;MICA</legend>
                     <table class="striped visible" cellspacing="0" cellpadding="0" >
                         <tr>
@@ -74,13 +78,16 @@
                             <td width="20%">Valor</td>
                         </tr>
                     </table>
-                    <div class="col_12 center">
-                        <button id="botonComentario" class="medium blue">Agregar comentario</button>
-                    </div>
-                    <div id="comentario" title="Agregar comentario">
-                        
-                    </div>
                 </fieldset>
+                <div class="col_12 center">
+                    <button id="botonComentario" class="medium blue">Agregar comentario</button>
+                </div>
+                <div class="col_12 center">
+                    <button id="botonMostrarComentarios" class="small blue">Mostrar comentario</button>
+                </div>
+                <br>
+                <div id="historialComentarios"></div>
+                <div id="comentario"></div>
             </div>
             <div class="col_2"></div>
         </div>
