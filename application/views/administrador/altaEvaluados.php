@@ -1,6 +1,6 @@
         
-        <div class="col_4"></div>
-        <div class="col_4 center">
+<div class="col_4"></div>
+<div class="col_4 center">
         
 <?php
 if(isset($error)){
@@ -15,9 +15,6 @@ if(isset($manual)){
 $contador = 0;
 ?>
 </div>
-
-
-
 <body>
     <div class="grid flex">
   
