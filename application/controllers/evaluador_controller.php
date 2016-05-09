@@ -6,6 +6,7 @@ class Evaluador_Controller extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('pride/evaluador_model');
+		$this->load->model('pride/archivo_model');
 	
 	}
 	function index() {
@@ -167,6 +168,9 @@ class Evaluador_Controller extends CI_Controller {
 		$datos["formacion"] = $this->formacionacademica_model->buscarRegistroPorIdProfesor($id);
 		$datos["premios"] = $this->premio_model->buscaPremioPorIdProfesor($id);
 		
+		$seccion = 1;
+		$datos["listaArchivos"] = $this->archivo_model->buscaArchivosEvaluado($datos["idEvaluado"],$seccion);
+		
 		$this->load->model('pride/evaluado_model');
 		$this->load->view("header");
 		$this->load->view("evaluador/navegacion",$datosMenu);
@@ -195,6 +199,9 @@ class Evaluador_Controller extends CI_Controller {
 		$datos["memoria"] = $this->ipmemoria_model->buscaMemoriasPorIdProfesor($id);
 		$datos["patente"] = $this->ippatente_model->buscaPatentePorIdProfesor($id);
 
+		$seccion = 2;
+		$datos["listaArchivos"] = $this->archivo_model->buscaArchivosEvaluado($datos["idEvaluado"],$seccion);
+
 		$this->load->model('pride/evaluado_model');
 		$this->load->view("header");
 		$this->load->view("evaluador/navegacion",$datosMenu);
@@ -210,6 +217,9 @@ class Evaluador_Controller extends CI_Controller {
 		$id = $this->session->all_userdata()["idEvaluadoSicpa"];
 		$datos["idUsuario"] = $this->session->all_userdata()[0]["idUsuario"];
 		$datos["idEvaluado"] = $this->session->all_userdata()["idEvaluado"];
+
+		$seccion = 3;
+		$datos["listaArchivos"] = $this->archivo_model->buscaArchivosEvaluado($datos["idEvaluado"],$seccion);
 
 		$this->load->model('pride/evaluado_model');
 		$this->load->view("header");
@@ -239,6 +249,9 @@ class Evaluador_Controller extends CI_Controller {
 		$datos["tutoriasConcluidas"] = $this->tutoria_model->buscaTutoriasConcluidasPorIdProfesor($id);
 		$datos["servSocial"] = $this->servsocial_model->buscaServicioSocialPorIdProfesor($id);
 
+		$seccion = 4;
+		$datos["listaArchivos"] = $this->archivo_model->buscaArchivosEvaluado($datos["idEvaluado"],$seccion);
+
 		$this->load->model('pride/evaluado_model');
 		$this->load->view("header");
 		$this->load->view("evaluador/navegacion",$datosMenu);
@@ -260,6 +273,9 @@ class Evaluador_Controller extends CI_Controller {
 		$datos["cursosLicenciatura"] = $this->cursolicenciatura_model->buscarCursosPorIdProfesor($id);
 		$datos["cursosPosgrado"] = $this->cursoposgrado_model->buscarCursosPorIdProfesor($id);
 		$datos["cursosExtra"] = $this->cursoextracurr_model->buscaCursoExtraCurrPoridProfesor($id);
+
+		$seccion = 5;
+		$datos["listaArchivos"] = $this->archivo_model->buscaArchivosEvaluado($datos["idEvaluado"],$seccion);
 		
 		$this->load->model('pride/evaluado_model');
 		$this->load->view("header");
@@ -283,6 +299,9 @@ class Evaluador_Controller extends CI_Controller {
 		$datos["conferencia"] = $this->conferencia_model->buscarConferenciaPorIdProfesor($id);
 		$datos["eventos"] = $this->actividad_model->buscaActividadPorIdProfesor($id);
 		
+		$seccion = 6;
+		$datos["listaArchivos"] = $this->archivo_model->buscaArchivosEvaluado($datos["idEvaluado"],$seccion);
+		
 		$this->load->model('pride/evaluado_model');
 		$this->load->view("header");
 		$this->load->view("evaluador/navegacion",$datosMenu);
@@ -302,6 +321,9 @@ class Evaluador_Controller extends CI_Controller {
 		
 		$datos["cargo"] = $this->cargo_model->buscaCargoPorIdProfesor($id);
 		$datos["comisiones"] = $this->comisionevaluadora_model->buscaComisionEvaluadoraPorIdProfesor($id);
+
+		$seccion = 7;
+		$datos["listaArchivos"] = $this->archivo_model->buscaArchivosEvaluado($datos["idEvaluado"],$seccion);
 
 		$this->load->model('pride/evaluado_model');
 		$this->load->view("header");

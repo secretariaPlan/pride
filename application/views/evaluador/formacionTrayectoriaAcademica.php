@@ -79,6 +79,27 @@
                         </tr>
                     </table>
                 </fieldset>
+                <fieldset>
+                    <legend>Archivos</legend>
+                    <div  id="archivosSubidos" style="overflow:scroll;height:200px">
+                        <?php
+                        $this->load->helper('file');
+                        if(sizeof($listaArchivos)){
+                        ?>
+                            <ul class="alt">
+                                <?php
+                                    foreach ($listaArchivos as $lista) {
+                                    ?> 
+                                        <li><a href="<?php echo '../../subidas/'.$lista->nombre ?>"  target="_blank"><?php echo $lista->nombre_original ?></a></li>
+                                        <?php
+                                    }
+                                ?>
+                            </ul>    
+                        <?php        
+                        }
+                        ?>                            
+                    </div>
+                </fieldset>
                 <div class="col_12 center">
                     <button id="botonComentario" class="medium blue">Agregar comentario</button>
                 </div>
