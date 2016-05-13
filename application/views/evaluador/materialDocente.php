@@ -2,7 +2,7 @@
 <body>
     <input type = "hidden" id= "idUsuario" value = "<?php echo $idUsuario?>" />
     <input type = "hidden" id= "idEvaluado" value = "<?php echo $idEvaluado?>" />
-    <input type = "hidden" id= "idseccion" value = "3" />
+    <input type = "hidden" id= "idSeccion" value = "3" />
     <div class="grid flex">
     	<div class="col_12">
             <div class="col_2"></div>

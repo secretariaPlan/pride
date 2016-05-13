@@ -73,7 +73,7 @@ $(document).ready(function(){
 
     var idUsuario = $("#idUsuario").val();
     var idEvaluado = $("#idEvaluado").val();
-    var idSeccion = $("#idseccion").val();
+    var idSeccion = $("#idSeccion").val();
 
     cargarComentarios(idEvaluado,idSeccion);
     $("#historialComentarios").hide();
