@@ -317,6 +317,10 @@ class Evaluado_Controller extends CI_Controller {
 		$this->load->view("footer");
 	}
 	
+	function cerrarSesion(){
+		$this->session->sess_destroy();
+		redirect("/login","refresh");
+	}
 	
 }
 
