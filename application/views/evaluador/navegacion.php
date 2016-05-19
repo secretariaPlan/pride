@@ -19,7 +19,7 @@
 <!-- Menu Horizontal -->
 <div class="center">	
 	<ul class="menu">
-		<li <?php echo isset($informacion) ? $informacion : ""; ?>><a href="<?php echo site_url("evaluador_controller/informacionEvaluado")?>">Informacion general</a></li>
+		<li <?php echo isset($informacion) ? $informacion : ""; ?>><a href="<?php echo site_url("evaluador_controller/informacionEvaluado/id/$id/idEvaluado/$idEvaluado")?>">Informacion general</a></li>
 		<li <?php echo isset($formacionT) ? $formacionT : "" ;?>><a href="<?php echo site_url("evaluador_controller/formacionTrayectoriaAcademica")?>">Formaci&oacute;n y trayectoria acad&eacute;mica</a></li>
         <li <?php echo isset($productividad) ? $productividad : "" ?>><a href="<?php echo site_url("evaluador_controller/productividadAcademica")?>">Productividad acad&eacute;mica</a></li>
 		<li <?php echo isset($material) ? $material :"" ?>><a href="<?php echo site_url("evaluador_controller/materialDocente")?>">Material docente</a></li>
